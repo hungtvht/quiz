@@ -9,7 +9,18 @@ let userAnswers = {}; // { questionIndex: answerIndex(1..4) }
 let isQuizStarted = false;
 
 let questionData = [];
-
+async function loadQuestions() {
+  try {
+    const jsonUrl =  "https://raw.githubusercontent.com/hungtvht/tracnghiem/main/questions.json";
+    const response = await fetch(jsonUrl);
+    if (!response.ok) throw new Error("Không thể tải dữ liệu");
+    questions = await response.json();
+    startQuiz(); // gọi hàm khởi động quiz sau khi có dữ liệu
+  } catch (error) {
+    console.error("Lỗi khi tải câu hỏi:", error);
+    document.getElementById("quiz-container").innerHTML = "<p>Không thể tải câu hỏi. Vui lòng thử lại sau.</p>";
+  }
+}
 // 2. Hàm fetch + parse XML
 async function loadQuestionsFromXML() {
   const rawUrl =
@@ -340,10 +351,12 @@ function shuffle(array) {
 
 // ================== BOOTSTRAP ==================
 window.onload = async () => {
-  await loadQuestionsFromXML();
+  //await loadQuestionsFromXML();
+  await loadQuestions();
   populateFields();
   // Ẩn thanh điều hướng lúc đầu
   document
     .getElementById("navBar")
     .style.setProperty("display", "none", "important");
 };
+
