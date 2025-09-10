@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trắc nghiệm Agribanker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root {
+  --bg-page: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #e0e0e0;
+  --text-muted: #8a8a8a;
+  --border-color: #2c2c2c;
+  --accent: #0d6efd;
+  --success: #198754;
+  --danger: #dc3545;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.navbar-tabs .nav-link {
+  color: var(--text-muted);
+}
+
+.navbar-tabs .nav-link.active {
+  color: var(--text-main);
+  border-bottom: 2px solid var(--accent);
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.answer-option {
+  background-color: #2a2a2a;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.answer-option:hover {
+  background-color: #333333;
+}
+
+.answer-option.selected {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.toolbar {
+  padding: 12px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.btn-soft {
+  background-color: #2a2a2a;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-soft:hover {
+  background-color: #333333;
+}
+
+.table-dark {
+  --bs-table-bg: #1e1e1e;
+  --bs-table-border-color: var(--border-color);
+}
+
+.highlight {
+  background-color: var(--success);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+input,
+select {
+  background-color: #2a2a2a;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container py-1">
+    <h3 class="text-center mb-1 fw-bold">Trắc nghiệm (by Việt Hùng)</h3>
+
+    <!-- Tabs -->
+    <ul class="nav navbar-tabs mb-1" id="mainTabs">
+      <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('home')">Trang chủ</a></li>
+      <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('search')">Thư viện câu hỏi</a></li>
+    </ul>
+
+    <!-- Trang chủ -->
+    <div id="homeTab">
+      <!-- Cấu hình -->
+      <div id="configSection" class="card mb-1">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="badge-soft">Cấu hình bài thi</span>
+            <span class="muted">Chọn số câu theo từng lĩnh vực</span>
+          </div>
+          <div id="fieldInputs" class="row g-3"></div>
+          <div class="text-center mt-3">
+            <button class="btn btn-primary me-2" onclick="startPractice()">Ôn thi</button>
+            <button class="btn btn-success" onclick="startExam()">Thi thật</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Câu hỏi -->
+      <div id="quizContainer"></div>
+
+      <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
+      <div id="navBar" class="toolbar d-flex justify-content-between align-items-center mt-3" style="display:none !important;">
+         <div class="d-flex gap-2">
+             <button class="btn btn-outline-warning" onclick="confirmExit()">🔙 Trang chủ</button>
+          
+         
+        </div>
+        
+        <div class="d-flex gap-2">
+          <button class="btn btn-soft" onclick="goPrev()">← Câu trước</button>
+          <button class="btn btn-soft" onclick="goNext()">Câu tiếp →</button>
+        </div>
+        <div class="d-flex gap-2">
+            <button class="btn btn-danger" onclick="submitQuiz()">Nộp bài thi</button>
+         </div>
+      </div>
+    </div>
+
+    <!-- Thư viện câu hỏi -->
+    <div id="searchTab" style="display:none;">
+      <div class="card mb-3">
+      <div class="card-body p-1">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="badge-soft">Thư viện câu hỏi</span>
+          <span class="muted">Gõ nội dung câu hỏi hoặc phương án</span>
+        </div>
+        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm..." oninput="searchQuestions()" />
+      </div>
+      </div>
+      <div id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>

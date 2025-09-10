@@ -1,0 +1,22 @@
+<questions>
+  <question>
+    <field>Công nghệ ngân hàng</field>
+    <text>Ngân hàng số là gì?</text>
+    <option>A. Giao dịch qua quầy</option>
+    <option>B. Giao dịch qua Internet</option>
+    <option>C. Giao dịch bằng tiền mặt</option>
+    <option>D. Giao dịch qua ATM</option>
+    <correct>2</correct>
+    <citation>Thông tư 01/2022/NHNN</citation>
+  </question>
+  <question>
+    <field>Bảo mật thông tin</field>
+    <text>Phương pháp nào sau đây giúp bảo vệ dữ liệu?</text>
+    <option>A. Sử dụng mật khẩu mạnh</option>
+    <option>B. Chia sẻ tài khoản</option>
+    <option>C. Lưu mật khẩu trên giấy</option>
+    <option>D. Dùng mạng công cộng</option>
+    <correct>1</correct>
+    <citation>Quy định bảo mật ISO 27001</citation>
+  </question>
+</questions>
