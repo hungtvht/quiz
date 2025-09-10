@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Questions>
+  <!-- Câu hỏi 1 -->
+  <Question id="1">
+    <Field>Công nghệ ngân hàng</Field>
+    <Text>Ngân hàng số là gì?</Text>
+    <Options>
+      <Option id="A">Giao dịch qua quầy</Option>
+      <Option id="B">Giao dịch qua Internet</Option>
+      <Option id="C">Giao dịch bằng tiền mặt</Option>
+      <Option id="D">Giao dịch qua ATM</Option>
+    </Options>
+    <Correct>B</Correct>
+    <Citation>Thông tư 01/2022/NHNN</Citation>
+  </Question>
+
+  <!-- Câu hỏi 2 -->
+  <Question id="2">
+    <Field>Bảo mật thông tin</Field>
+    <Text>Phương pháp nào giúp bảo vệ dữ liệu?</Text>
+    <Options>
+      <Option id="A">Sử dụng mật khẩu mạnh</Option>
+      <Option id="B">Chia sẻ tài khoản</Option>
+      <Option id="C">Lưu mật khẩu trên giấy</Option>
+      <Option id="D">Dùng mạng công cộng</Option>
+    </Options>
+    <Correct>A</Correct>
+    <Citation>ISO 27001</Citation>
+  </Question>
+
+  <!-- Câu hỏi 3 -->
+  <Question id="3">
+    <Field>Công nghệ ngân hàng</Field>
+    <Text>Ứng dụng nào phổ biến trong giao dịch ngân hàng số?</Text>
+    <Options>
+      <Option id="A">Excel</Option>
+      <Option id="B">Internet Banking</Option>
+      <Option id="C">Zalo</Option>
+      <Option id="D">Facebook</Option>
+    </Options>
+    <Correct>B</Correct>
+    <Citation>Hướng dẫn nghiệp vụ Agribank</Citation>
+  </Question>
+
+  <!-- Câu hỏi 4 -->
+  <Question id="4">
+    <Field>Bảo mật thông tin</Field>
+    <Text>Mã OTP là gì?</Text>
+    <Options>
+      <Option id="A">Mã định danh</Option>
+      <Option id="B">Mã một lần</Option>
+      <Option id="C">Mã PIN</Option>
+      <Option id="D">Mã QR</Option>
+    </Options>
+    <Correct>B</Correct>
+    <Citation>Chính sách bảo mật Agribank</Citation>
+  </Question>
+</Questions>
