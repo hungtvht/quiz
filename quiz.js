@@ -23,6 +23,34 @@ let isQuizStarted = false;
 
 let questionData = [];
 
+/* ====== [BỔ SUNG] LocalStorage lưu số câu theo lĩnh vực ====== */
+const LS_KEY_FIELD_COUNTS = "quiz_field_counts_v1";
+function lsLoadCounts() {
+  try {
+    const raw = localStorage.getItem(LS_KEY_FIELD_COUNTS);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+function lsSaveCounts(map) {
+  try {
+    localStorage.setItem(LS_KEY_FIELD_COUNTS, JSON.stringify(map || {}));
+  } catch {}
+}
+function readCountsFromInputs() {
+  const map = {};
+  document
+    .querySelectorAll('#fieldInputs input[type="number"]')
+    .forEach((inp) => {
+      const field = inp.dataset.field;
+      const val = parseInt(inp.value || "0", 10);
+      map[field] = isNaN(val) ? 0 : val;
+    });
+  return map;
+}
+/* ====== [HẾT BỔ SUNG] ====== */
+
 // 2. Hàm fetch + parse XML
 async function loadQuestionsFromJSON() {
   const jsonUrl = "questions.json"; // hoặc raw.githubusercontent nếu chưa dùng Pages
@@ -99,8 +127,14 @@ function populateFields() {
     questionsByField[q.field].push({ ...q, stt: i + 1 });
   });
 
+  /* [BỔ SUNG] lấy cấu hình đã lưu (nếu có) */
+  const savedCounts = lsLoadCounts();
+
   Object.keys(questionsByField).forEach((field) => {
     const max = questionsByField[field].length;
+    const defaultVal =
+      typeof savedCounts[field] === "number" ? savedCounts[field] : max;
+
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
     col.innerHTML = `
@@ -110,12 +144,32 @@ function populateFields() {
           <span class="badge-soft">${max} câu</span>
         </div>
         <label class="form-label muted">Số câu chọn</label>
-        <input type="number" min="0" max="${max}" value="${Math.min(5, max)}"
+        <input type="number" min="0" max="${max}" value="${Math.min(
+      defaultVal,
+      max
+    )}"
                class="form-control bg-dark text-light border-secondary" data-field="${field}">
       </div>
     `;
     fieldInputs.appendChild(col);
   });
+
+  /* [BỔ SUNG] lắng nghe thay đổi để lưu ngay vào LocalStorage */
+  document
+    .querySelectorAll('#fieldInputs input[type="number"]')
+    .forEach((inp) => {
+      inp.addEventListener("change", () => {
+        const map = lsLoadCounts();
+        const field = inp.dataset.field;
+        const max = (questionsByField[field] || []).length;
+        let val = parseInt(inp.value || "0", 10);
+        if (isNaN(val)) val = 0;
+        val = Math.max(0, Math.min(val, max));
+        inp.value = val;
+        map[field] = val;
+        lsSaveCounts(map);
+      });
+    });
 }
 
 // ================== CHUYỂN TAB ==================
@@ -130,6 +184,11 @@ function switchTab(tab) {
   document
     .querySelector(`#mainTabs .nav-link[onclick*="${tab}"]`)
     .classList.add("active");
+
+  /* [BỔ SUNG] Hiện/ẩn nút GoTop tùy theo tab */
+  const goTopBtn = document.getElementById("goTopBtn");
+  if (goTopBtn)
+    goTopBtn.style.display = tab === "search" ? "inline-flex" : "none";
 }
 
 // ================== BẮT ĐẦU THI ==================
@@ -148,6 +207,10 @@ function prepareQuiz() {
   currentIndex = 0;
 
   const inputs = document.querySelectorAll('#fieldInputs input[type="number"]');
+
+  /* [BỔ SUNG] lưu cấu hình hiện tại ngay khi bắt đầu */
+  const mapToSave = {};
+
   for (const input of inputs) {
     const field = input.dataset.field;
     const count = parseInt(input.value || "0", 10);
@@ -160,7 +223,9 @@ function prepareQuiz() {
     if (count > 0) {
       selectedQuestions.push(...shuffle(pool).slice(0, count));
     }
+    mapToSave[field] = isNaN(count) ? 0 : count;
   }
+  lsSaveCounts(mapToSave);
 
   if (selectedQuestions.length === 0) {
     alert("Vui lòng chọn ít nhất một câu hỏi.");
@@ -188,7 +253,7 @@ function renderQuestion() {
   const head = document.createElement("div");
   head.className = "d-flex justify-content-between align-items-center mb-2";
   head.innerHTML = `
-    <div class="badge-soft">Câu ${currentIndex + 1} / ${
+    <div class="badge-soft text-info">Câu ${currentIndex + 1} / ${
     selectedQuestions.length
   }</div>
     <div class="muted">${q.field}</div>
@@ -219,7 +284,7 @@ function renderQuestion() {
 
   // Phản hồi động trong thi thử
   if (mode === "practice" && userAnswers[currentIndex]) {
-    const isCorrect = userAnswers[currentIndex] == q.correct;
+    const isCorrect = userAnswers[currentIndex] === q.correct;
     const fb = document.createElement("div");
     fb.className = `alert mt-3 ${isCorrect ? "alert-success" : "alert-danger"}`;
     fb.innerHTML = isCorrect
@@ -345,15 +410,20 @@ function searchQuestions() {
   `;
 
   results.forEach((q) => {
-    const answers = q.options
+    /*  const answers = q.options
       .map((opt, idx) => {
         const label = String.fromCharCode(65 + idx);
-        const isCorrect = idx + 1 == q.correct;
+        const isCorrect = idx + 1 === q.correct;
         return `<div class="${
           isCorrect ? "highlight" : "d-none"
         }">${label}. ${opt}</div>`;
       })
-      .join("");
+      .join(""); */
+    const correctIdx = (q.correct ?? 0) - 1;
+    const answers =
+      correctIdx >= 0 && correctIdx < q.options.length
+        ? `<div class="highlight">${htmlesc(q.options[correctIdx])}</div>`
+        : "";
 
     html += `
       <tr>
@@ -376,6 +446,19 @@ function searchQuestions() {
   container.innerHTML = html;
 }
 
+/* ====== [BỔ SUNG] Nút ảo GoTop: focus + select ô tìm kiếm ====== */
+function goTopFocusSearch() {
+  const el = document.getElementById("searchInput");
+  if (!el) return;
+  // nếu đang ở tab khác, chuyển sang tab search
+  if (document.getElementById("searchTab").style.display === "none") {
+    switchTab("search");
+  }
+  el.focus();
+  el.select();
+}
+/* ====== [HẾT BỔ SUNG] ====== */
+
 // ================== TIỆN ÍCH ==================
 function shuffle(array) {
   if (!Array.isArray(array)) return [];
@@ -390,4 +473,7 @@ window.onload = async () => {
   document
     .getElementById("navBar")
     .style.setProperty("display", "none", "important");
+
+  /* [BỔ SUNG] đảm bảo đúng trạng thái hiển thị nút GoTop theo tab mặc định */
+  switchTab("home");
 };

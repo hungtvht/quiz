@@ -189,6 +189,20 @@ select:focus {
       body{ padding-bottom: 96px; }
       #questionContainer{ max-height: calc(100vh - 300px); }
     }
+
+    /* === GoTop floating button === */
+    #goTopBtn{
+      position: fixed;
+      right: 16px;
+      bottom: 96px; /* nằm trên thanh nav cố định */
+      z-index: 1040;
+      display: none; /* chỉ hiện ở tab Thư viện */
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.35);
+    }
+    @media (max-width: 576px){
+      #goTopBtn{ bottom: 120px; }
+    }
   </style>
 </head>
 <body>
@@ -207,7 +221,7 @@ select:focus {
       <div id="configSection" class="card mb-1">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-1">
-            <span class="badge-soft">Cấu hình bài thi</span>
+            <span class="badge-soft text-info">Cấu hình bài thi</span>
             <span class="muted">Chọn số câu theo từng lĩnh vực</span>
           </div>
           <div id="fieldInputs" class="row g-3"></div>
@@ -224,17 +238,17 @@ select:focus {
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
       <div id="navBar" class="toolbar d-flex justify-content-between align-items-center mt-3" style="display:none !important;">
          <div class="d-flex gap-2">
-             <button class="btn btn-outline-warning" onclick="confirmExit()">🔙 Trang chủ</button>
+             <button class="btn btn-outline-warning" onclick="confirmExit()">Trang chủ</button>
           
          
         </div>
         
         <div class="d-flex gap-2">
-          <button class="btn btn-soft" onclick="goPrev()">← Câu trước</button>
-          <button class="btn btn-soft" onclick="goNext()">Câu tiếp →</button>
+          <button class="btn btn-soft" onclick="goPrev()">← Trước</button>
+          <button class="btn btn-soft" onclick="goNext()">Tiếp →</button>
         </div>
         <div class="d-flex gap-2">
-            <button class="btn btn-danger" onclick="submitQuiz()">Nộp bài thi</button>
+            <button class="btn btn-danger" onclick="submitQuiz()">Nộp bài</button>
          </div>
       </div>
     </div>
@@ -244,7 +258,7 @@ select:focus {
       <div class="card mb-3">
       <div class="card-body p-1">
         <div class="d-flex justify-content-between align-items-center mb-2">
-          <span class="badge-soft">Thư viện câu hỏi</span>
+          <span class="badge-soft text-info">Thư viện câu hỏi</span>
           <span class="muted">Gõ nội dung câu hỏi hoặc phương án</span>
         </div>
         <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm..." oninput="searchQuestions()" />
@@ -253,6 +267,11 @@ select:focus {
       <div id="searchResults"></div>
     </div>
   </div>
+
+  <!-- Nút ảo GoTop: focus + select searchInput -->
+  <button id="goTopBtn" class="btn btn-warning fw-semibold" onclick="goTopFocusSearch()" title="Nhảy lên ô tìm kiếm & chọn sẵn">
+    ⌨️ GoTop
+  </button>
 
   <script src="quiz.js"></script>
 </body>
