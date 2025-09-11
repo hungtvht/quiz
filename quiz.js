@@ -266,6 +266,8 @@ function renderQuestion() {
   body.appendChild(title);
 
   q.options.forEach((opt, idx) => {
+    if (!opt || opt.trim() === "") return; // 🚀 bỏ qua nếu rỗng
+
     const btn = document.createElement("div");
     btn.className = "answer-option appear mt-2";
     btn.style.animationDelay = `${idx * 40}ms`;
@@ -275,7 +277,6 @@ function renderQuestion() {
 
     btn.onclick = () => {
       userAnswers[currentIndex] = idx + 1;
-      // Re-render to apply selected state & feedback (practice)
       renderQuestion();
     };
 
