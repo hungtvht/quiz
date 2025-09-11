@@ -203,7 +203,7 @@ select:focus {
       border: none !important;
     }
     @media (max-width: 576px){
-      #goTopBtn{ bottom: 120px; }
+      #goTopBtn{ bottom: 6px; }
     }
   </style>
 </head>
@@ -238,12 +238,10 @@ select:focus {
       <div id="quizContainer"></div>
 
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-      <div id="navBar" class="toolbar d-flex justify-content-between align-items-center mt-3" style="display:none !important;">
-         <div class="d-flex gap-2">
-             <button class="btn btn-outline-warning" onclick="confirmExit()">Home</button>
-          
-         
-        </div>
+      <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
+<div id="navBar" class="toolbar d-flex justify-content-between align-items-center mt-3" style="display:none !important;">
+   <div class="d-flex gap-2"></div>
+
         
         <div class="d-flex gap-2">
           <button class="btn btn-soft" onclick="goPrev()">←</button>
@@ -253,6 +251,46 @@ select:focus {
             <button class="btn btn-danger" onclick="submitQuiz()">Nộp bài</button>
          </div>
       </div>
+      <!-- Màn hình Kết quả (ẩn trước khi nộp) -->
+<div id="resultView" class="card mt-3" style="display:none;">
+  <div class="card-body text-center">
+    <div id="resultIcon" style="font-size:56px; line-height:1.2;">🏆</div>
+    <h4 class="mt-2 mb-3">Kết quả</h4>
+
+    <div class="row g-3 justify-content-center mb-3">
+      <div class="col-12 col-md-3">
+        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
+          <div class="muted">Thời gian</div>
+          <div id="rsTime" class="fs-5 fw-semibold text-info">00:00</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
+          <div class="muted">Đúng / Tổng</div>
+          <div id="rsCorrect" class="fs-5 fw-semibold  text-info">0 / 0</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
+          <div class="muted">Điểm</div>
+          <div id="rsScore" class="fs-5 fw-semibold  text-info">0</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
+          <div class="muted">Xếp loại</div>
+          <div id="rsRank" class="fs-5 fw-semibold  text-info" >—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center gap-2">
+      <button class="btn btn-outline-light" onclick="resetToHome()">🏠 Home</button>
+      <button id="rsActionBtn" class="btn btn-primary">🔁 Thi lại</button>
+    </div>
+  </div>
+</div>
+
     </div>
 
     <!-- Thư viện câu hỏi -->
