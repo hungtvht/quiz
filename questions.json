@@ -4798,5 +4798,581 @@
     ],
     "Correct": "4",
     "Citation": "Câu hỏi tình huống"
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Loại thẻ nào không thực hiện phát hành tại Agribank Digital?",
+    "Options": [
+      "Thẻ phụ, thẻ Công ty, thẻ liên kết, thẻ tín dụng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Đối với cho vay theo hạn mức, đâu là những căn cứ để xác định hạn mức?",
+    "Options": [
+      "…............. Các giới hạn cấp tín dụng và khả năng nguồn vốn của Agribank",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Trường hợp khách hàng nhập sai mật khẩu phương thức xác thực bao nhiêu lần liên tiếp, phương thức xác thực của khách hàng sẽ bị chặn trên hệ thống Agribank Ebanking",
+    "Options": [
+      "04 lần",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Đối với các dịch vụ được phép thực hiện bằng ngoại tệ, đồng tiền sử dụng để thanh toán phí dịch vụ là:",
+    "Options": [
+      "VND hoặc USD hoặc ngoại tệ khác theo thỏa thuận",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Mức miễn/giảm phí duy trì dịch vụ tối đa đối với dịch vụ Agribank eBanking khi khách hàng tham gia chương trình miễn/giảm phí dịch vụ Agribank eBanking đối với khách hàng tổ chức (VB8478/NHNo-KHDN ngày 18/06/2025) là bao nhiêu",
+    "Options": [
+      "1",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Mã kích hoạt (active code) của ứng dụng softPOS được gửi như thế nào?",
+    "Options": [
+      "Qua số điện thoại đăng ký của Đơn vị chấp nhận thanh toán",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Hạn mức rút tiền của dịch vụ liên kết ví điện tử doanh nghiệp VNPT Pay:",
+    "Options": [
+      "<10 tỷ/ngày",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Mật khẩu User QRCode được gửi như thế nào?",
+    "Options": [
+      "Qua số điện thoại đăng ký của Đơn vị chấp nhận thanh toán",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Thẻ nào của Agribank có chức năng \"phòng chờ sân bay\" bao gồm cả sân bay quốc tế và bay nội địa?",
+    "Options": [
+      "Thẻ Agribank Mastercard World",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Dịch vụ liên kết ví điện tử doanh nghiệp VNPT Pay trong hệ thống Agribank được triển khai từ thời gian nào?",
+    "Options": [
+      "Năm 2023",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Khách hàng cá nhân nhập sai mật khẩu truy cập ứng dụng bao nhiêu lần thì bị khóa người dùng",
+    "Options": [
+      "10 Lần liên tiếp  ( câu này thuốc eBanking)",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo QĐ số 1089/Q phải Đ- NHNo-CNTT. Trong trường hợp nào dưới đây đơn vị sử dụng phải lập biểu mẫu 04/HTPM thay vì chỉ liên hệ trực tiếp đơn vị CNTT",
+    "Options": [
+      "Khi cần hỗ trợ xử lý nghiệp vụ hoặc yêu cầu hỗ trợ kỹ thuật phần mềm nghiệp vụ",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Đơn vị nào được thành lập để thực hiện chức năng, nhiệm vụ nghiên cứu, đề xuất chủ trương, chiến lược, cơ chế, chính sách tạo môi trường pháp lý thúc đẩy tiến trình chuyển đổi số và đôn đốc, chỉ đạo triển khai thực hiện Kế hoạch này?",
+    "Options": [
+      "Ban Chỉ đạo Chuyển đổi số",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Khi triển khai xây dựng sản phẩm công nghệ, nhóm kỹ thuật và nghiệp vụ bất đồng quan điểm, cách giải quyết là gì",
+    "Options": [
+      "Tổ chức đối thoại, làm rõ yêu cầu nghiệp vụ và khả năng kỹ thuật, vướng mắc giữa các bên",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Việc rút bớt TSBĐ phải thông qua hội đồng xử lý TSBĐ ( trừ trường hợp Hội đồng tín dụng chi nhánh loại I là người quyết định nhận tài sản bảo đảm) đối với khách hàng nào?",
+    "Options": [
+      "Đối với khách hàng còn dư nợ từ 5 tỷ đồng trở lên.",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo quy định tại Quy chế số 369/QC-HĐTV-TCKT, Chính sách phí dịch vụ là:",
+    "Options": [
+      "Là quy định về chính sách thu phí dịch vụ trong hệ thống Agribank do Tổng giám đốc quy định từng thời kỳ",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Agribank có quyền từ chối thực hiện lệnh thanh toán của chủ tài khoản trong các trường hợp sau đây?",
+    "Options": [
+      "Khi chưa có yêu cầu bằng văn bản của cơ quan nhà nước có thẩm quyền theo quy định của pháp luật",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Dịch vụ thương mại điện tử (e-Commerce) là dịch vụ gì?",
+    "Options": [
+      "Đáp án 1 và 3 đúng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo quy chế 879/QC-HĐTV-TD, hợp đồng bảo đảm bị vô hiệu hoặc bị hủy bỏ, bị đơn phương chấm dứt thực hiện thì?",
+    "Options": [
+      "Không làm chấm dứt Hợp đồng cấp tín dụng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Agribank thực hiện cho vay theo phương thức hạn mức như thế nào?",
+    "Options": [
+      "Đáp án 1 và 2",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo Quy định 2929/QyĐ-NHNo-TD, Agribank có quyền yêu cầu thi hành án đấu giá tài sản thi hành án khi nào",
+    "Options": [
+      "Sau khi bản án có hiệu lực ….... Thời hiệu yêu cầu thi hành án là 5 năm",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Mỗi phần mềm nghiệp vụ có bắt buộc phải có quy trình nghiệp vụ ban hành kèm theo không?",
+    "Options": [
+      "Có",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo Quy chế 879/QC-HĐTV-TD, hợp đồng bảo đảm được công chứng, chứng thực có hiệu lực kể từ thời điểm nào?",
+    "Options": [
+      "Đáp án 2 và 3",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Chuyển đổi số KHÔNG bao gồm hoạt động nào dưới đây?",
+    "Options": [
+      "Xây dựng khu giải trí",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Đối với cho vay trung hạn thời gian xem xét và quyết định cho vay tại Agribank nơi cho vay kể từ ngày nhận đủ hồ sơ, thông tin hợp lệ tối đa là bao nhiêu ngày làm việc?",
+    "Options": [
+      "10 ngày",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Khi xác định giá trị tài sản bảo đảm, Agribank ưu tiên xác định giá trị tài sản như thế nào?",
+    "Options": [
+      "Xác định giá theo giá thị trường phù hợp với quy định của pháp luật",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Sau tối thiểu bao lâu đơn vị phải rà soát, kiểm tra quyền truy cập của người dùng?",
+    "Options": [
+      "06 (sáu) tháng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Hệ thống tự động thu phí duy trì dịch vụ hay chi nhánh thực hiện thu thủ công từ tài khoản khách hàng",
+    "Options": [
+      "Hệ thống tự động thu từ tài khoản khách hàng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Mức cấp tín dụng tối đa so với giá trị tài sản bảo đảm là bất động sản ( trừ tài sản bảo đảm là quyền sử dụng đất được định giá theo bảng giá đất của UBND cấp tỉnh)",
+    "Options": [
+      "0.85",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo Quy định 2526/QyĐ-NHNo-TTh đơn vị nào đầu mối phối hợp với các đơn vị liên quan để tiến hành nâng cấp giao diện, các tính năng tiện ích trên Website Agribank",
+    "Options": [
+      "Ban Ngân hàng số",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo Quy định về Phát hành, quản lý, sử dụng và thanh toán thẻ, kênh điện tử bao gồm:",
+    "Options": [
+      "Agribank Plus, Agribank eBanking",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo nguyên tắc chung khi triển khai Open API, dữ liệu trong quá trình xử lý phải đảm bảo tính chất nào?",
+    "Options": [
+      "Tính cập nhật và chính xác",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo quy định về quản lý phí dịch vụ tại Agribank, thẩm quyền quyết định tăng thu phí đối với khách hàng trong các trường hợp cụ thể là của ai?",
+    "Options": [
+      "Tổng giám đốc",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Theo Quy chế 879/QC-HĐTV-TD, Vật chính là gì?",
+    "Options": [
+      "Là vật độc lập, có thể khai thác công dụng theo tính năng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Hệ thống CRM hộ trợ ngân hàng trong việc nào?",
+    "Options": [
+      "Quản lý quan hệ khách hàng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Trường hợp không có thỏa thuận thời hạn thông báo về việc xử lý tài sản bảo đảm, Agribank nơi cho vay có quyền xử lý tài sản bảo đảm kể từ ngày thông báo về việc xử lý tài sản bảo đảm là bao nhiêu ngày?",
+    "Options": [
+      "Trước ít nhất 10 ngày đối với động sản hoặc trước ít nhất 15 ngày đối với bất động sản",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Trong quá trình vận hành chatbot CSKH, có phản ánh về trả lời sai lệch thông tin. Việc cần làm là gì?",
+    "Options": [
+      "Cập nhật lại dữ liệu đào tạo và theo dõi phản hồi",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Hệ thống ngân hàng lõi (Core Banking) có vai trò gì trong chuyển đổi số",
+    "Options": [
+      "Vận hành toàn bộ giao dịch ngân hàng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Chức năng thanh toán qua mã VietQR được thực hiện trên các dịch vụ nào sau đây của Agribank?",
+    "Options": [
+      "Agribank Plus",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Nhận định toàn bộ khách hàng sử dụng Agribank eBanking gói tài chính đều có thể thực hiện Thanh toán BHXH là đúng hay sai?",
+    "Options": [
+      "Đúng",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Trong thời kỳ ngân hàng số, yếu tố nào của thiết bị di động ảnh hưởng đến quyết định giao dịch với ngân hàng của khách hàng?",
+    "Options": [
+      "Tốc độ tìm kiếm, dung lượng của ứng dụng di động để tối ưu …......",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Chi nhánh A gửi yêu cầu tra soát đến Ngân hàng B về một lệnh thanh toán đến bị thiếu thông tin của người nhận. Theo quy trình thanh toán và các văn bản sửa đổi bổ sung sau bao nhiêu ngày làm việc kể từ ngày gửi tra soát mà chi nhánh A không nhận được trả lời từ Ngân hàng B, chi  nhánh A phải thực hiện hoàn trả lệnh thanh toán",
+    "Options": [
+      "sau 2 ngày làm việc",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Bảo mật sinh trắc học được áp dụng đối với dịch vụ nào sau đây?",
+    "Options": [
+      "Agribank Plus",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Chuyển đổi số cần tập trung thực hiện khi nào",
+    "Options": [
+      "Từ hiện tại",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Điều kiện đối với khách hàng để đăng ký sử dụng dịch vụ liên kết ví điện tử doanh nghiệp VNPT Pay của Agribank",
+    "Options": [
+      "Là khách hàng pháp nhân",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Thẻ tín dụng của Agribank có thể thực hiện chức năng nào sau đây tại Agribank",
+    "Options": [
+      "Tất cả đáp án",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Đơn vị nào có trách nhiệm xây dựng tài liệu hướng dẫn cài đặt, tài liệu hướng dẫn sử dụng phần mềm và các tài liệu kỹ thuật có liên quan khác phục vụ quá trình triển khai:",
+    "Options": [
+      "Đơn vị chủ trì CNTT và đơn vị chủ trì nghiệp vụ",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
+  },
+  {
+    "Field": "NÂNG CAO",
+    "Text": "Agribank đã phát triển hệ thống thanh toán nào để xử lý điện SWIFT MX theo tiêu chuẩn ISO20022?",
+    "Options": [
+      "Agribank đã xây dựng module SWIFT HUB, SWIFTADMIN tại hệ thống thanh toán tập trung để xử lý điện MX theo tiêu chuẩn ISO 20022",
+      "",
+      "",
+      ""
+    ],
+    "Correct": "1",
+    "Citation": ""
   }
 ]
