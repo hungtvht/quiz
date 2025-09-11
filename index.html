@@ -106,6 +106,90 @@ select:focus {
 }
 
   </style>
+
+  <style>
+    :root{
+      --bg:#0b0d13;
+      --surface:#111827;
+      --border:#273244;
+      --text:#f3f4f6;
+      --muted:#cbd5e1;
+      --primary:#60a5fa;
+      --success:#16a34a;
+      --danger:#dc2626;
+      --warning:#f59e0b;
+    }
+    body{background:var(--bg);color:var(--text)}
+    .navbar, .navbar-dark, .navbar-light{background:var(--surface)!important}
+    .card{background:var(--surface);border-color:var(--border)}
+    .list-group-item{background:var(--surface);color:var(--text);border-color:var(--border)}
+    .table{color:var(--text)}
+    .table thead th{color:var(--text)}
+    .table-dark{--bs-table-bg:#101624;--bs-table-striped-bg:#141c2b;--bs-table-striped-color:var(--text)}
+    .form-control, .form-select, .form-check-input{
+      background:#0f1520!important; color:var(--text)!important; border-color:var(--border)!important;
+    }
+    .form-control::placeholder{color:#90a4bf}
+    .btn{border-radius:12px}
+    .btn-outline-light{--bs-btn-color:#e5e7eb;--bs-btn-border-color:#5b6b83;--bs-btn-hover-bg:#1e293b}
+    .btn-primary{background:#2563eb;border-color:#1d4ed8}
+    .btn-success{background:var(--success)!important;border-color:#15803d!important}
+    .btn-danger{background:var(--danger)!important;border-color:#991b1b!important}
+    .btn-warning{background:var(--warning)!important;border-color:#b45309!important;color:#111827!important}
+    .badge{border-radius:10px}
+    .muted, .text-muted{color:var(--muted)!important}
+    .answer-btn{white-space:normal;text-align:left}
+    .ans-correct{background:#12391f!important;border-color:#14532d!important}
+    .ans-wrong{background:#3a1616!important;border-color:#7f1d1d!important}
+    #navigator .btn{min-width:42px}
+  </style>
+
+  <style>
+    /* Improve layout for small screens */
+    @media (max-width: 576px){
+      :root { --text: #ffffff; --text-muted:#e5e7eb; }
+      body { font-size: 16px; }
+      .container { padding-left: 14px; padding-right: 14px; }
+      .btn { min-height: 44px; }
+      .answer-btn { padding: 12px 14px; font-size: 16px; }
+      #navigator .btn { min-width: 44px; min-height: 44px; padding: 6px 8px; }
+      .form-control, .form-select { font-size: 16px; padding: 10px 12px; }
+      .badge { font-size: 0.95rem; }
+      .card { margin-bottom: 14px; }
+    }
+    /* Ensure tables are scrollable horizontally on narrow screens */
+    .table-responsive { overflow-x: auto; }
+    /* Make buttons wrap nicely */
+    .btn-group, .d-flex { flex-wrap: wrap; }
+  </style>
+
+  <style>
+    img, video { max-width: 100%; height: auto; }
+    .w-100-sm { width: 100%; }
+  </style>
+
+  <style>
+    /* Keep navbar always visible at the bottom */
+    #navBar{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      display: flex;
+    }
+    /* Reserve space so content isn't hidden behind the nav */
+    body{ padding-bottom: 72px; }
+    /* Scroll only the question content area */
+    #questionContainer{
+      max-height: calc(100vh - 260px);
+      overflow-y: auto;
+    }
+    @media (max-width: 576px){
+      body{ padding-bottom: 96px; }
+      #questionContainer{ max-height: calc(100vh - 300px); }
+    }
+  </style>
 </head>
 <body>
   <div class="container py-1">
@@ -170,7 +254,6 @@ select:focus {
     </div>
   </div>
 
-  <script src="quiz.js?v=2"></script>
+  <script src="quiz.js"></script>
 </body>
 </html>
-

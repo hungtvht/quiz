@@ -1,3 +1,16 @@
+function htmlesc(s) {
+  return (s ?? "").toString().replace(
+    /[&<>"']/g,
+    (m) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[m])
+  );
+}
 // ================== DỮ LIỆU CÂU HỎI (hardcode) ==================
 
 // ================== BIẾN TOÀN CỤC ==================
@@ -9,19 +22,34 @@ let userAnswers = {}; // { questionIndex: answerIndex(1..4) }
 let isQuizStarted = false;
 
 let questionData = [];
-async function loadQuestions() {
-  try {
-    const jsonUrl =  "https://raw.githubusercontent.com/hungtvht/tracnghiem/main/questions.json";
-    const response = await fetch(jsonUrl);
-    if (!response.ok) throw new Error("Không thể tải dữ liệu");
-    questions = await response.json();
-    startQuiz(); // gọi hàm khởi động quiz sau khi có dữ liệu
-  } catch (error) {
-    console.error("Lỗi khi tải câu hỏi:", error);
-    document.getElementById("quiz-container").innerHTML = "<p>Không thể tải câu hỏi. Vui lòng thử lại sau.</p>";
-  }
-}
+
 // 2. Hàm fetch + parse XML
+async function loadQuestionsFromJSON() {
+  const jsonUrl = "questions.json"; // hoặc raw.githubusercontent nếu chưa dùng Pages
+  const res = await fetch(jsonUrl);
+  if (!res.ok) throw new Error("Không tải được JSON");
+
+  const data = await res.json();
+
+  // build mảng mới
+  const arr = data.map((q) => {
+    const field = q.Field || "";
+    const text = q.Text || "";
+    const citation = q.Citation || "";
+
+    // options A–D
+    const opts = Array.isArray(q.Options) ? q.Options.map((o) => o.trim()) : [];
+
+    // correct letter → index 1..4
+    const idxCor = q.Correct;
+
+    return { field, text, options: opts, correct: idxCor, citation };
+  });
+
+  // Gán lại mảng questionData
+  questionData = arr;
+}
+
 async function loadQuestionsFromXML() {
   const rawUrl =
     "https://raw.githubusercontent.com/hungtvht/tracnghiem/main/xml.xml";
@@ -162,8 +190,8 @@ function renderQuestion() {
   `;
   body.appendChild(head);
 
-  const title = document.createElement("h5");
-  title.className = "mb-2 text-white";
+  const title = document.createElement("p");
+  title.className = "mb-2 text-info";
   title.textContent = q.text;
   body.appendChild(title);
 
@@ -186,7 +214,7 @@ function renderQuestion() {
 
   // Phản hồi động trong thi thử
   if (mode === "practice" && userAnswers[currentIndex]) {
-    const isCorrect = userAnswers[currentIndex] === q.correct;
+    const isCorrect = userAnswers[currentIndex] == q.correct;
     const fb = document.createElement("div");
     fb.className = `alert mt-3 ${isCorrect ? "alert-success" : "alert-danger"}`;
     fb.innerHTML = isCorrect
@@ -315,9 +343,9 @@ function searchQuestions() {
     const answers = q.options
       .map((opt, idx) => {
         const label = String.fromCharCode(65 + idx);
-        const isCorrect = idx + 1 === q.correct;
+        const isCorrect = idx + 1 == q.correct;
         return `<div class="${
-          isCorrect ? "highlight" : ""
+          isCorrect ? "highlight" : "d-none"
         }">${label}. ${opt}</div>`;
       })
       .join("");
@@ -351,12 +379,10 @@ function shuffle(array) {
 
 // ================== BOOTSTRAP ==================
 window.onload = async () => {
-  //await loadQuestionsFromXML();
-  await loadQuestions();
+  await loadQuestionsFromJSON();
   populateFields();
   // Ẩn thanh điều hướng lúc đầu
   document
     .getElementById("navBar")
     .style.setProperty("display", "none", "important");
 };
-
