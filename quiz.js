@@ -352,7 +352,7 @@ function renderQuestion() {
   const head = document.createElement("div");
   head.className = "d-flex justify-content-between align-items-center mb-2";
   head.innerHTML = `
-    <div class="badge-soft">Câu ${currentIndex + 1} / ${
+    <div class="badge-soft text-info">Câu ${currentIndex + 1} / ${
     selectedQuestions.length
   }</div>
     <div class="muted">${q.field}</div>
@@ -553,7 +553,7 @@ function searchQuestions() {
     const correctIdx = (q.correct ?? 0) - 1;
     const answers =
       correctIdx >= 0 && correctIdx < q.options.length
-        ? `<div class="highlight">${htmlesc(q.options[correctIdx])}</div>`
+        ? `<div class="text-info">${htmlesc(q.options[correctIdx])}</div>`
         : "";
 
     html += `
@@ -612,3 +612,50 @@ window.onload = async () => {
     saveActiveSession();
   });
 };
+// Focus + select vào #searchInput nhưng KHÔNG cuộn trang
+function selectSearchNoScroll() {
+  const input = document.getElementById("searchInput");
+  if (!input) return;
+
+  // Lưu vị trí cuộn hiện tại
+  const x = window.scrollX;
+  const y = window.scrollY;
+
+  // Focus không cuộn (hỗ trợ tốt trên trình duyệt hiện đại)
+  try {
+    input.focus({ preventScroll: true });
+  } catch {
+    // fallback nếu trình duyệt không hỗ trợ
+    input.focus();
+  }
+
+  // Chọn toàn bộ nội dung
+  try {
+    // Dùng setSelectionRange để tránh 1 số trường hợp select() gây scroll
+    const len = input.value?.length ?? 0;
+    input.setSelectionRange(0, len, "forward");
+  } catch {
+    input.select();
+  }
+
+  // Khôi phục vị trí cuộn ngay lập tức (phòng khi select vẫn làm trang nhúc nhích)
+  window.scrollTo(x, y);
+}
+
+// Khi click trong tab "Thư viện câu hỏi" → chỉ focus + select, KHÔNG goTop
+(function attachSearchNoGoTop() {
+  const tab = document.getElementById("searchTab");
+  if (!tab) return;
+
+  const handler = (e) => {
+    // Chỉ chạy khi tab đang hiển thị
+    if (tab.style.display === "none") return;
+
+    // Nếu bấm trực tiếp lên input, vẫn giữ nguyên hành vi — nhưng ngăn cuộn
+    selectSearchNoScroll();
+  };
+
+  // Lắng nghe click & touch (mobile)
+  tab.addEventListener("click", handler);
+  tab.addEventListener("touchstart", handler, { passive: true });
+})();
