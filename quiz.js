@@ -37,11 +37,16 @@ async function loadQuestionsFromJSON() {
     const text = q.Text || "";
     const citation = q.Citation || "";
 
-    // options A–D
     const opts = Array.isArray(q.Options) ? q.Options.map((o) => o.trim()) : [];
 
-    // correct letter → index 1..4
-    const idxCor = q.Correct;
+    const rawCor = (q.Correct || "").toString().trim().toUpperCase();
+    let idxCor = 0;
+
+    if (["A", "B", "C", "D"].includes(rawCor)) {
+      idxCor = rawCor.charCodeAt(0) - 64;
+    } else if (/^[1-4]$/.test(rawCor)) {
+      idxCor = parseInt(rawCor, 10);
+    }
 
     return { field, text, options: opts, correct: idxCor, citation };
   });
