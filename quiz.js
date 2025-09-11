@@ -406,16 +406,19 @@ function goPrev() {
     currentIndex--;
     renderQuestion();
     saveActiveSession(); // ⭐
+  } else {
+    alert("📢 Đây là câu đầu tiên!");
   }
 }
 function goNext() {
   if (currentIndex < selectedQuestions.length - 1) {
     currentIndex++;
     renderQuestion();
-    saveActiveSession(); // ⭐
+    saveActiveSession(); // nếu bạn đang dùng lưu phiên
+  } else {
+    alert("📢 Bạn đã làm hết tất cả các câu hỏi!");
   }
 }
-
 // ================== NỘP BÀI & THOÁT ==================
 function submitQuiz() {
   if (!isQuizStarted) return;
