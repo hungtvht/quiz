@@ -50,6 +50,9 @@ body {
   margin-top: 8px;
   cursor: pointer;
   color: var(--text-main);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform;
 }
 
 .answer-option:hover {
@@ -146,6 +149,7 @@ select:focus {
   </style>
 
   <style>
+    
     /* Improve layout for small screens */
     @media (max-width: 576px){
       :root { --text: #ffffff; --text-muted:#e5e7eb; }
@@ -180,13 +184,20 @@ select:focus {
       display: flex;
       white-space: nowrap; 
     }
-    #navBar .btn { max-width: 100%; }
+    #navBar .btn { max-width: 100%; 
+       touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+    }
     @media (max-width: 576px) {
   #navBar .btn {
     padding: 6px 10px;     /* nhỏ gọn hơn ps-4 pe-4 */
     font-size: 14px;
     line-height: 1.2;
   }
+  .answer-option,
+#navBar .btn {
+  pointer-events: auto;
+}
   /* nhóm giữa không bị ép xuống dòng */
   #navigator { gap: 6px; }
   /* Giới hạn phần hiển thị chỉ số ở bên trái để không lấn chỗ */
