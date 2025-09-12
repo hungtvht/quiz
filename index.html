@@ -281,6 +281,7 @@ select:focus {
     <ul class="nav navbar-tabs mb-1" id="mainTabs">
       <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('home')">Trắc nghiệm</a></li>
       <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('search')">Vào Thư viện</a></li>
+      <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('about')">More</a></li>
     </ul>
 
     <!-- Trang chủ -->
@@ -369,11 +370,18 @@ select:focus {
           <span class="badge-soft text-info">Câu hỏi</span>
           <span class="muted">Gõ nội dung</span>
         </div>
-        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm..." oninput="searchQuestions()" />
+        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm (vd: AI%ngân hàng)..." oninput="searchQuestions()" />
       </div>
       </div>
       <div id="searchResults"></div>
     </div>
+    <div id="aboutTab" class="card h-100" style="display:none;">
+  <div class="card-body text-info">
+    <h5 class="card-title">Luyện thi trắc nghiệm</h5>
+        <p class="card-text">Trang này dùng để ôn luyện thi trắc nghiệm theo thư viện câu hỏi đã được thu thập. Chúng tôi không chịu trách nhiệm về độ chính xác của nội dung và phương án được đề xuất trong trang này. Chúc mọi người học tập và thi đạt kết quả cao!</p>
+
+  </div>
+</div>
   </div>
 
   <!-- Nút ảo GoTop: focus + select searchInput -->

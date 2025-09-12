@@ -319,6 +319,8 @@ function switchTab(tab) {
     tab === "home" ? "block" : "none";
   document.getElementById("searchTab").style.display =
     tab === "search" ? "block" : "none";
+  document.getElementById("aboutTab").style.display =
+    tab === "about" ? "block" : "none";
   document
     .querySelectorAll("#mainTabs .nav-link")
     .forEach((l) => l.classList.remove("active"));
