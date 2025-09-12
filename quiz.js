@@ -378,19 +378,20 @@ function renderQuestion() {
 
     if (userAnswers[currentIndex] === idx + 1) {
       btn.classList.add("selected");
+      if (mode === "practice") {
+        // Nếu đúng → thêm hiệu ứng burst
+        if (userAnswers[currentIndex] === q.correct) {
+          btn.classList.add("correct-burst");
+        } else {
+          // Nếu sai → thêm hiệu ứng shake
+          btn.classList.add("wrong-shake");
+        }
 
-      // Nếu đúng → thêm hiệu ứng burst
-      if (userAnswers[currentIndex] === q.correct) {
-        btn.classList.add("correct-burst");
-      } else {
-        // Nếu sai → thêm hiệu ứng shake
-        btn.classList.add("wrong-shake");
+        // Tự gỡ class animation sau khi chạy xong để lần sau còn tái sử dụng
+        setTimeout(() => {
+          btn.classList.remove("correct-burst", "wrong-shake");
+        }, 700);
       }
-
-      // Tự gỡ class animation sau khi chạy xong để lần sau còn tái sử dụng
-      setTimeout(() => {
-        btn.classList.remove("correct-burst", "wrong-shake");
-      }, 700);
     }
 
     btn.onclick = () => {
