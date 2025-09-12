@@ -465,9 +465,9 @@ function renderQuestion() {
   const btnNot = document.getElementById("btnNotSelected");
   if (btnNot) {
     const count = getUnansweredIndices().length;
-    btnNot.textContent = `${count} (${currentIndex + 1}/${
+    btnNot.textContent = `${currentIndex + 1}/${
       selectedQuestions.length
-    })`; // hiện số câu chưa làm
+    }:${count}`; // hiện số câu chưa làm
   }
 
   // ⭐ lần render nào cũng lưu phiên (vị trí câu…)
