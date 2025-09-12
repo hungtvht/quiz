@@ -22,7 +22,7 @@ let userAnswers = {}; // { questionIndex: answerIndex(1..4) }
 let isQuizStarted = false;
 let quizStartAt = 0; // timestamp ms
 const LS_KEY_SESSION = "quiz_active_session_v1";
-
+let lastIndexBeforeJump = null; // nhớ vị trí trước khi nhảy tới "chưa làm"
 let questionData = [];
 
 /* ====== [BỔ SUNG] LocalStorage lưu số câu theo lĩnh vực ====== */
@@ -59,8 +59,9 @@ async function loadQuestionsFromJSON() {
   const res = await fetch(jsonUrl);
   if (!res.ok) throw new Error("Không tải được JSON");
 
-  const data = await res.json();
-
+  const resdata = await res.json();
+  const data = resdata.questions;
+  document.getElementById("eXamTitle").innerText = resdata.ExamTitle;
   // build mảng mới
   const arr = data.map((q) => {
     const field = q.Field || "";
@@ -179,7 +180,7 @@ function tryResumeSession() {
 
   // Hỏi người dùng có tiếp tục không
   const ok = confirm(
-    `Phát hiện bạn đang ${
+    `❓Phát hiện bạn đang ${
       payload.mode === "practice" ? "Ôn thi" : "Thi thật"
     } dở dang.\n` + `Bạn có muốn tiếp tục không?`
   );
@@ -341,23 +342,26 @@ function prepareQuiz() {
 function renderQuestion() {
   const container = document.getElementById("quizContainer");
   container.innerHTML = "";
-
+  const currentIndexInfo = document.getElementById("currentIndexInfo");
+  currentIndexInfo.innerText = `Câu ${currentIndex + 1} / ${
+    selectedQuestions.length
+  }`;
   const q = selectedQuestions[currentIndex];
   const card = document.createElement("div");
   card.className = "card mb-3";
 
   const body = document.createElement("div");
-  body.className = "card-body";
+  body.className = "card-body p-1";
 
-  const head = document.createElement("div");
+  /* const head = document.createElement("div");
   head.className = "d-flex justify-content-between align-items-center mb-2";
   head.innerHTML = `
     <div class="badge-soft text-info">Câu ${currentIndex + 1} / ${
     selectedQuestions.length
   }</div>
-    <div class="muted">${q.field}</div>
+    <div class="muted d-none">${q.field}</div>
   `;
-  body.appendChild(head);
+  body.appendChild(head); */
 
   const title = document.createElement("p");
   title.className = "mb-2 text-info";
@@ -372,7 +376,22 @@ function renderQuestion() {
     btn.style.animationDelay = `${idx * 40}ms`;
     btn.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
 
-    if (userAnswers[currentIndex] === idx + 1) btn.classList.add("selected");
+    if (userAnswers[currentIndex] === idx + 1) {
+      btn.classList.add("selected");
+
+      // Nếu đúng → thêm hiệu ứng burst
+      if (userAnswers[currentIndex] === q.correct) {
+        btn.classList.add("correct-burst");
+      } else {
+        // Nếu sai → thêm hiệu ứng shake
+        btn.classList.add("wrong-shake");
+      }
+
+      // Tự gỡ class animation sau khi chạy xong để lần sau còn tái sử dụng
+      setTimeout(() => {
+        btn.classList.remove("correct-burst", "wrong-shake");
+      }, 700);
+    }
 
     btn.onclick = () => {
       userAnswers[currentIndex] = idx + 1;
@@ -388,13 +407,19 @@ function renderQuestion() {
     const fb = document.createElement("div");
     fb.className = `alert mt-3 ${isCorrect ? "alert-success" : "alert-danger"}`;
     fb.innerHTML = isCorrect
-      ? `✔️ Chính xác! Trích dẫn: ${q.citation}`
-      : `✖️ Sai rồi! Trích dẫn: ${q.citation}`;
+      ? `✔️ Chính xác!<br>Trích dẫn: ${q.citation}`
+      : `✖️ Bạn ơi sai rồi tề!`;
     body.appendChild(fb);
   }
 
   card.appendChild(body);
   container.appendChild(card);
+  // ================== CẬP NHẬT NÚT CÂU CHƯA LÀM ==================
+  const btnNot = document.getElementById("btnNotSelected");
+  if (btnNot) {
+    const count = getUnansweredIndices().length;
+    btnNot.textContent = count; // hiện số câu chưa làm
+  }
 
   // ⭐ lần render nào cũng lưu phiên (vị trí câu…)
   saveActiveSession();
@@ -416,13 +441,57 @@ function goNext() {
     renderQuestion();
     saveActiveSession(); // nếu bạn đang dùng lưu phiên
   } else {
-    alert("📢 Bạn đã làm hết tất cả các câu hỏi!");
+    alert("📢 Bạn đang ở câu hỏi cuối cùng!");
   }
 }
+//=================== LẤY CÁC CÂU CHƯA LÀM ==================
+function getUnansweredIndices() {
+  const arr = [];
+  for (let i = 0; i < selectedQuestions.length; i++) {
+    if (!userAnswers[i]) arr.push(i);
+  }
+  return arr;
+}
+
+//=================== TÌM CÂU CHƯA LÀM ==================
+function goNotSelected() {
+  const unanswered = getUnansweredIndices();
+  const btn = document.getElementById("btnNotSelected");
+  if (btn) btn.textContent = unanswered.length; // cập nhật số ngay lúc bấm
+
+  if (unanswered.length === 0) {
+    alert("✅ Không còn câu chưa làm.");
+    return;
+  }
+
+  const firstUn = unanswered[0];
+
+  // Nếu đang ở chính câu "chưa làm đầu tiên" và có vị trí cũ -> quay lại
+  if (currentIndex === firstUn && lastIndexBeforeJump !== null) {
+    currentIndex = Math.max(
+      0,
+      Math.min(lastIndexBeforeJump, selectedQuestions.length - 1)
+    );
+    lastIndexBeforeJump = null;
+    renderQuestion();
+    saveActiveSession();
+    return;
+  }
+
+  // Lưu vị trí hiện tại rồi nhảy tới câu chưa làm đầu tiên
+  lastIndexBeforeJump = currentIndex;
+  currentIndex = firstUn;
+  renderQuestion();
+  saveActiveSession();
+}
+
 // ================== NỘP BÀI & THOÁT ==================
 function submitQuiz() {
   if (!isQuizStarted) return;
-
+  if (!confirm("❓Bạn có chắc muốn nộp bài không?")) return;
+  document
+    .getElementById("navBar")
+    .style.setProperty("display", "none", "important");
   let correct = 0;
   selectedQuestions.forEach((q, i) => {
     if (userAnswers[i] === q.correct) correct += 1;
@@ -463,17 +532,6 @@ function submitQuiz() {
   // kết thúc phiên (không còn tiếp tục)
   clearActiveSession();
   isQuizStarted = false;
-}
-
-function confirmExit() {
-  if (isQuizStarted) {
-    if (confirm("Bạn có muốn nộp bài và quay về trang chủ không?")) {
-      submitQuiz();
-      resetToHome();
-    }
-  } else {
-    resetToHome();
-  }
 }
 
 function resetToHome() {
@@ -535,7 +593,6 @@ function searchQuestions() {
           <table class="table table-dark table-bordered">
             <thead>
               <tr>
-                <th>STT</th>
                 <th>Câu hỏi</th>
                 <th>Đáp án</th>
               </tr>
@@ -561,7 +618,6 @@ function searchQuestions() {
 
     html += `
       <tr>
-        <td>${q.stt}</td>
         <td>${q.text}</td>
         <td>${answers}</td>        
       </tr>

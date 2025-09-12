@@ -70,13 +70,14 @@ body {
 }
 
 .btn-soft {
-  background-color: #2a2a2a;
+  background-color: rgb(5, 9, 29);
+
   color: var(--text-main);
   border: 1px solid var(--border-color);
 }
 
 .btn-soft:hover {
-  background-color: #333333;
+  background-color: #111a2b;
 }
 
 .table-dark {
@@ -177,7 +178,20 @@ select:focus {
       right: 0;
       z-index: 1030;
       display: flex;
+      white-space: nowrap; 
     }
+    #navBar .btn { max-width: 100%; }
+    @media (max-width: 576px) {
+  #navBar .btn {
+    padding: 6px 10px;     /* nhỏ gọn hơn ps-4 pe-4 */
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  /* nhóm giữa không bị ép xuống dòng */
+  #navigator { gap: 6px; }
+  /* Giới hạn phần hiển thị chỉ số ở bên trái để không lấn chỗ */
+  #currentIndexInfo { overflow: hidden; text-overflow: ellipsis; }
+}
     /* Reserve space so content isn't hidden behind the nav */
     body{ padding-bottom: 72px; }
     /* Scroll only the question content area */
@@ -186,7 +200,7 @@ select:focus {
       overflow-y: auto;
     }
     @media (max-width: 576px){
-      body{ padding-bottom: 96px; }
+      body{ padding-bottom: 56px; }
       #questionContainer{ max-height: calc(100vh - 300px); }
     }
 
@@ -205,15 +219,41 @@ select:focus {
     @media (max-width: 576px){
       #goTopBtn{ bottom: 6px; }
     }
+
+    /* Animation: đúng */
+.correct-burst {
+  animation: burst 0.6s ease-out;
+}
+@keyframes burst {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,255,127,0.5);}
+  50% { transform: scale(1.2); box-shadow: 0 0 20px rgba(0,255,127,0.7);}
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,255,127,0);}
+}
+
+/* Animation: sai */
+.wrong-shake {
+  animation: shake 0.4s ease-in-out;
+  background: #3a1616 !important;
+  border-color: #7f1d1d !important;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
   </style>
 </head>
 <body>
-  <div class="container py-1">
+  <div class="container p-0">
     <h3 class="text-center mb-1 fw-bold d-none">Trắc nghiệm - Quiz</h3>
 
     <!-- Tabs -->
     <ul class="nav navbar-tabs mb-1" id="mainTabs">
-      <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('home')">Home</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('home')">Trắc nghiệm</a></li>
       <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('search')">Vào Thư viện</a></li>
     </ul>
 
@@ -224,7 +264,7 @@ select:focus {
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-1">
             <span class="badge-soft text-info">Cấu hình bài thi</span>
-            <span class="muted">Chọn số câu theo từng lĩnh vực</span>
+            <span class="muted" id="eXamTitle">Chọn số câu theo từng lĩnh vực</span>
           </div>
           <div id="fieldInputs" class="row g-3"></div>
           <div class="text-center mt-3">
@@ -239,18 +279,22 @@ select:focus {
 
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-<div id="navBar" class="toolbar d-flex justify-content-between align-items-center mt-3" style="display:none !important;">
-   <div class="d-flex gap-2"></div>
+<div id="navBar" class="row justify-content-between align-items-center m-0 p-1 flex-nowrap" style="display:none !important;">
+  <div class="d-flex badge-soft text-info col-4 col-md-3 p-0 flex-shrink-1">
+    <div id="currentIndexInfo"><button class="btn btn-soft me-2">3</button></div>
+  </div>
 
-        
-        <div class="d-flex gap-2">
-          <button class="btn btn-soft" onclick="goPrev()">↩ Lùi</button>
-          <button class="btn btn-soft" onclick="goNext()">Tiến ↪</button>
-        </div>
-        <div class="d-flex gap-2">
-            <button class="btn btn-danger" onclick="submitQuiz()">Nộp bài</button>
-         </div>
-      </div>
+  <div class="d-flex col-4 col-md-6 p-0 justify-content-center flex-nowrap" id="navigator">
+    <button class="btn btn-soft me-2 px-3" onclick="goPrev()">↩</button>
+    <button id="btnNotSelected" class="btn btn-soft me-2 px-3 text-info" onclick="goNotSelected()">0</button>
+    <button class="btn btn-soft px-3" onclick="goNext()">↪</button>
+  </div>
+
+  <div class="d-flex col-4 col-md-3 p-0 justify-content-end flex-shrink-1">
+    <button class="btn btn-soft px-3" onclick="submitQuiz()">🔚</button>
+  </div>
+</div>
+
       <!-- Màn hình Kết quả (ẩn trước khi nộp) -->
 <div id="resultView" class="card mt-3" style="display:none;">
   <div class="card-body text-center">
@@ -298,8 +342,8 @@ select:focus {
       <div class="card mb-3">
       <div class="card-body p-1">
         <div class="d-flex justify-content-between align-items-center mb-2">
-          <span class="badge-soft text-info">Vào Thư viện</span>
-          <span class="muted">Gõ nội dung câu hỏi hoặc phương án</span>
+          <span class="badge-soft text-info">Câu hỏi</span>
+          <span class="muted">Gõ nội dung</span>
         </div>
         <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm..." oninput="searchQuestions()" />
       </div>
@@ -309,7 +353,7 @@ select:focus {
   </div>
 
   <!-- Nút ảo GoTop: focus + select searchInput -->
-  <button id="goTopBtn" class="btn fw-semibold" onclick="goTopFocusSearch()" title="Nhảy lên ô tìm kiếm & chọn sẵn">Go top
+  <button id="goTopBtn" class="btn fw-semibold" onclick="goTopFocusSearch()" title="Nhảy lên ô tìm kiếm & chọn sẵn">GoTyping
   </button>
 
   <script src="quiz.js"></script>
