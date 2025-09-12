@@ -709,39 +709,60 @@ function shuffle(array) {
 }
 
 // ================== BOOTSTRAP ==================
-window.onload = async () => {
-  await loadQuestionsFromJSON();
-  populateFields();
+// 👇 1. Chờ DOM sẵn sàng — KHÔNG chờ ảnh, font, JS...
+document.addEventListener("DOMContentLoaded", async () => {
+  // 👉 Hiển thị spinner NGAY khi DOM có sẵn (người dùng thấy ngay!)
+  const spinner = document.getElementById("globalSpinner");
+  const appContent = document.getElementById("appContent");
 
-  document
-    .getElementById("navBar")
-    .style.setProperty("display", "none", "important");
-  switchTab("home");
+  // Đảm bảo spinner hiện, content ẩn
+  spinner.style.display = "flex";
+  appContent.style.display = "none";
 
-  // ⭐ thử khôi phục phiên (nếu có)
-  tryResumeSession();
+  try {
+    // 👉 BẮT ĐẦU TÁC VỤ NẶNG — đây là lúc spinner hoạt động!
+    await loadQuestionsFromJSON(); // <-- fetch JSON, có thể mất 1–5s
+    populateFields();
 
-  // ⭐ lưu phiên khi đóng tab
-  window.addEventListener("beforeunload", () => {
-    saveActiveSession();
-  });
-  window.addEventListener(
-    "pagehide",
-    () => {
-      try {
-        saveActiveSession();
-      } catch {}
-    },
-    { capture: true }
-  );
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") {
-      try {
-        saveActiveSession();
-      } catch {}
-    }
-  });
-};
+    // 👉 Hoàn thành — ẩn spinner, hiện nội dung
+    spinner.style.display = "none";
+    appContent.style.display = "block";
+
+    // Các chức năng còn lại
+    document
+      .getElementById("navBar")
+      .style.setProperty("display", "none", "important");
+    switchTab("home");
+    tryResumeSession();
+
+    // Đăng ký sự kiện lưu phiên
+    window.addEventListener("beforeunload", saveActiveSession);
+    window.addEventListener(
+      "pagehide",
+      () => {
+        try {
+          saveActiveSession();
+        } catch {}
+      },
+      { capture: true }
+    );
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") {
+        try {
+          saveActiveSession();
+        } catch {}
+      }
+    });
+  } catch (error) {
+    console.error("Lỗi khi tải dữ liệu:", error);
+    spinner.innerHTML = `
+      <div class="alert alert-danger text-center">
+        Không thể tải dữ liệu. Vui lòng thử lại sau.
+      </div>
+    `;
+  }
+});
 // Focus + select vào #searchInput nhưng KHÔNG cuộn trang
 function selectSearchNoScroll() {
   const input = document.getElementById("searchInput");
