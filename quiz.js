@@ -387,10 +387,7 @@ function prepareQuiz() {
 function renderQuestion() {
   const container = document.getElementById("quizContainer");
   container.innerHTML = "";
-  const currentIndexInfo = document.getElementById("currentIndexInfo");
-  currentIndexInfo.innerText = `Câu ${currentIndex + 1} / ${
-    selectedQuestions.length
-  }`;
+
   const q = selectedQuestions[currentIndex];
   const card = document.createElement("div");
   card.className = "card mb-3";
@@ -427,6 +424,7 @@ function renderQuestion() {
         // Nếu đúng → thêm hiệu ứng burst
         if (userAnswers[currentIndex] === q.correct) {
           //btn.classList.add("correct-burst");
+          btn.classList.add("text-warning");
         } else {
           // Nếu sai → thêm hiệu ứng shake
           //btn.classList.add("wrong-shake");
@@ -450,13 +448,13 @@ function renderQuestion() {
   });
 
   if (mode === "practice" && userAnswers[currentIndex]) {
-    const isCorrect = userAnswers[currentIndex] === q.correct;
+    /* const isCorrect = userAnswers[currentIndex] === q.correct;
     const fb = document.createElement("div");
     fb.className = `alert mt-3 ${isCorrect ? "alert-success" : "alert-danger"}`;
     fb.innerHTML = isCorrect
       ? `✔️ Chính xác!<br>Trích dẫn: ${q.citation}`
       : `✖️ Bạn ơi sai rồi tề!`;
-    body.appendChild(fb);
+    body.appendChild(fb); */
   }
 
   card.appendChild(body);
@@ -465,13 +463,23 @@ function renderQuestion() {
   const btnNot = document.getElementById("btnNotSelected");
   if (btnNot) {
     const count = getUnansweredIndices().length;
-    btnNot.textContent = count; // hiện số câu chưa làm
+    btnNot.textContent = `${count} (${currentIndex + 1}/${
+      selectedQuestions.length
+    })`; // hiện số câu chưa làm
   }
 
   // ⭐ lần render nào cũng lưu phiên (vị trí câu…)
   saveActiveSessionLazy();
 }
-
+//
+function showHelp() {
+  alert(
+    `📢 Đáp án đúng là ${String.fromCharCode(
+      64 + parseInt(selectedQuestions[currentIndex].correct)
+    )}:
+    ${selectedQuestions[currentIndex].citation}`
+  );
+}
 // ================== ĐIỀU HƯỚNG ==================
 function goPrev() {
   if (currentIndex > 0) {

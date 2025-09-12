@@ -195,8 +195,6 @@ select:focus {
 
   /* nhóm giữa không bị ép xuống dòng */
   #navigator { gap: 6px; }
-  /* Giới hạn phần hiển thị chỉ số ở bên trái để không lấn chỗ */
-  #currentIndexInfo { overflow: hidden; text-overflow: ellipsis; }
 }
     /* Reserve space so content isn't hidden behind the nav */
     body{ padding-bottom: 72px; }
@@ -285,20 +283,18 @@ select:focus {
 
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-<div id="navBar" class="row justify-content-between align-items-center m-0 p-1 flex-nowrap" style="display:none !important;">
-  <div class="d-flex badge-soft text-info col-4 col-md-3 p-0 flex-shrink-1">
-    <div id="currentIndexInfo"><button class="btn btn-soft me-2">3</button></div>
+<div id="navBar" class="toolbar row justify-content-between align-items-center m-0 p-1 flex-nowrap" style="display:none !important;">
+  <div class="d-flex col-4 col-md-3 p-0 justify-content-between flex-shrink-1">
+    <button class="btn btn-soft px-3 text-warming" style="color: yellow" onclick="submitQuiz()">➜]</button>
+    <button id="helpme" class="btn btn-soft px-3" style="color:#0d6efd" onclick="showHelp()">ⓘ Help</button>
   </div>
-
-  <div class="d-flex col-4 col-md-6 p-0 justify-content-center flex-nowrap" id="navigator">
-    <button class="btn btn-soft me-2 px-3" onclick="goPrev()">↩</button>
+  <div class="d-flex col-8 col-md-9 p-0 justify-content-center flex-nowrap" id="navigator">
+    <button class="btn btn-soft me-2 px-3" onclick="goPrev()">↩ Lùi</button>
     <button id="btnNotSelected" class="btn btn-soft me-2 px-3 text-info" onclick="goNotSelected()">0</button>
-    <button class="btn btn-soft px-3" onclick="goNext()">↪</button>
+    <button class="btn btn-soft px-3" onclick="goNext()">↪ Tiến</button>
   </div>
 
-  <div class="d-flex col-4 col-md-3 p-0 justify-content-end flex-shrink-1">
-    <button class="btn btn-soft px-3" onclick="submitQuiz()">🔚</button>
-  </div>
+  
 </div>
 
       <!-- Màn hình Kết quả (ẩn trước khi nộp) -->
