@@ -152,14 +152,6 @@ function restoreSelectedFromIndices(idxs) {
     .map((q, i) => ({ ...q, stt: (idxs[i] ?? i) + 1 })); // giữ stt hợp lý
 }
 
-let __saveTimer = null;
-function saveActiveSessionThrottled() {
-  clearTimeout(__saveTimer);
-  __saveTimer = setTimeout(() => {
-    saveActiveSession();
-  }, 200); // gộp các lần lưu trong 200ms
-}
-
 function saveActiveSession() {
   if (!isQuizStarted || !selectedQuestions?.length) return;
   const payload = {
@@ -396,20 +388,16 @@ function renderQuestion() {
         }
 
         // Tự gỡ class animation sau khi chạy xong để lần sau còn tái sử dụng
-        setTimeout(() => {
+        /*   setTimeout(() => {
           btn.classList.remove("correct-burst", "wrong-shake");
-        }, 700);
+        }, 700); */
       }
     }
 
     btn.onclick = () => {
       userAnswers[currentIndex] = idx + 1;
-
-      // 👉 thay vì render ngay + lưu đồng bộ, ta nhường khung hình trước rồi mới render
-      saveActiveSessionThrottled();
-      requestAnimationFrame(() => {
-        renderQuestion();
-      });
+      saveActiveSession(); // ⭐ lưu ngay sau khi chọn đáp án
+      renderQuestion();
     };
 
     body.appendChild(btn);
@@ -443,22 +431,20 @@ function goPrev() {
   if (currentIndex > 0) {
     currentIndex--;
     renderQuestion();
-    saveActiveSessionThrottled();
+    saveActiveSession(); // ⭐
   } else {
-    alert("⚠️ Bạn đang ở câu đầu tiên!");
+    alert("📢 Đây là câu đầu tiên!");
   }
 }
-
 function goNext() {
   if (currentIndex < selectedQuestions.length - 1) {
     currentIndex++;
     renderQuestion();
-    saveActiveSessionThrottled();
+    saveActiveSession(); // nếu bạn đang dùng lưu phiên
   } else {
-    alert("📢 Bạn đã làm hết tất cả các câu hỏi!");
+    alert("📢 Bạn đang ở câu hỏi cuối cùng!");
   }
 }
-
 //=================== LẤY CÁC CÂU CHƯA LÀM ==================
 function getUnansweredIndices() {
   const arr = [];

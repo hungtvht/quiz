@@ -50,9 +50,6 @@ body {
   margin-top: 8px;
   cursor: pointer;
   color: var(--text-main);
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  will-change: transform;
 }
 
 .answer-option:hover {
@@ -149,7 +146,6 @@ select:focus {
   </style>
 
   <style>
-    
     /* Improve layout for small screens */
     @media (max-width: 576px){
       :root { --text: #ffffff; --text-muted:#e5e7eb; }
@@ -184,20 +180,13 @@ select:focus {
       display: flex;
       white-space: nowrap; 
     }
-    #navBar .btn { max-width: 100%; 
-       touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-    }
+    #navBar .btn { max-width: 100%; }
     @media (max-width: 576px) {
   #navBar .btn {
     padding: 6px 10px;     /* nhỏ gọn hơn ps-4 pe-4 */
     font-size: 14px;
     line-height: 1.2;
   }
-  .answer-option,
-#navBar .btn {
-  pointer-events: auto;
-}
   /* nhóm giữa không bị ép xuống dòng */
   #navigator { gap: 6px; }
   /* Giới hạn phần hiển thị chỉ số ở bên trái để không lấn chỗ */
@@ -233,7 +222,7 @@ select:focus {
 
     /* Animation: đúng */
 .correct-burst {
-  animation: burst 0.6s ease-out;
+  animation: burst 0.3s ease-out;
 }
 @keyframes burst {
   0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,255,127,0.5);}
@@ -243,7 +232,7 @@ select:focus {
 
 /* Animation: sai */
 .wrong-shake {
-  animation: shake 0.4s ease-in-out;
+  animation: shake 0.2s ease-in-out;
   background: #3a1616 !important;
   border-color: #7f1d1d !important;
 }
