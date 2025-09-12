@@ -152,6 +152,51 @@ function restoreSelectedFromIndices(idxs) {
     .map((q, i) => ({ ...q, stt: (idxs[i] ?? i) + 1 })); // giữ stt hợp lý
 }
 
+// ===== Lưu phiên "lười": gộp nhiều lần gọi, đợi browser rảnh rồi mới ghi =====
+let __saveTimer = null;
+let __savePending = false;
+const SAVE_DEBOUNCE_MS = 300;
+const SAVE_IDLE_TIMEOUT = 600;
+
+// Tránh ghi khi không đổi: cache bản JSON cuối
+let __lastSaved = "";
+
+function saveActiveSessionLazy() {
+  if (!isQuizStarted) return;
+
+  if (__savePending) return;
+  __savePending = true;
+
+  clearTimeout(__saveTimer);
+  __saveTimer = setTimeout(() => {
+    __savePending = false;
+    const doSave = () => {
+      // Tạo payload **không** có savedAt để so sánh được
+      const payload = {
+        mode,
+        currentIndex,
+        userAnswers,
+        selectedIdxs: buildSelectedIndices(),
+        quizStartAt,
+      };
+      const s = JSON.stringify(payload);
+      if (s === __lastSaved) return; // không đổi → khỏi ghi
+      __lastSaved = s;
+      try {
+        localStorage.setItem(
+          LS_KEY_SESSION,
+          JSON.stringify({ ...payload, savedAt: Date.now() })
+        );
+      } catch {}
+    };
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(doSave, { timeout: SAVE_IDLE_TIMEOUT });
+    } else {
+      setTimeout(doSave, 0);
+    }
+  }, SAVE_DEBOUNCE_MS);
+}
+
 function saveActiveSession() {
   if (!isQuizStarted || !selectedQuestions?.length) return;
   const payload = {
@@ -397,7 +442,7 @@ function renderQuestion() {
 
     btn.onclick = () => {
       userAnswers[currentIndex] = idx + 1;
-      saveActiveSession(); // ⭐ lưu ngay sau khi chọn đáp án
+      saveActiveSessionLazy(); // ⭐ lưu ngay sau khi chọn đáp án
       renderQuestion();
     };
 
@@ -424,7 +469,7 @@ function renderQuestion() {
   }
 
   // ⭐ lần render nào cũng lưu phiên (vị trí câu…)
-  saveActiveSession();
+  saveActiveSessionLazy();
 }
 
 // ================== ĐIỀU HƯỚNG ==================
@@ -432,7 +477,7 @@ function goPrev() {
   if (currentIndex > 0) {
     currentIndex--;
     renderQuestion();
-    saveActiveSession(); // ⭐
+    saveActiveSessionLazy(); // ⭐
   } else {
     alert("📢 Đây là câu đầu tiên!");
   }
@@ -441,7 +486,7 @@ function goNext() {
   if (currentIndex < selectedQuestions.length - 1) {
     currentIndex++;
     renderQuestion();
-    saveActiveSession(); // nếu bạn đang dùng lưu phiên
+    saveActiveSessionLazy(); // nếu bạn đang dùng lưu phiên
   } else {
     alert("📢 Bạn đang ở câu hỏi cuối cùng!");
   }
@@ -671,6 +716,22 @@ window.onload = async () => {
   // ⭐ lưu phiên khi đóng tab
   window.addEventListener("beforeunload", () => {
     saveActiveSession();
+  });
+  window.addEventListener(
+    "pagehide",
+    () => {
+      try {
+        saveActiveSession();
+      } catch {}
+    },
+    { capture: true }
+  );
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      try {
+        saveActiveSession();
+      } catch {}
+    }
   });
 };
 // Focus + select vào #searchInput nhưng KHÔNG cuộn trang
