@@ -373,7 +373,7 @@ function renderQuestion() {
 
     const btn = document.createElement("div");
     btn.className = "answer-option appear mt-2";
-    btn.style.animationDelay = `${idx * 40}ms`;
+    //btn.style.animationDelay = `${idx * 40}ms`;
     btn.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
 
     if (userAnswers[currentIndex] === idx + 1) {
@@ -381,10 +381,11 @@ function renderQuestion() {
       if (mode === "practice") {
         // Nếu đúng → thêm hiệu ứng burst
         if (userAnswers[currentIndex] === q.correct) {
-          btn.classList.add("correct-burst");
+          //btn.classList.add("correct-burst");
         } else {
           // Nếu sai → thêm hiệu ứng shake
-          btn.classList.add("wrong-shake");
+          //btn.classList.add("wrong-shake");
+          btn.classList.add("text-danger");
         }
 
         // Tự gỡ class animation sau khi chạy xong để lần sau còn tái sử dụng
