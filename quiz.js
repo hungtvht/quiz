@@ -430,7 +430,7 @@ function renderQuestion() {
         } else {
           // Nếu sai → thêm hiệu ứng shake
           //btn.classList.add("wrong-shake");
-          btn.classList.add("text-danger");
+          btn.classList.add("text-dark");
         }
 
         // Tự gỡ class animation sau khi chạy xong để lần sau còn tái sử dụng
@@ -479,7 +479,7 @@ function showHelp() {
     `📢 Đáp án đúng là ${String.fromCharCode(
       64 + parseInt(selectedQuestions[currentIndex].correct)
     )}:
-    ${selectedQuestions[currentIndex].citation}`
+${selectedQuestions[currentIndex].citation}`
   );
 }
 // ================== ĐIỀU HƯỚNG ==================
@@ -754,6 +754,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
           saveActiveSession();
         } catch {}
+      }
+    });
+    // 👇 2. Bắt sự kiện toàn cục (nếu cần) — ví dụ: phím tắt
+    document.addEventListener("keydown", function (event) {
+      // Check if the pressed key's keyCode is 13 (Enter key)
+      if (
+        event.keyCode === 13 &&
+        document.getElementById("searchTab").style.display !== "none"
+      ) {
+        selectSearchNoScroll();
+        // You can call a function or perform an action here
+        // e.g., myFunction();
       }
     });
   } catch (error) {

@@ -226,13 +226,13 @@ select:focus {
     /* === GoTop floating button === */
     #goTopBtn{
       position: fixed;
-      color: white;
+      color: rgb(14, 12, 12);
       right: calc(50vw - 50px);
       bottom: 6px; /* nằm trên thanh nav cố định */
       z-index: 1040;
       display: none; /* chỉ hiện ở tab Thư viện */
-      border-radius: 999px;
-      background: rgba(224, 103, 103, 0.35) !important;
+      /*border-radius: 999px;*/
+      background: rgba(240, 237, 237, 0.85) !important;
       border: none !important;
     }
     @media (max-width: 576px){
@@ -296,7 +296,7 @@ select:focus {
           <div id="fieldInputs" class="row g-3"></div>
           <div class="text-center mt-3">
             <button class="btn btn-primary me-2" onclick="startPractice()">Ôn thi</button>
-            <button class="btn btn-success" onclick="startExam()">Vào thi</button>
+            <button class="btn btn-success" onclick="startExam()">Thi thật</button>
           </div>
         </div>
       </div>
@@ -379,17 +379,18 @@ select:focus {
   <div class="card-body text-info">
     <h5 class="card-title">Chào bạn!</h5>
         <p class="card-text">
-──────────────────────
-<br/>📌 Đáp án mang tính tham khảo. Các câu hỏi và đáp án trong phần này có thể không chính xác.<br/>
-Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tới🏆 <br/>
-────────────────────────</p>
+<hr>
+📌 Nội dung ôn luyện mang tính chất tham khảo. Các câu hỏi và đáp án trong phần này có thể không chính xác.<br>
+Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tới🏆
+
+<hr></p>
 
   </div>
 </div>
   </div>
 
   <!-- Nút ảo GoTop: focus + select searchInput -->
-  <button id="goTopBtn" class="btn fw-semibold" onclick="goTopFocusSearch()" title="Nhảy lên ô tìm kiếm & chọn sẵn">GoTyping
+  <button id="goTopBtn" class="btn fw-semibold rounded-circle" onclick="goTopFocusSearch()" title="Nhảy lên ô tìm kiếm & chọn sẵn">⬆
   </button>
 
   <script src="quiz.js"></script>
