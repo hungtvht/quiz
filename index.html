@@ -1,398 +1,177 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <title>Trắc nghiệm Agribanker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    :root {
-  --bg-page: #121212;
-  --bg-card: #1e1e1e;
-  --text-main: #e0e0e0;
-  --text-muted: #8a8a8a;
-  --border-color: #2c2c2c;
-  --accent: #0d6efd;
-  --success: #198754;
-  --danger: #dc3545;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>🏠 Trung tâm ứng dụng AI - Home</title>
 
-body {
-  background-color: var(--bg-page);
-  color: var(--text-main);
-  font-family: "Segoe UI", sans-serif;
-}
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: radial-gradient(circle at top left, #0d1117, #000);
+        color: #e2e2e2;
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
 
- #globalSpinner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.95);
-      z-index: 9999;
-      animation: fadeIn 0.3s ease-out;
-    }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      .navbar {
+        background: rgba(20, 20, 30, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+      }
 
-.navbar-tabs .nav-link {
-  color: var(--text-muted);
-}
+      .logo {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #0dcaf0;
+        text-shadow: 0 0 10px rgba(13, 202, 240, 0.6);
+        letter-spacing: 1px;
+      }
 
-.navbar-tabs .nav-link.active {
-  color: var(--text-main);
-  border-bottom: 2px solid var(--accent);
-}
+      .section-title {
+        text-align: center;
+        margin: 50px 0 30px;
+        font-weight: 600;
+        color: #00d1ff;
+        text-shadow: 0 0 20px rgba(0, 209, 255, 0.5);
+      }
 
-.card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-}
+      .card {
+        background: linear-gradient(145deg, #1a1f2b, #0e121a);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 15px;
+        color: #f5f5f5;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
 
-.card-body {
-  padding: 16px;
-}
+      .card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 0 25px rgba(0, 204, 255, 0.3);
+        border-color: #0dcaf0;
+      }
 
-.answer-option {
-  background-color: #2a2a2a;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 10px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-  color: var(--text-main);
-}
+      .card-icon {
+        font-size: 3rem;
+        color: #0dcaf0;
+        text-shadow: 0 0 10px rgba(13, 202, 240, 0.6);
+      }
 
-.answer-option:hover {
-  background-color: #333333;
-}
+      .footer {
+        text-align: center;
+        margin-top: 80px;
+        color: #777;
+        font-size: 0.9rem;
+      }
 
-.answer-option.selected {
-  background-color: var(--accent);
-  color: white;
-  border-color: var(--accent);
-}
+      a {
+        text-decoration: none;
+      }
 
-.toolbar {
-  padding: 12px;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-}
-
-.btn-soft {
-  background-color: rgb(5, 9, 29);
-
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-}
-
-.btn-soft:hover {
-  background-color: #111a2b;
-}
-
-.table-dark {
-  --bs-table-bg: #1e1e1e;
-  --bs-table-border-color: var(--border-color);
-}
-
-.highlight {
-  background-color: var(--success);
-  color: white;
-  padding: 2px 4px;
-  border-radius: 4px;
-}
-
-input,
-select {
-  background-color: #2a2a2a;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-}
-
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: none;
-}
-
-  </style>
-
-  <style>
-    :root{
-      --bg:#0b0d13;
-      --surface:#111827;
-      --border:#273244;
-      --text:#f3f4f6;
-      --muted:#cbd5e1;
-      --primary:#60a5fa;
-      --success:#16a34a;
-      --danger:#dc2626;
-      --warning:#f59e0b;
-    }
-    body{background:var(--bg);color:var(--text)}
-    .navbar, .navbar-dark, .navbar-light{background:var(--surface)!important}
-    .card{background:var(--surface);border-color:var(--border)}
-    .list-group-item{background:var(--surface);color:var(--text);border-color:var(--border)}
-    .table{color:var(--text)}
-    .table thead th{color:var(--text)}
-    .table-dark{--bs-table-bg:#101624;--bs-table-striped-bg:#141c2b;--bs-table-striped-color:var(--text)}
-    .form-control, .form-select, .form-check-input{
-      background:#0f1520!important; color:var(--text)!important; border-color:var(--border)!important;
-    }
-    .form-control::placeholder{color:#90a4bf}
-    .btn{border-radius:12px}
-    .btn-outline-light{--bs-btn-color:#e5e7eb;--bs-btn-border-color:#5b6b83;--bs-btn-hover-bg:#1e293b}
-    .btn-primary{background:#2563eb;border-color:#1d4ed8}
-    .btn-success{background:var(--success)!important;border-color:#15803d!important}
-    .btn-danger{background:var(--danger)!important;border-color:#991b1b!important}
-    .btn-warning{background:var(--warning)!important;border-color:#b45309!important;color:#111827!important}
-    .badge{border-radius:10px}
-    .muted, .text-muted{color:var(--muted)!important}
-    .answer-btn{white-space:normal;text-align:left}
-    .ans-correct{background:#12391f!important;border-color:#14532d!important}
-    .ans-wrong{background:#3a1616!important;border-color:#7f1d1d!important}
-    #navigator .btn{min-width:42px}
-  </style>
-
-  <style>
-    /* Improve layout for small screens */
-    @media (max-width: 576px){
-      :root { --text: #ffffff; --text-muted:#e5e7eb; }
-      body { font-size: 16px; }
-      .container { padding-left: 14px; padding-right: 14px; }
-      .btn { min-height: 44px; }
-      .answer-btn { padding: 12px 14px; font-size: 16px; }
-      #navigator .btn { min-width: 44px; min-height: 44px; padding: 6px 8px; }
-      .form-control, .form-select { font-size: 16px; padding: 10px 12px; }
-      .badge { font-size: 0.95rem; }
-      .card { margin-bottom: 14px; }
-    }
-    /* Ensure tables are scrollable horizontally on narrow screens */
-    .table-responsive { overflow-x: auto; }
-    /* Make buttons wrap nicely */
-    .btn-group, .d-flex { flex-wrap: wrap; }
-  </style>
-
-  <style>
-    img, video { max-width: 100%; height: auto; }
-    .w-100-sm { width: 100%; }
-  </style>
-
-  <style>
-    /* Keep navbar always visible at the bottom */
-    #navBar{
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 1030;
-      display: flex;
-      white-space: nowrap; 
-    }
-    #navBar .btn { max-width: 100%; }
-    @media (max-width: 576px) {
-  #navBar .btn {
-    padding: 6px 10px;     /* nhỏ gọn hơn ps-4 pe-4 */
-    font-size: 14px;
-    line-height: 1.2;
-  }
-  .answer-option,
-#navBar .btn {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-  /* nhóm giữa không bị ép xuống dòng */
-  #navigator { gap: 6px; }
-}
-    /* Reserve space so content isn't hidden behind the nav */
-    body{ padding-bottom: 72px; }
-    /* Scroll only the question content area */
-    #questionContainer{
-      max-height: calc(100vh - 260px);
-      overflow-y: auto;
-    }
-    @media (max-width: 576px){
-      body{ padding-bottom: 56px; }
-      #questionContainer{ max-height: calc(100vh - 300px); }
-    }
-
-    /* === GoTop floating button === */
-    #goTopBtn{
-      position: fixed;
-      color: rgb(14, 12, 12);
-      right: calc(50vw - 50px);
-      bottom: 6px; /* nằm trên thanh nav cố định */
-      z-index: 1040;
-      display: none; /* chỉ hiện ở tab Thư viện */
-      /*border-radius: 999px;*/
-      background: rgba(240, 237, 237, 0.85) !important;
-      border: none !important;
-    }
-    @media (max-width: 576px){
-      #goTopBtn{ bottom: 6px; }
-    }
-
-    /* Animation: đúng */
-.correct-burst {
-  animation: burst 0.2s ease-out;
-}
-@keyframes burst {
-  0% { transform: scale(1); box-shadow: 0 0 0 rgba(13, 110, 189, 0.5);}
-  50% { transform: scale(1.2); box-shadow: 0 0 20px rgba(5, 11, 65, 0.7);}
-  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,255,127,0);}
-}
-
-/* Animation: sai */
-.wrong-shake {
-  animation: shake 0.1s ease-in-out;
-  background: #3a0d0d !important;
-  border-color: #571414 !important;
-}
-@keyframes shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
-  100% { transform: translateX(0); }
-}
-
-  </style>
-</head>
-<body>
-  <!-- 👇 Đặt spinner ở đầu body -->
-<div id="globalSpinner" class="justify-content-center align-items-center vh-100 w-100 position-fixed top-0 start-0 bg-white bg-opacity-90 z-3" style="display: flex;">
-  <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
-    <span class="visually-hidden">Đang tải dữ liệu...</span>
-  </div>
-</div>
-
-  <div id="appContent" class="container p-0" style="display: none;">
-    <h3 class="text-center mb-1 fw-bold d-none">Trắc nghiệm - Quiz</h3>
-
-    <!-- Tabs -->
-    <ul class="nav navbar-tabs mb-1" id="mainTabs">
-      <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('home')">Trắc nghiệm</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('search')">Vào Thư viện</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('about')">Thông tin</a></li>
-    </ul>
-
-    <!-- Trang chủ -->
-    <div id="homeTab">
-      <!-- Cấu hình -->
-      <div id="configSection" class="card mb-1">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-1">
-            <span class="badge-soft text-info">Cấu hình bài thi</span>
-            <span class="muted" id="eXamTitle">Chọn số câu theo từng lĩnh vực</span>
-          </div>
-          <div id="fieldInputs" class="row g-3"></div>
-          <div class="text-center mt-3">
-            <button class="btn btn-primary me-2" onclick="startPractice()">Ôn thi</button>
-            <button class="btn btn-success" onclick="startExam()">Thi thật</button>
-          </div>
-        </div>
+      @media (max-width: 768px) {
+        .card-icon {
+          font-size: 2.5rem;
+        }
+        .logo {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark px-4 py-3">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
+      >
+        <span class="logo"
+          ><i class="fa-solid fa-cloud-sun"></i> TG (10/10/2025)</span
+        >
+        <button class="btn btn-outline-info btn-sm" id="darkToggle">
+          🌙 Dark Mode
+        </button>
       </div>
+    </nav>
 
-      <!-- Câu hỏi -->
-      <div id="quizContainer"></div>
-
-      <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-      <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-<div id="navBar" class="toolbar row justify-content-between align-items-center m-0 p-1 flex-nowrap" style="display:none !important;">
-  <div class="d-flex col-auto p-0 justify-content-between flex-shrink-1">
-    <button class="btn btn-soft px-3 text-warming" style="color: yellow" onclick="submitQuiz()">➜]</button>
-    <button id="helpme" class="btn btn-soft px-3" style="color:#0d6efd" onclick="showHelp()">ⓘ</button>
-  </div>
-  <div class="d-flex col-auto p-0 justify-content-center flex-nowrap" id="navigator">
-    <button class="btn btn-soft px-3" onclick="goPrev()">Lùi↩</button>
-    <button id="btnNotSelected" class="btn btn-soft px-1 text-info" onclick="goNotSelected()">0</button>
-    <button class="btn btn-soft px-3" onclick="goNext()">↪Tiến</button>
-  </div>
-
-  
-</div>
-
-      <!-- Màn hình Kết quả (ẩn trước khi nộp) -->
-<div id="resultView" class="card mt-3" style="display:none;">
-  <div class="card-body text-center">
-    <div id="resultIcon" style="font-size:36px; line-height:1.2;">🏆</div>
-    <h4 class="mt-2 mb-3 text-info">Kết quả</h4>
-
-    <div class="row g-3 justify-content-center mb-3">
-      <div class="col-12 col-md-3">
-        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
-          <div class="muted">Thời gian</div>
-          <div id="rsTime" class="fs-5 fw-semibold text-info">00:00</div>
+    <!-- Cards -->
+    <div class="container">
+      <h3 class="section-title">Mời chọn một chức năng</h3>
+      <div class="row g-4 justify-content-center">
+        <!-- Quiz -->
+        <div class="col-md-4">
+          <a href="public/pages/quiz.html">
+            <div class="card text-center p-4 h-100">
+              <div class="card-icon mb-3">🧠</div>
+              <h5 class="fw-bold">Ôn thi - Quiz</h5>
+              <p class="text-secondary small">
+                Trắc nghiệm nhanh, ôn luyện kiến thức AI, logic và khởi nghiệp.
+              </p>
+            </div>
+          </a>
         </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
-          <div class="muted">Đúng / Tổng</div>
-          <div id="rsCorrect" class="fs-5 fw-semibold  text-info">0 / 0</div>
+
+        <!-- Bảng giá đất -->
+        <div class="col-md-4">
+          <a href="public/pages/banggiadat.html">
+            <div class="card text-center p-4 h-100">
+              <div class="card-icon mb-3">📊</div>
+              <h5 class="fw-bold">Tra cứu bảng giá đất</h5>
+              <p class="text-secondary small">
+                Tìm kiếm thông minh, lọc và hiển thị bảng giá đất theo khu vực,
+                đường, địa bàn.
+              </p>
+            </div>
+          </a>
         </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
-          <div class="muted">Điểm</div>
-          <div id="rsScore" class="fs-5 fw-semibold  text-info">0</div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border);">
-          <div class="muted">Xếp loại</div>
-          <div id="rsRank" class="fs-5 fw-semibold  text-info" >—</div>
+
+        <!-- Hỗ trợ & Tài liệu -->
+        <div class="col-md-4">
+          <a href="public/pages/about.html">
+            <div class="card text-center p-4 h-100">
+              <div class="card-icon mb-3">📚</div>
+              <h5 class="fw-bold">Tài liệu & Hỗ trợ</h5>
+              <p class="text-secondary small">
+                Tài liệu hướng dẫn chi tiết, video demo và hỗ trợ kỹ thuật.
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center gap-2">
-      <button class="btn btn-outline-light" onclick="resetToHome()">🏠 Home</button>
-      <button id="rsActionBtn" class="btn btn-primary">🔁 Thi lại</button>
+    <!-- Footer -->
+    <div class="footer py-4">
+      <p>
+        © 2025 <b>XXX</b> | by
+        <span class="text-info">Tinh-Giac</span>
+      </p>
     </div>
-  </div>
-</div>
 
-    </div>
-
-    <!-- Thư viện câu hỏi -->
-    <div id="searchTab" style="display:none;">
-      <div class="card mb-3">
-      <div class="card-body p-1">
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <span class="badge-soft text-info">Câu hỏi</span>
-          <span class="muted">Gõ nội dung</span>
-        </div>
-        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm (vd: AI%ngân hàng)..." oninput="searchQuestions()" />
-      </div>
-      </div>
-      <div id="searchResults"></div>
-    </div>
-    <div id="aboutTab" class="card h-100" style="display:none;">
-  <div class="card-body text-info">
-    <h5 class="card-title">Chào bạn!</h5>
-        <p class="card-text">
-<hr>
-📌 Nội dung ôn luyện mang tính chất tham khảo. Các câu hỏi và đáp án trong phần này có thể không chính xác.<br>
-Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tới🏆
-
-<hr></p>
-
-  </div>
-</div>
-  </div>
-
-  <!-- Nút ảo GoTop: focus + select searchInput -->
-  <button id="goTopBtn" class="btn fw-semibold rounded-circle" onclick="goTopFocusSearch()" title="Nhảy lên ô tìm kiếm & chọn sẵn">⬆
-  </button>
-
-  <script src="quiz.js"></script>
-</body>
+    <!-- Script -->
+    <script>
+      const toggleBtn = document.getElementById("darkToggle");
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+        if (document.body.classList.contains("light-mode")) {
+          document.body.style.background = "#f5f5f5";
+          document.body.style.color = "#222";
+          toggleBtn.textContent = "🌑 Dark Mode";
+        } else {
+          document.body.style.background =
+            "radial-gradient(circle at top left, #0d1117, #000)";
+          document.body.style.color = "#f1f1f1";
+          toggleBtn.textContent = "🌙 Light Mode";
+        }
+      });
+    </script>
+  </body>
 </html>
