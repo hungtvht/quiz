@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌞 TG - Bảng giá đất</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery + Select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Fuse.js -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
+    <style>
+      ::-webkit-scrollbar {
+        width: 5px;
+        height: 8px;
+        background-color: #aaa; /* or add it to the track */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #193a49;
+      }
+      body {
+        background-color: #121212;
+        color: #f1f1f1;
+      }
+      .card {
+        background-color: #1e1e1e;
+        border: 1px solid #2b2b2b;
+      }
+      .select2-container--default .select2-selection--single {
+        background-color: #2b2b2b !important;
+        color: white !important;
+        border: none !important;
+        height: 38px;
+      }
+      .select2-results__option {
+        background-color: #1e1e1e;
+        color: white;
+      }
+      .select2-results__option--highlighted {
+        background-color: #0d6efd !important;
+      }
+      mark {
+        background-color: #ffc107;
+        color: black;
+        border-radius: 3px;
+        padding: 0 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container my-1">
+      <h2 class="text-center mb-1 text-info fw-bold">
+        <a class="button" href="/"><i class="fa-solid fa-house"></i></a>
+        Tra cứu Bảng Giá Đất
+      </h2>
+
+      <!-- Search & Filters -->
+      <div class="card p-3 mb-4">
+        <div class="row g-2 mb-2">
+          <div class="col">
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Nhập tên đường, khu vực hoặc địa bàn..."
+              onfocus="this.select();"
+            />
+            <ul
+              id="suggestions"
+              class="list-group w-100 mt-1 shadow"
+              style="z-index: 1000; display: none"
+            ></ul>
+          </div>
+        </div>
+        <div class="row g-2">
+          <div class="col-md-3">
+            <select id="filterKhuVuc" class="form-select"></select>
+          </div>
+          <div class="col-md-3">
+            <select id="filterDiaBan" class="form-select"></select>
+          </div>
+          <div class="col-md-3">
+            <select id="filterMucGia" class="form-select">
+              <option value="">-- Mức giá (Giá QĐ) --</option>
+              <option value="1">Dưới 20.000tr VNĐ</option>
+              <option value="2">20.000 - 40.000tr VNĐ</option>
+              <option value="3">Trên 40.000tr VNĐ</option>
+            </select>
+          </div>
+          <div class="col-md-3 d-flex gap-2">
+            <button id="clearBtn" class="btn btn-danger flex-fill">
+              <i class="fa-solid fa-filter-circle-xmark"></i>
+            </button>
+            <button id="toggleView" class="btn btn-primary flex-fill">
+              <i class="fa-solid fa-table-list"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="results" class="row g-3"></div>
+      <div class="text-center mt-3">
+        <button id="loadMoreBtn" class="btn btn-outline-info d-none">
+          Hiển thị thêm
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const numberFormat = new Intl.NumberFormat("vi-VN");
+      let data = [];
+      let fuse;
+      let viewMode = "card";
+      let currentResults = [];
+      let visibleCount = 27;
+
+      async function loadData() {
+        const res = await fetch("../../data/banggiadat.json");
+        data = await res.json();
+        initFilters();
+        initFuse();
+        currentResults = data;
+        renderResults(data.slice(0, visibleCount));
+      }
+
+      function initFilters() {
+        const khuVucSel = $("#filterKhuVuc");
+        const diaBanSel = $("#filterDiaBan");
+        khuVucSel.append(`<option value="">-- Khu vực --</option>`);
+        diaBanSel.append(`<option value="">-- Địa bàn --</option>`);
+
+        [...new Set(data.map((i) => i.khu_vuc).filter(Boolean))].forEach((v) =>
+          khuVucSel.append(`<option value="${v}">${v}</option>`)
+        );
+        [...new Set(data.map((i) => i.dia_ban).filter(Boolean))].forEach((v) =>
+          diaBanSel.append(`<option value="${v}">${v}</option>`)
+        );
+
+        // Kích hoạt Select2 có tìm kiếm
+        $("#filterKhuVuc, #filterDiaBan, #filterMucGia").select2({
+          theme: "default",
+          width: "100%",
+        });
+      }
+
+      function initFuse() {
+        fuse = new Fuse(data, {
+          keys: [
+            "ten_duong",
+            "doan_duong",
+            "khu_vuc",
+            "dia_ban",
+            "thong_tin_khac",
+          ],
+          threshold: 0.3,
+          includeMatches: true,
+        });
+      }
+
+      function debounce(fn, delay = 300) {
+        let t;
+        return (...args) => {
+          clearTimeout(t);
+          t = setTimeout(() => fn(...args), delay);
+        };
+      }
+
+      const applyFilters = debounce(() => {
+        const query = $("#searchInput").val().trim();
+        const khuVuc = $("#filterKhuVuc").val();
+        const diaBan = $("#filterDiaBan").val();
+        const mucGia = $("#filterMucGia").val();
+
+        let filtered = data;
+        if (query) {
+          const results = fuse.search(query);
+          filtered = results.map((r) => ({ ...r.item, matches: r.matches }));
+        }
+
+        if (khuVuc) filtered = filtered.filter((i) => i.khu_vuc === khuVuc);
+        if (diaBan) filtered = filtered.filter((i) => i.dia_ban === diaBan);
+        if (mucGia) {
+          filtered = filtered.filter((i) => {
+            const g = parseFloat(i.don_gia_qd || 0);
+            if (mucGia === "1") return g < 20000;
+            if (mucGia === "2") return g >= 20000 && g <= 40000;
+            if (mucGia === "3") return g > 40000;
+          });
+        }
+
+        currentResults = filtered;
+        visibleCount = 27;
+        renderResults(currentResults.slice(0, visibleCount));
+      }, 300);
+
+      function highlightText(text, matches, key) {
+        if (!matches) return text;
+        const match = matches.find((m) => m.key === key);
+        if (!match) return text;
+
+        // Merge adjacent indices để tránh highlight tách rời từng ký tự
+        let indices = match.indices.sort((a, b) => a[0] - b[0]); // Đảm bảo sorted theo start
+        let mergedIndices = [];
+        let current = indices[0];
+
+        for (let i = 1; i < indices.length; i++) {
+          const next = indices[i];
+          // Nếu liền kề hoặc overlap (end của current +1 >= start của next)
+          if (current[1] + 1 >= next[0]) {
+            current[1] = Math.max(current[1], next[1]); // Mở rộng end
+          } else {
+            mergedIndices.push(current);
+            current = next;
+          }
+        }
+        mergedIndices.push(current); // Thêm cái cuối
+
+        let result = "";
+        let lastIndex = 0;
+        mergedIndices.forEach(([start, end]) => {
+          const before = text.slice(lastIndex, start);
+          const word = text.slice(start, end + 1);
+          result += before + `<mark>${word}</mark>`;
+          lastIndex = end + 1;
+        });
+        result += text.slice(lastIndex);
+        return result;
+      }
+
+      function renderResults(results) {
+        const container = document.getElementById("results");
+        container.innerHTML = "";
+
+        if (!results.length) {
+          container.innerHTML = `<div class="text-center text-secondary">Không tìm thấy kết quả nào.</div>`;
+          document.getElementById("loadMoreBtn").classList.add("d-none");
+          return;
+        }
+
+        if (viewMode === "card") {
+          results.forEach((r) => {
+            const hTen = highlightText(
+              r.ten_duong || "",
+              r.matches,
+              "ten_duong"
+            );
+            const hDoan = highlightText(
+              r.doan_duong || "",
+              r.matches,
+              "doan_duong"
+            );
+            const hKhu = highlightText(r.khu_vuc || "", r.matches, "khu_vuc");
+            const hDia = highlightText(r.dia_ban || "", r.matches, "dia_ban");
+            const hKhac = highlightText(
+              r.thong_tin_khac || "",
+              r.matches,
+              "thong_tin_khac"
+            );
+
+            const card = document.createElement("div");
+            card.className = "col-md-4";
+            card.innerHTML = `
+        <div class="card p-3 h-100 shadow-sm">
+          <h5 class="text-info">${hTen}</h5>
+          <p class="text-light small">${hDoan}</p>
+          <div class="text-secondary small mb-2">
+            <b>Khu vực:</b> ${hKhu}<br>
+            <b>Địa bàn:</b> ${hDia}<br>
+            <b>Thông tin khác:</b> ${hKhac}
+          </div>
+          <div class="text-light small mt-auto">
+            <b>Giá QĐ:</b> ${numberFormat.format(r.don_gia_qd)}<br>
+            <b>Hệ số K:</b> ${r.he_so_k}<br>
+            <b>Giá thị trường:</b><span class="text-danger"> ${numberFormat.format(
+              r.gia_thi_truong
+            )}</span>
+          </div>
+        </div>`;
+            container.appendChild(card);
+          });
+        } else {
+          container.innerHTML = `
+      <div class="table-responsive">
+        <table class="table table-striped-columns table-dark table-hover table-sm align-middle">
+          <thead><tr>
+            <th class="text-center align-middle">STT</th><th class="text-center align-middle">Tên đường</th><th class="text-center align-middle">Đoạn đường</th><th class="text-center align-middle">Khu vực</th><th class="text-center align-middle">Địa bàn</th>
+            <th class="text-center align-middle">Giá QĐ</th><th class="text-center align-middle">Hệ số K</th><th class="text-end align-middle">Giá thị trường</th>
+          </tr></thead>
+          <tbody>${results
+            .map(
+              (r, index) => `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${r.ten_duong}</td>
+              <td class="text-info">${r.doan_duong || ""}</td>
+              <td>${r.khu_vuc || ""}</td>
+              <td>${r.dia_ban || ""}</td>
+              <td class="text-end">${numberFormat.format(r.don_gia_qd)}</td>
+              <td class="text-center">${r.he_so_k}</td>
+              <td class="text-end text-danger">${numberFormat.format(
+                r.gia_thi_truong
+              )}</td>
+            </tr>`
+            )
+            .join("")}</tbody>
+        </table>
+      </div>`;
+        }
+
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+        if (currentResults.length > visibleCount) {
+          loadMoreBtn.classList.remove("d-none");
+          console.log("hiển thị nút");
+        } else {
+          loadMoreBtn.classList.add("d-none");
+          console.log(
+            "không hiển thị nút" + currentResults.length + " - " + visibleCount
+          );
+        }
+      }
+      // Gợi ý khi gõ
+      $("#searchInput").on("input", debounce(showSuggestions, 200));
+
+      function showSuggestions() {
+        const query = $("#searchInput").val().trim();
+        const suggestionBox = $("#suggestions");
+        suggestionBox.empty().hide();
+        if (!query) return;
+
+        const results = fuse.search(query, { limit: 6 });
+        if (results.length === 0) return;
+
+        results.forEach((r) => {
+          const item = r.item;
+          const li = $(`
+      <li class="list-group-item list-group-item-action bg-dark text-light small">
+        <b>${item.ten_duong || "(Chưa có tên đường)"}</b><br>
+        <span class="text-secondary">${item.doan_duong || ""}</span><br>
+        <span class="text-info">${
+          item.khu_vuc || ""
+        }</span> – <span class="text-muted">${item.dia_ban || ""}</span>
+      </li>
+    `);
+          li.on("click", () => {
+            $("#searchInput").val(item.ten_duong || item.doan_duong || "");
+            suggestionBox.hide();
+            applyFilters();
+          });
+          suggestionBox.append(li);
+        });
+
+        suggestionBox.show();
+      }
+
+      // Ẩn gợi ý khi click ra ngoài
+      $(document).on("click", function (e) {
+        if (!$(e.target).closest("#searchInput, #suggestions").length) {
+          $("#suggestions").hide();
+        }
+      });
+
+      $("#searchInput").on("input", applyFilters);
+      $("#searchInput").on("keydown", function (e) {
+        if (e.key === "Enter") {
+          //e.preventDefault(); // Ngăn submit form nếu có
+          $("#suggestions").hide(); // Gọi hàm abc (thay bằng applyFilters() nếu cần)
+          $("#searchInput").focus(); // Giữ focus trên input
+        }
+      });
+      $("#filterKhuVuc, #filterDiaBan, #filterMucGia").on(
+        "change",
+        applyFilters
+      );
+
+      $("#clearBtn").on("click", () => {
+        $("#searchInput").val("");
+        $("#filterKhuVuc, #filterDiaBan, #filterMucGia")
+          .val("")
+          .trigger("change");
+        visibleCount = 20;
+        renderResults(data.slice(0, visibleCount));
+      });
+
+      $("#toggleView").on("click", () => {
+        viewMode = viewMode === "card" ? "table" : "card";
+        $("#toggleView").html(
+          viewMode === "card"
+            ? '<i class="fa-solid fa-table-list"></i>'
+            : '<i class="fa-solid fa-credit-card"></i>'
+        );
+        renderResults(currentResults.slice(0, visibleCount));
+      });
+
+      $("#loadMoreBtn").on("click", () => {
+        visibleCount += 27;
+        renderResults(currentResults.slice(0, visibleCount));
+      });
+
+      loadData();
+    </script>
+  </body>
+</html>
