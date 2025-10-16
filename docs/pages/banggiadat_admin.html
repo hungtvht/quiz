@@ -5,8 +5,8 @@
     <title>Quản trị dữ liệu giá đất Hà Tĩnh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-    <script src="normalizeVietnameseText.js"></script>
-    <script src="custom.js"></script>
+    <script src="../js/normalizeVietnameseText.js"></script>
+    <script src="../js/custom.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -48,7 +48,13 @@
           id="processBtn"
           class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
         >
-          ⚙️ Xử lý dữ liệu
+          ⚙️ Xử lý dữ liệu [OĐT]
+        </button>
+        <button
+          id="processBtn2"
+          class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+        >
+          ⚙️ Xử lý dữ liệu [ONT]
         </button>
       </div>
 
@@ -77,6 +83,7 @@
       const sheetSelector = document.getElementById("sheetSelector");
       const sheetList = document.getElementById("sheetList");
       const processBtn = document.getElementById("processBtn");
+      const processBtn2 = document.getElementById("processBtn2");
       const statusEl = document.getElementById("status");
       const downloadBtn = document.getElementById("downloadBtn");
       const saveJsonBtn = document.getElementById("saveJsonBtn");
@@ -138,6 +145,16 @@
         }
         processSelectedSheets(selected);
       });
+      processBtn2.addEventListener("click", () => {
+        const selected = [
+          ...document.querySelectorAll(".sheetCheckbox:checked"),
+        ].map((cb) => cb.value);
+        if (selected.length === 0) {
+          alert("⚠️ Vui lòng chọn ít nhất 1 sheet để xử lý!");
+          return;
+        }
+        processSelectedSheets2(selected);
+      });
 
       // ========= Xử lý sheet đã chọn ==========
       function processSelectedSheets(selectedSheets) {
@@ -158,8 +175,26 @@
         downloadBtn.classList.remove("hidden");
         saveJsonBtn.classList.remove("hidden");
       }
+      function processSelectedSheets2(selectedSheets) {
+        allData = [];
+        statusEl.innerHTML = "";
 
-      // ========= Chuẩn hóa dữ liệu 1 sheet ==========
+        selectedSheets.forEach((sheetName) => {
+          const sheet = XLSX.utils.sheet_to_json(
+            workbookGlobal.Sheets[sheetName],
+            { defval: "" }
+          );
+          const cleanData = processSheet2(sheet, sheetName);
+          allData.push(...cleanData);
+          statusEl.innerHTML += `<div>✅ <b>${sheetName}</b>: ${cleanData.length} dòng hợp lệ</div>`;
+        });
+
+        statusEl.innerHTML += `<br><b>🎯 Tổng cộng: ${allData.length} bản ghi</b>`;
+        downloadBtn.classList.remove("hidden");
+        saveJsonBtn.classList.remove("hidden");
+      }
+
+      // ========= Chuẩn hóa dữ liệu 1 sheet (Dạng A I I.1 1) ==========
       function processSheet(rows, sheetName) {
         const result = [];
         let khu_vuc = "";
@@ -307,6 +342,142 @@
         return result;
       }
 
+      // ========= Chuẩn hóa dữ liệu 1 sheet (Dạng I 1 1.1) ==========
+      function processSheet2(rows, sheetName) {
+        const result = [];
+        let khu_vuc = "";
+        let dia_ban = "";
+        let thong_tin_khac = "";
+        let ten_duong = "";
+
+        for (let i = 0; i < rows.length; i++) {
+          const row = rows[i];
+          const vals = Object.values(row).map((v) =>
+            (v || "").toString().trim()
+          );
+          if (vals.every((v) => v === "")) continue;
+
+          const colA = vals[0] || "";
+          const colD = normalizeVietnameseText(vals[3]) || "";
+          const colE = parseFloat(vals[4]?.replace(/[^\d.]/g, "")) || 0;
+          const colF = parseFloat(vals[5]?.replace(/[^\d.]/g, "")) || 0;
+          const colG = parseFloat(vals[6]?.replace(/[^\d.]/g, "")) || 0;
+
+          // Bỏ tiêu đề
+          if (
+            /tên đường|đơn giá|hệ số|thị trường|^STT$/i.test(colD) ||
+            /^STT$/i.test(colA)
+          )
+            continue;
+
+          if (colG > 0) {
+            // Dòng chi tiết có giá
+            const cleanA = colA.trim();
+            const cleanD = colD.trim();
+
+            result.push({
+              sheet: sheetName,
+              khu_vuc,
+              dia_ban,
+              thong_tin_khac,
+              ten_duong,
+              doan_duong: colD,
+              don_gia_qd: colE,
+              he_so_k: colF,
+              gia_thi_truong: colG,
+            });
+          } else {
+            const cleanA = colA.trim();
+            const cleanD = colD.trim();
+            if (!cleanD) continue;
+
+            // Cấp 1: La Mã (I, II, III...) → Khu vực
+            if (/^(I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII)$/i.test(cleanA)) {
+              khu_vuc = cleanD;
+              dia_ban = "";
+              thong_tin_khac = "";
+              ten_duong = "";
+              console.log("Khu vực mới:", khu_vuc);
+            }
+            // Cấp 2: Số thuần (1, 2, 3...) → Địa bàn
+            else if (/^[1-9]\d*$/i.test(cleanA)) {
+              dia_ban = cleanD;
+              thong_tin_khac = "";
+              ten_duong = "";
+            }
+
+            // Cấp 3: Số thập phân (1.1, 2.3...) → Thông tin khác (nếu chưa được xử lý ở trên)
+            else if (/^\d+\.\d+$/.test(cleanA)) {
+              thong_tin_khac = cleanD;
+              ten_duong = "";
+            }
+            // Cấp 5: Số nguyên (1, 2, 3...) → Có thể là tên đường hoặc địa bàn/thông tin khác
+            else if (/^\d+$/.test(cleanA)) {
+              if (/^(Đường|Ngõ|Tổ|Khu|Phần|Phố)/i.test(cleanD)) {
+                // Dự đoán là tên đường nếu có dòng con có giá
+                let foundChiTiet = false;
+                for (let j = i + 1; j < Math.min(i + 15, rows.length); j++) {
+                  const nextVals = Object.values(rows[j]);
+                  const gVal = parseFloat(
+                    (nextVals[6] || "").toString().replace(/[^\d.]/g, "")
+                  );
+                  if (gVal > 0) {
+                    foundChiTiet = true;
+                    break;
+                  }
+                  const nextD = (nextVals[3] || "").toString().trim();
+                  if (/^(Đường|Ngõ|Tổ|Khu|Phần|Phố)/i.test(nextD)) break;
+                }
+                if (foundChiTiet) {
+                  ten_duong = cleanD;
+                } else {
+                  thong_tin_khac = cleanD;
+                  ten_duong = "";
+                }
+              } else if (
+                /^(TP|TX|Thành phố|Thị xã|Huyện|Xã|Phường|Thị trấn)/i.test(
+                  cleanD
+                )
+              ) {
+                dia_ban = cleanD;
+                thong_tin_khac = "";
+                ten_duong = "";
+              } else {
+                thong_tin_khac = cleanD;
+                ten_duong = "";
+              }
+            }
+            // Cấp 6: Không có STT rõ ràng → Xử lý như tên đường hoặc thông tin khác
+            else {
+              if (/^(Đường|Ngõ|Tổ|Khu|Phần|Phố)/i.test(cleanD)) {
+                let foundChiTiet = false;
+                for (let j = i + 1; j < Math.min(i + 15, rows.length); j++) {
+                  const nextVals = Object.values(rows[j]);
+                  const gVal = parseFloat(
+                    (nextVals[6] || "").toString().replace(/[^\d.]/g, "")
+                  );
+                  if (gVal > 0) {
+                    foundChiTiet = true;
+                    break;
+                  }
+                  const nextD = (nextVals[3] || "").toString().trim();
+                  if (/^(Đường|Ngõ|Tổ|Khu|Phần|Phố)/i.test(nextD)) break;
+                }
+                if (foundChiTiet) {
+                  ten_duong = cleanD;
+                } else {
+                  thong_tin_khac = cleanD;
+                  ten_duong = "";
+                }
+              } else {
+                thong_tin_khac = cleanD;
+              }
+            }
+          }
+        }
+
+        return result;
+      }
       // ========= Tải xuống JSON ==========
       downloadBtn.addEventListener("click", () => {
         const blob = new Blob([JSON.stringify(allData, null, 2)], {

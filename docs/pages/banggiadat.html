@@ -14,16 +14,13 @@
 
     <!-- jQuery + Select2 -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
-      rel="stylesheet"
-    />
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
 
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
 
     <!-- Fuse.js -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
@@ -45,7 +42,7 @@
         background-color: #1e1e1e;
         border: 1px solid #2b2b2b;
       }
-      .select2-container--default .select2-selection--single {
+      /* .select2-container--default .select2-selection--single {
         background-color: #2b2b2b !important;
         color: white !important;
         border: none !important;
@@ -57,7 +54,7 @@
       }
       .select2-results__option--highlighted {
         background-color: #0d6efd !important;
-      }
+      } */
       mark {
         background-color: #ffc107;
         color: black;
@@ -70,7 +67,9 @@
   <body>
     <div class="container my-1">
       <h2 class="text-center mb-1 text-info fw-bold">
-        <a class="button" href="/"><i class="fa-solid fa-house"></i></a>
+        <a class="button" href="../../index.html"
+          ><i class="fa-solid fa-house"></i
+        ></a>
         Tra cứu Bảng Giá Đất
       </h2>
 
@@ -156,12 +155,6 @@
         [...new Set(data.map((i) => i.dia_ban).filter(Boolean))].forEach((v) =>
           diaBanSel.append(`<option value="${v}">${v}</option>`)
         );
-
-        // Kích hoạt Select2 có tìm kiếm
-        $("#filterKhuVuc, #filterDiaBan, #filterMucGia").select2({
-          theme: "default",
-          width: "100%",
-        });
       }
 
       function initFuse() {
@@ -270,7 +263,11 @@
               r.matches,
               "doan_duong"
             );
-            const hKhu = highlightText(r.khu_vuc || "", r.matches, "khu_vuc");
+            const hKhu = highlightText(
+              r.sheet + " - " + r.khu_vuc || "",
+              r.matches,
+              "khu_vuc"
+            );
             const hDia = highlightText(r.dia_ban || "", r.matches, "dia_ban");
             const hKhac = highlightText(
               r.thong_tin_khac || "",
@@ -281,51 +278,66 @@
             const card = document.createElement("div");
             card.className = "col-md-4";
             card.innerHTML = `
-        <div class="card p-3 h-100 shadow-sm">
-          <h5 class="text-info">${hTen}</h5>
-          <p class="text-light small">${hDoan}</p>
-          <div class="text-secondary small mb-2">
-            <b>Khu vực:</b> ${hKhu}<br>
-            <b>Địa bàn:</b> ${hDia}<br>
-            <b>Thông tin khác:</b> ${hKhac}
-          </div>
-          <div class="text-light small mt-auto">
-            <b>Giá QĐ:</b> ${numberFormat.format(r.don_gia_qd)}<br>
-            <b>Hệ số K:</b> ${r.he_so_k}<br>
-            <b>Giá thị trường:</b><span class="text-danger"> ${numberFormat.format(
-              r.gia_thi_truong
-            )}</span>
-          </div>
-        </div>`;
+              <div class="card p-3 h-100 shadow-sm">
+
+                <h5 class="text-info">${hTen}</h5>
+                <p class="text-light small">${hDoan}</p>
+                <div class="text-secondary small mb-2">
+                  <b>Khu vực:</b> ${hKhu}<br>
+                  <b>Địa bàn:</b> ${hDia}<br>
+                  <b>Thông tin khác:</b> ${hKhac}
+                </div>
+                <div class="text-light small mt-auto">
+                  <b>Giá QĐ:</b> ${numberFormat.format(r.don_gia_qd)}<br>
+                  <b>Hệ số K:</b> ${r.he_so_k}<br>
+                  <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <b>Giá thị trường:</b>
+          <span class="text-danger">${numberFormat.format(
+            r.gia_thi_truong
+          )}</span>
+        </div>
+        <button
+          class="btn btn-sm btn-outline-light copy-btn"
+          data-info='${JSON.stringify(r)}'
+          title="Copy thông tin"
+        >📋</button>
+      </div>
+
+                </div>
+              </div>`;
             container.appendChild(card);
           });
         } else {
           container.innerHTML = `
-      <div class="table-responsive">
-        <table class="table table-striped-columns table-dark table-hover table-sm align-middle">
-          <thead><tr>
-            <th class="text-center align-middle">STT</th><th class="text-center align-middle">Tên đường</th><th class="text-center align-middle">Đoạn đường</th><th class="text-center align-middle">Khu vực</th><th class="text-center align-middle">Địa bàn</th>
-            <th class="text-center align-middle">Giá QĐ</th><th class="text-center align-middle">Hệ số K</th><th class="text-end align-middle">Giá thị trường</th>
-          </tr></thead>
-          <tbody>${results
-            .map(
-              (r, index) => `
-            <tr>
-              <td>${index + 1}</td>
-              <td>${r.ten_duong}</td>
-              <td class="text-info">${r.doan_duong || ""}</td>
-              <td>${r.khu_vuc || ""}</td>
-              <td>${r.dia_ban || ""}</td>
-              <td class="text-end">${numberFormat.format(r.don_gia_qd)}</td>
-              <td class="text-center">${r.he_so_k}</td>
-              <td class="text-end text-danger">${numberFormat.format(
-                r.gia_thi_truong
-              )}</td>
-            </tr>`
-            )
-            .join("")}</tbody>
-        </table>
-      </div>`;
+            <div class="table-responsive">
+              <table class="table table-striped-columns table-dark table-hover table-sm align-middle">
+                <thead><tr>
+                  <th class="text-center align-middle">STT</th><th class="text-center align-middle">Tên đường</th><th class="text-center align-middle">Đoạn đường</th><th class="text-center align-middle">Khu vực</th><th class="text-center align-middle">Địa bàn</th>
+                  <th class="text-center align-middle">Giá QĐ</th><th class="text-center align-middle">Hệ số K</th><th class="text-end align-middle">Giá thị trường</th>
+                </tr></thead>
+                <tbody>${results
+                  .map(
+                    (r, index) => `
+                  <tr >
+                    <td>${index + 1}</td>
+                    <td>${r.ten_duong}</td>
+                    <td class="text-info copy-btn"
+          data-info='${JSON.stringify(r)}'>${r.doan_duong || ""}</td>
+                    <td>${r.sheet + " - " + r.khu_vuc || ""}</td>
+                    <td>${r.dia_ban || ""}</td>
+                    <td class="text-end">${numberFormat.format(
+                      r.don_gia_qd
+                    )}</td>
+                    <td class="text-center">${r.he_so_k}</td>
+                    <td class="text-end text-danger">${numberFormat.format(
+                      r.gia_thi_truong
+                    )} </td>
+                  </tr>`
+                  )
+                  .join("")}</tbody>
+              </table>
+            </div>`;
         }
 
         const loadMoreBtn = document.getElementById("loadMoreBtn");
@@ -354,14 +366,14 @@
         results.forEach((r) => {
           const item = r.item;
           const li = $(`
-      <li class="list-group-item list-group-item-action bg-dark text-light small">
-        <b>${item.ten_duong || "(Chưa có tên đường)"}</b><br>
-        <span class="text-secondary">${item.doan_duong || ""}</span><br>
-        <span class="text-info">${
-          item.khu_vuc || ""
-        }</span> – <span class="text-muted">${item.dia_ban || ""}</span>
-      </li>
-    `);
+            <li class="list-group-item list-group-item-action bg-dark text-light small">
+              <b>${item.ten_duong || "(Chưa có tên đường)"}</b><br>
+              <span class="text-secondary">${item.doan_duong || ""}</span><br>
+              <span class="text-info">${
+                item.khu_vuc || ""
+              }</span> – <span class="text-muted">${item.dia_ban || ""}</span>
+            </li>
+          `);
           li.on("click", () => {
             $("#searchInput").val(item.ten_duong || item.doan_duong || "");
             suggestionBox.hide();
@@ -393,11 +405,67 @@
         applyFilters
       );
 
+      // Thêm hàm mới để cập nhật địa bàn dựa trên khu vực được chọn
+      function updateDiaBanOptions(selectedKhuVuc) {
+        const diaBanSel = $("#filterDiaBan");
+        diaBanSel.empty().append(`<option value="">-- Địa bàn --</option>`); // Reset dropdown
+
+        if (!selectedKhuVuc) {
+          // Nếu không chọn khu vực, hiển thị tất cả địa bàn gốc
+          [...new Set(data.map((i) => i.dia_ban).filter(Boolean))]
+            .sort()
+            .forEach((v) =>
+              diaBanSel.append(`<option value="${v}">${v}</option>`)
+            );
+        } else {
+          // Lọc địa bàn chỉ thuộc khu vực được chọn
+          const filteredData = data.filter((i) => i.khu_vuc === selectedKhuVuc);
+          [...new Set(filteredData.map((i) => i.dia_ban).filter(Boolean))]
+            .sort()
+            .forEach((v) =>
+              diaBanSel.append(`<option value="${v}">${v}</option>`)
+            );
+        }
+
+        // Trigger change để Select2 cập nhật
+        diaBanSel.trigger("change");
+      }
+
+      // Trong initFilters: Giữ nguyên, nhưng thêm event listener cho khu vực
+      function initFilters() {
+        const khuVucSel = $("#filterKhuVuc");
+        const diaBanSel = $("#filterDiaBan");
+        khuVucSel.append(`<option value="">-- Khu vực --</option>`);
+        diaBanSel.append(`<option value="">-- Địa bàn --</option>`);
+
+        [...new Set(data.map((i) => i.khu_vuc).filter(Boolean))]
+          .sort()
+          .forEach((v) =>
+            khuVucSel.append(`<option value="${v}">${v}</option>`)
+          );
+        [...new Set(data.map((i) => i.dia_ban).filter(Boolean))]
+          .sort()
+          .forEach((v) =>
+            diaBanSel.append(`<option value="${v}">${v}</option>`)
+          );
+
+        // Thêm event: Khi thay đổi khu vực, cập nhật địa bàn
+        $("#filterKhuVuc").on("change", function () {
+          const selectedKhuVuc = $(this).val();
+          updateDiaBanOptions(selectedKhuVuc);
+          // Reset địa bàn nếu cần (tùy chọn: xóa selection địa bàn khi thay đổi khu vực)
+          $("#filterDiaBan").val("").trigger("change");
+          // Áp dụng filter ngay (nếu muốn)
+          applyFilters();
+        });
+      }
+
+      // Trong clearBtn: Reset địa bàn về tất cả
       $("#clearBtn").on("click", () => {
         $("#searchInput").val("");
-        $("#filterKhuVuc, #filterDiaBan, #filterMucGia")
-          .val("")
-          .trigger("change");
+        $("#filterKhuVuc, #filterMucGia").val("").trigger("change");
+        $("#filterDiaBan").val("").trigger("change"); // Đảm bảo reset
+        updateDiaBanOptions(""); // Reset địa bàn về tất cả
         visibleCount = 20;
         renderResults(data.slice(0, visibleCount));
       });
@@ -416,7 +484,72 @@
         visibleCount += 27;
         renderResults(currentResults.slice(0, visibleCount));
       });
+      // Copy card content as formatted HTML table for Word
+      $(document).on("click", ".copy-btn", async function () {
+        const data = $(this).data("info");
+        const tableHTML = `
+        <table style="border-collapse: collapse; width: 100%; font-family: Arial; border: 1px solid #ccc; color: #000; background: #fff;">
+          <tr style="background:#0dcaf0; color:#fff;">
+            <th colspan="2" style="padding:8px; text-align:left;">Thông tin Bảng Giá Đất</th>
+          </tr>
+          <tr><td style="border:1px solid #ccc; padding:6px; width:30%;"><b>Khu vực</b></td><td style="border:1px solid #ccc; padding:6px;">${
+            data.khu_vuc || ""
+          }</td></tr>
+          <tr><td style="border:1px solid #ccc; padding:6px;"><b>Địa bàn</b></td><td style="border:1px solid #ccc; padding:6px;">${
+            data.dia_ban || ""
+          }</td></tr>
+          <tr><td style="border:1px solid #ccc; padding:6px;"><b>Thông tin bổ sung</b></td><td style="border:1px solid #ccc; padding:6px;">${
+            data.thong_tin_khac || ""
+          }</td></tr>
+          <tr><td style="border:1px solid #ccc; padding:6px;"><b>Tên đường</b></td><td style="border:1px solid #ccc; padding:6px;">${
+            data.ten_duong || ""
+          }</td></tr>
+          <tr><td style="border:1px solid #ccc; padding:6px;"><b>Đoạn đường</b></td><td style="border:1px solid #ccc; padding:6px;">${
+            data.doan_duong || ""
+          }</td></tr>
+          <tr><td style="border:1px solid #ccc; padding:6px;"><b>Giá QĐ</b></td><td style="border:1px solid #ccc; padding:6px;">${numberFormat.format(
+            data.don_gia_qd
+          )}tr VNĐ</td></tr>
+           <tr><td style="border:1px solid #ccc; padding:6px;"><b>Hệ số K</b></td><td style="border:1px solid #ccc; padding:6px;">${numberFormat.format(
+             data.he_so_k
+           )}</td></tr>
+          <tr><td style="border:1px solid #ccc; padding:6px;"><b>Giá thị trường</b></td><td style="border:1px solid #ccc; padding:6px;">${numberFormat.format(
+            data.gia_thi_truong
+          )}tr VNĐ</td></tr>
+        </table>`;
 
+        // Copy to clipboard as HTML
+        try {
+          // Chrome / Edge / Brave (modern browsers)
+          if (window.ClipboardItem) {
+            const blob = new Blob([tableHTML], { type: "text/html" });
+            const dataTransfer = new ClipboardItem({ "text/html": blob });
+            await navigator.clipboard.write([dataTransfer]);
+          } else {
+            // Fallback: create a hidden element and copy via execCommand
+            const tempEl = document.createElement("div");
+            tempEl.innerHTML = tableHTML;
+            document.body.appendChild(tempEl);
+
+            const range = document.createRange();
+            range.selectNode(tempEl);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+
+            document.execCommand("copy");
+            document.body.removeChild(tempEl);
+          }
+
+          // Hiển thị thông báo copy thành công
+          const btn = $(this);
+          const oldText = btn.text();
+          btn.text("✅ Đã copy!");
+          setTimeout(() => btn.text(oldText), 2000);
+        } catch (err) {
+          alert("Không thể copy: " + err);
+        }
+      });
       loadData();
     </script>
   </body>
