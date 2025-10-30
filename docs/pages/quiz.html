@@ -296,8 +296,9 @@ select:focus {
           <div id="fieldInputs" class="row g-3"></div>
           <div class="text-center mt-3">
             <button class="btn btn-primary me-2" onclick="startPractice()">Ôn thi</button>
+            <button class="btn btn-warning me-2" onclick="showReview()">Ôn tập</button>
             <button class="btn btn-success" onclick="startExam()">Thi thật</button>
-            <a class="btn btn-primary"href="../../index.html">Home</a>
+            <a class="btn btn-primary"href="../../index.html">🏠</a>
           </div>
         </div>
       </div>
@@ -320,6 +321,14 @@ select:focus {
   </div>
 
   </div>
+</div>
+<!-- 🧭 Thanh điều hướng dưới khi ôn tập -->
+<div id="reviewNavBar" 
+     style="display:none; position:fixed; bottom:0; left:0; right:0; 
+            background:#101522; border-top:1px solid #333; 
+            padding:8px 12px; text-align:center; z-index:1000;">
+  <button class="btn btn-secondary me-2" onclick="backToConfig()">🏠 Trang chủ</button>
+  <a href="#" class="btn btn-primary" onclick="goToTop()">🢁 Về đầu trang</a>
 </div>
 
       <!-- Màn hình Kết quả (ẩn trước khi nộp) -->
