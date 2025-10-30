@@ -269,12 +269,12 @@ function populateFields() {
   });
 
   /* [BỔ SUNG] lấy cấu hình đã lưu (nếu có) */
-  //const savedCounts = lsLoadCounts();
+  const savedCounts = lsLoadCounts();
 
   Object.keys(questionsByField).forEach((field) => {
     const max = questionsByField[field].length;
-    const defaultVal = 0;
-    //typeof savedCounts[field] === "number" ? savedCounts[field] : max;
+    const defaultVal =
+      typeof savedCounts[field] === "number" ? savedCounts[field] : 0;
 
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
@@ -339,6 +339,89 @@ function startPractice() {
   mode = "practice";
   prepareQuiz();
 }
+function showReview() {
+  // 1️⃣ Lấy danh sách câu hỏi theo cấu hình lĩnh vực (như khi ôn thi)
+  // 1️⃣ Lấy danh sách câu hỏi theo cấu hình lĩnh vực (như khi ôn thi)
+  const selectedCounts = lsLoadCounts();
+  const selectedQuestions = [];
+  for (const fieldName in selectedCounts) {
+    const count = selectedCounts[fieldName];
+    const fieldQuestions = questionData.filter(
+      (q) => q.field === fieldName || q.Field === fieldName
+    );
+    selectedQuestions.push(...shuffle(fieldQuestions).slice(0, count));
+  }
+
+  if (selectedQuestions.length === 0) {
+    alert(
+      "⚠️ Vui lòng chọn số lượng câu hỏi ở từng lĩnh vực trước khi ôn tập!"
+    );
+    return;
+  }
+
+  // ẩn phần cấu hình
+  document.getElementById("configSection").style.display = "none";
+  document.getElementById("resultView").style.display = "none";
+  document.getElementById("quizContainer").style.display = "block";
+  document.getElementById("navBar").style.display = "none";
+  document.getElementById("reviewNavBar").style.display = "block";
+
+  // 2️⃣ Hiển thị khu vực ôn tập
+  const quizContainer = document.getElementById("quizContainer");
+  quizContainer.innerHTML = "";
+
+  let html = `
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="text-info mb-3">🧠 Ôn tập câu hỏi (${selectedQuestions.length} câu)</h5>
+  `;
+
+  selectedQuestions.forEach((q, i) => {
+    const correctIdx = (q.correct ?? 0) - 1;
+    const correctAnswer =
+      correctIdx >= 0 && correctIdx < q.options.length
+        ? q.options[correctIdx]
+        : "—";
+
+    html += `
+      <div class="mb-4 p-3 rounded-3" style="background:#0f1520;border:1px solid var(--border)">
+        <div class="fw-semibold mb-2 text-light">${i + 1}. ${htmlesc(
+      q.text
+    )}</div>
+        <div class="ps-3">
+          ${q.options
+            .map((opt, idx) => {
+              const letter = String.fromCharCode(65 + idx);
+              const isCorrect = idx === correctIdx;
+              return `
+                <div class="answer-option ${isCorrect ? "selected" : ""}">
+                  ${letter}. ${htmlesc(opt)}
+                </div>`;
+            })
+            .join("")}
+        </div>
+       
+        ${
+          q.citation
+            ? `<div class="small text-secondary mt-1">📚 ${htmlesc(
+                q.citation
+              )}</div>`
+            : ""
+        }
+      </div>
+    `;
+  });
+
+  html += `
+      </div>
+    </div>
+  `;
+
+  quizContainer.innerHTML = html;
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function startExam() {
   mode = "exam";
   prepareQuiz();
@@ -383,6 +466,17 @@ function prepareQuiz() {
   renderQuestion();
 
   saveActiveSession(); // lưu ngay phiên mới
+}
+// ================== QUAY LẠI CHỌN LĨNH VỰC KHI ÔN TẬP ==================
+function backToConfig() {
+  // Ẩn phần ôn tập
+  document.getElementById("quizContainer").innerHTML = "";
+  document.getElementById("resultView").style.display = "none";
+  document.getElementById("reviewNavBar").style.display = "none";
+
+  // Hiện lại giao diện chọn lĩnh vực và các nút chính
+  document.getElementById("configSection").style.display = "block";
+  document.getElementById("navBar").style.display = "none";
 }
 
 // ================== HIỂN THỊ CÂU HỎI ==================
@@ -726,6 +820,10 @@ function goTopFocusSearch() {
   }
   el.focus();
   el.select();
+}
+
+function goToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 /* ====== [HẾT BỔ SUNG] ====== */
 
