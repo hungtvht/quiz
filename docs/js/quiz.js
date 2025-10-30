@@ -269,12 +269,12 @@ function populateFields() {
   });
 
   /* [BỔ SUNG] lấy cấu hình đã lưu (nếu có) */
-  //const savedCounts = lsLoadCounts();
+  const savedCounts = lsLoadCounts();
 
   Object.keys(questionsByField).forEach((field) => {
     const max = questionsByField[field].length;
-    const defaultVal = 0;
-    //typeof savedCounts[field] === "number" ? savedCounts[field] : max;
+    const defaultVal =
+      typeof savedCounts[field] === "number" ? savedCounts[field] : max;
 
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
@@ -611,8 +611,19 @@ function resetToHome() {
 }
 
 // ================== TÌM KIẾM ==================
+// === Debounce: tránh gọi tìm kiếm liên tục mỗi khi gõ ===
+let searchTimer;
+function debounceSearch() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(searchQuestions, 400); // chỉ tìm sau 0.4s kể từ lần gõ cuối
+}
+
+// === Hàm tìm kiếm chính ===
 function searchQuestions() {
-  const input = document.getElementById("searchInput").value.trim();
+  const input = document
+    .getElementById("searchInput")
+    .value.trim()
+    .toLowerCase();
   const container = document.getElementById("searchResults");
 
   if (!input) {
@@ -620,29 +631,42 @@ function searchQuestions() {
     return;
   }
 
-  // 1. Escape các ký tự đặc biệt của RegExp, ngoại trừ '%'
-  const escaped = ("%" + input + "%").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const MAX_RESULTS = 100; // giới hạn hiển thị 100 kết quả đầu
+  const startTime = performance.now();
 
-  // 2. Thay '%' thành '.*' để làm wildcard
-  //    và đóng khung pattern với ^...$ để toàn bộ chuỗi phải khớp
-  const pattern = "^" + escaped.replace(/%/g, ".*") + "$";
-
-  // 3. Tạo RegExp, ignore case
-  const regex = new RegExp(pattern, "i");
-
-  // 4. Lọc dữ liệu
+  // 1️⃣ Tìm kiếm nhanh bằng includes() thay cho regex
   const results = questionData
     .map((q, i) => ({ ...q, stt: i + 1 }))
     .filter(
-      (q) => regex.test(q.text) || q.options.some((opt) => regex.test(opt))
+      (q) =>
+        q.text.toLowerCase().includes(input) ||
+        q.options.some((opt) => opt.toLowerCase().includes(input))
     );
 
-  // 5. Hiển thị
   if (results.length === 0) {
     container.innerHTML = `<div class="alert alert-soft">Không tìm thấy câu hỏi phù hợp.</div>`;
     return;
   }
 
+  // 2️⃣ Loại bỏ câu trùng nhau (theo q.text)
+  const mergedMap = new Map();
+  for (const q of results) {
+    const key = q.text.trim().toLowerCase();
+    if (!mergedMap.has(key)) {
+      mergedMap.set(key, {
+        ...q,
+        fields: new Set([q.field || q.Field || "—"]),
+      });
+    } else {
+      mergedMap.get(key).fields.add(q.field || q.Field || "—");
+    }
+  }
+  const uniqueResults = Array.from(mergedMap.values());
+
+  // 3️⃣ Giới hạn kết quả hiển thị
+  const shownResults = uniqueResults.slice(0, MAX_RESULTS);
+
+  // 4️⃣ Render kết quả
   let html = `
     <div class="card">
       <div class="card-body">
@@ -650,33 +674,29 @@ function searchQuestions() {
           <table class="table table-dark table-bordered">
             <thead>
               <tr>
-                <th>Câu hỏi</th>
-                <th>Đáp án</th>
+                <th style="width:70%">Câu hỏi</th>
+                <th>Đáp án đúng</th>
               </tr>
             </thead>
             <tbody>
   `;
 
-  results.forEach((q) => {
-    /*  const answers = q.options
-      .map((opt, idx) => {
-        const label = String.fromCharCode(65 + idx);
-        const isCorrect = idx + 1 === q.correct;
-        return `<div class="${
-          isCorrect ? "highlight" : "d-none"
-        }">${label}. ${opt}</div>`;
-      })
-      .join(""); */
+  shownResults.forEach((q) => {
     const correctIdx = (q.correct ?? 0) - 1;
     const answers =
       correctIdx >= 0 && correctIdx < q.options.length
         ? `<div class="text-info">${htmlesc(q.options[correctIdx])}</div>`
         : "";
 
+    const fieldsText = Array.from(q.fields).join(", ");
+
     html += `
       <tr>
-        <td>${q.text}</td>
-        <td>${answers}</td>        
+        <td>
+          <div>${htmlesc(q.text)}</div>
+          <div class="text-muted small"><i>📘 ${fieldsText}</i></div>
+        </td>
+        <td>${answers}</td>
       </tr>
     `;
   });
@@ -685,9 +705,14 @@ function searchQuestions() {
             </tbody>
           </table>
         </div>
+        <div class="text-muted small mt-2">
+          Hiển thị ${shownResults.length}/${uniqueResults.length} kết quả — 
+          <i>${(performance.now() - startTime).toFixed(1)}ms</i>
+        </div>
       </div>
     </div>
   `;
+
   container.innerHTML = html;
 }
 
