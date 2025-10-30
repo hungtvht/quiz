@@ -269,12 +269,12 @@ function populateFields() {
   });
 
   /* [BỔ SUNG] lấy cấu hình đã lưu (nếu có) */
-  const savedCounts = lsLoadCounts();
+  //const savedCounts = lsLoadCounts();
 
   Object.keys(questionsByField).forEach((field) => {
     const max = questionsByField[field].length;
-    const defaultVal =
-      typeof savedCounts[field] === "number" ? savedCounts[field] : max;
+    const defaultVal = 0;
+    //typeof savedCounts[field] === "number" ? savedCounts[field] : max;
 
     const col = document.createElement("div");
     col.className = "col-12 col-md-6 col-lg-4";
