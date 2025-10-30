@@ -388,7 +388,7 @@ function showReview() {
         <div class="fw-semibold mb-2 text-light">${i + 1}. ${htmlesc(
       q.text
     )}</div>
-        <div class="ps-3">
+        <div class="ps-0">
           ${q.options
             .map((opt, idx) => {
               const letter = String.fromCharCode(65 + idx);
@@ -705,19 +705,31 @@ function resetToHome() {
 }
 
 // ================== TÌM KIẾM ==================
-// === Debounce: tránh gọi tìm kiếm liên tục mỗi khi gõ ===
+// === Tìm kiếm với tối ưu hiệu suất & tự động hỗ trợ ký tự '%' ===
 let searchTimer;
 function debounceSearch() {
   clearTimeout(searchTimer);
-  searchTimer = setTimeout(searchQuestions, 400); // chỉ tìm sau 0.4s kể từ lần gõ cuối
+  searchTimer = setTimeout(searchQuestions, 400);
 }
 
-// === Hàm tìm kiếm chính ===
+function matchWithWildcard(text, pattern) {
+  // Nếu không có %, dùng includes() cho nhanh
+  if (!pattern.includes("%")) return text.includes(pattern);
+
+  // Có %, chia nhỏ và kiểm tra theo thứ tự
+  const parts = pattern.split("%").filter((p) => p);
+  let pos = 0;
+  for (const part of parts) {
+    const idx = text.indexOf(part, pos);
+    if (idx === -1) return false;
+    pos = idx + part.length;
+  }
+  return true;
+}
+
 function searchQuestions() {
-  const input = document
-    .getElementById("searchInput")
-    .value.trim()
-    .toLowerCase();
+  const inputRaw = document.getElementById("searchInput").value.trim();
+  const input = inputRaw.toLowerCase();
   const container = document.getElementById("searchResults");
 
   if (!input) {
@@ -725,24 +737,33 @@ function searchQuestions() {
     return;
   }
 
-  const MAX_RESULTS = 100; // giới hạn hiển thị 100 kết quả đầu
+  const MAX_RESULTS = 100;
   const startTime = performance.now();
 
-  // 1️⃣ Tìm kiếm nhanh bằng includes() thay cho regex
+  // 1️⃣ Lọc dữ liệu: tự động dùng matchWithWildcard nếu có ký tự %
   const results = questionData
     .map((q, i) => ({ ...q, stt: i + 1 }))
-    .filter(
-      (q) =>
-        q.text.toLowerCase().includes(input) ||
-        q.options.some((opt) => opt.toLowerCase().includes(input))
-    );
+    .filter((q) => {
+      const text = q.text.toLowerCase();
+      const options = q.options.map((opt) => opt.toLowerCase());
+      if (input.includes("%")) {
+        return (
+          matchWithWildcard(text, input) ||
+          options.some((opt) => matchWithWildcard(opt, input))
+        );
+      } else {
+        return (
+          text.includes(input) || options.some((opt) => opt.includes(input))
+        );
+      }
+    });
 
   if (results.length === 0) {
     container.innerHTML = `<div class="alert alert-soft">Không tìm thấy câu hỏi phù hợp.</div>`;
     return;
   }
 
-  // 2️⃣ Loại bỏ câu trùng nhau (theo q.text)
+  // 2️⃣ Loại bỏ trùng lặp (theo q.text)
   const mergedMap = new Map();
   for (const q of results) {
     const key = q.text.trim().toLowerCase();
@@ -756,11 +777,9 @@ function searchQuestions() {
     }
   }
   const uniqueResults = Array.from(mergedMap.values());
-
-  // 3️⃣ Giới hạn kết quả hiển thị
   const shownResults = uniqueResults.slice(0, MAX_RESULTS);
 
-  // 4️⃣ Render kết quả
+  // 3️⃣ Render kết quả
   let html = `
     <div class="card">
       <div class="card-body">
@@ -781,7 +800,6 @@ function searchQuestions() {
       correctIdx >= 0 && correctIdx < q.options.length
         ? `<div class="text-info">${htmlesc(q.options[correctIdx])}</div>`
         : "";
-
     const fieldsText = Array.from(q.fields).join(", ");
 
     html += `
@@ -800,7 +818,7 @@ function searchQuestions() {
           </table>
         </div>
         <div class="text-muted small mt-2">
-          Hiển thị ${shownResults.length}/${uniqueResults.length} kết quả — 
+          Hiển thị ${shownResults.length}/${uniqueResults.length} kết quả —
           <i>${(performance.now() - startTime).toFixed(1)}ms</i>
         </div>
       </div>
@@ -808,6 +826,9 @@ function searchQuestions() {
   `;
 
   container.innerHTML = html;
+
+  // 🔹 Cuộn về đầu nếu người dùng vừa xem kết quả dài trước đó
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 /* ====== [BỔ SUNG] Nút ảo GoTop: focus + select ô tìm kiếm ====== */
