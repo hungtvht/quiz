@@ -16,3 +16,12 @@ function isValidRoman(str) {
 }
 
 // Sử dụng: !isValidRoman(cleanA)  // true nếu KHÔNG phải La Mã
+// Lưu trữ trạng thái UI vào localStorage
+function saveUIState(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+// Tải trạng thái UI từ localStorage
+function loadUIState(key, defaultValue) {
+  const v = localStorage.getItem(key);
+  return v ? JSON.parse(v) : defaultValue;
+}
