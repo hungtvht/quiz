@@ -263,7 +263,10 @@ select:focus {
   80% { transform: translateX(4px); }
   100% { transform: translateX(0); }
 }
-
+.form-switch .form-check-input:checked {
+  background-color: #00bfff !important;
+  border-color: #00bfff !important;
+}
   </style>
 </head>
 <body>
@@ -312,12 +315,12 @@ select:focus {
   <div class="row m-auto">
   <div class="d-flex col-auto p-0 justify-content-between flex-shrink-1">
     <button class="btn btn-soft px-3 text-warming" style="color: yellow" onclick="submitQuiz()">➜]</button>
-    <button id="helpme" class="btn btn-soft px-3" style="color:#0d6efd" onclick="showHelp()">ⓘ</button>
+    <button id="helpme" class="btn btn-soft px-3" style="color:#0d6efd" title="Hiển thị đáp án (Ctrl+I)" onclick="showHelp()">ⓘ</button>
   </div>
   <div class="d-flex col-auto p-0 justify-content-center flex-nowrap" id="navigator">
-    <button class="btn btn-soft px-3" onclick="goPrev()">Lùi↩</button>
-    <button id="btnNotSelected" class="btn btn-soft px-1 text-info" onclick="goNotSelected()">0</button>
-    <button class="btn btn-soft px-3" onclick="goNext()">↪Tiến</button>
+    <button class="btn btn-soft px-3" title="Về câu trước (← hoặc ↑)" onclick="goPrev()">Lùi↩</button>
+    <button id="btnNotSelected" class="btn btn-soft px-1 text-info" title="Câu tiếp/Câu chưa làm (Space)" onclick="goNotSelected()">0</button>
+    <button class="btn btn-soft px-3" title="Về câu trước (→ hoặc ↓)" onclick="goNext()">↪Tiến</button>
   </div>
 
   </div>
@@ -379,7 +382,11 @@ select:focus {
       <div class="card-body p-1">
         <div class="d-flex justify-content-between align-items-center mb-2">
           <span class="badge-soft text-info">Câu hỏi</span>
-          <span class="muted">Gõ nội dung</span>
+         
+  <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers" checked>
+  <label class="form-check-label text-info" for="includeAnswers">Tìm cả phần đáp án</label>
+</div>
         </div>
         <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm (vd: AI%ngân hàng)..." oninput="searchQuestions()" />
       </div>
@@ -405,5 +412,6 @@ Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tớ
   </button>
 
   <script src="../js/quiz.js"></script>
+  <script src="../js/custom.js"></script>
 </body>
 </html>
