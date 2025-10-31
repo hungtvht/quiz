@@ -391,6 +391,7 @@ function showReview() {
         <div class="ps-0">
           ${q.options
             .map((opt, idx) => {
+              if (!opt || opt.trim() === "") return; // ⭐ ẩn option trống
               const letter = String.fromCharCode(65 + idx);
               const isCorrect = idx === correctIdx;
               return `
