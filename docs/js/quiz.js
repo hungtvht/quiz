@@ -741,20 +741,31 @@ function searchQuestions() {
   const startTime = performance.now();
 
   // 1️⃣ Lọc dữ liệu: tự động dùng matchWithWildcard nếu có ký tự %
+  const includeAnswers =
+    document.getElementById("includeAnswers")?.checked ?? false;
   const results = questionData
     .map((q, i) => ({ ...q, stt: i + 1 }))
+
     .filter((q) => {
       const text = q.text.toLowerCase();
-      const options = q.options.map((opt) => opt.toLowerCase());
       if (input.includes("%")) {
-        return (
-          matchWithWildcard(text, input) ||
-          options.some((opt) => matchWithWildcard(opt, input))
-        );
+        if (includeAnswers) {
+          return (
+            matchWithWildcard(text, input) ||
+            q.options.some((opt) => matchWithWildcard(opt.toLowerCase(), input))
+          );
+        } else {
+          return matchWithWildcard(text, input);
+        }
       } else {
-        return (
-          text.includes(input) || options.some((opt) => opt.includes(input))
-        );
+        if (includeAnswers) {
+          return (
+            text.includes(input) ||
+            q.options.some((opt) => opt.toLowerCase().includes(input))
+          );
+        } else {
+          return text.includes(input);
+        }
       }
     });
 
@@ -857,6 +868,13 @@ function shuffle(array) {
 // ================== BOOTSTRAP ==================
 // 👇 1. Chờ DOM sẵn sàng — KHÔNG chờ ảnh, font, JS...
 document.addEventListener("DOMContentLoaded", async () => {
+  // Thiết lập checkbox "includeAnswers" từ LocalStorage
+  const chk = document.getElementById("includeAnswers");
+  chk.checked = loadUIState("includeAnswers", false);
+  chk.addEventListener("change", () =>
+    saveUIState("includeAnswers", chk.checked)
+  );
+
   // 👉 Hiển thị spinner NGAY khi DOM có sẵn (người dùng thấy ngay!)
   const spinner = document.getElementById("globalSpinner");
   const appContent = document.getElementById("appContent");
@@ -968,3 +986,32 @@ function selectSearchNoScroll() {
   tab.addEventListener("click", handler);
   tab.addEventListener("touchstart", handler, { passive: true });
 })();
+/* ====== [BỔ SUNG] Phím tắt mũi tên trái/phải để chuyển câu ====== */
+document.addEventListener("keydown", function (event) {
+  if (!isQuizStarted) return;
+  const tag = event.target.tagName.toLowerCase();
+  if (tag === "input" || tag === "textarea") return;
+
+  if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+    event.preventDefault();
+    goPrev();
+  }
+
+  if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+    event.preventDefault();
+    goNext();
+  }
+
+  // ✅ Thêm: dùng phím Space để Next
+  if (event.code === "Space") {
+    event.preventDefault(); // tránh cuộn trang
+    goNext();
+  }
+
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "i") {
+    showHelp();
+    // ... Thực hiện hành động tuỳ ý ở đây ...
+  }
+});
+
+/* ====== [HẾT BỔ SUNG] ====== */
