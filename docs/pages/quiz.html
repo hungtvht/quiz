@@ -5,6 +5,8 @@
   <title>🌞 TG - Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <script src="../js/normalizeVietnameseText.js"></script>
   <style>
     :root {
   --bg-page: #121212;
@@ -293,9 +295,12 @@ select:focus {
       <div id="configSection" class="card mb-1">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-1">
-            <span class="badge-soft text-info">Cấu hình bài thi</span>
-            <span class="muted" id="eXamTitle">Chọn số câu theo từng lĩnh vực</span>
+  <select id="quizListSelect" class="form-select" onchange="loadSelectedQuiz()">
+   
+  </select>
           </div>
+          
+
           <div id="fieldInputs" class="row g-3"></div>
           <div class="text-center mt-3">
             <button class="btn btn-primary me-2" onclick="startPractice()">Ôn thi</button>
@@ -377,32 +382,38 @@ select:focus {
     </div>
 
     <!-- Thư viện câu hỏi -->
-    <div id="searchTab" style="display:none;">
+    <div id="searchTab" onclick="openLibraryTab()" style="display:none;">
       <div class="card mb-3">
       <div class="card-body p-1">
         <div class="d-flex justify-content-between align-items-center mb-2">
-          <span class="badge-soft text-info">Câu hỏi</span>
-         
+         <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="includeAllSources">
+  <label class="form-check-label text-info" for="includeAllSources">Tìm trong mọi bộ đề</label>
+</div>
   <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers" checked>
-  <label class="form-check-label text-info" for="includeAnswers">Tìm cả phần đáp án</label>
+  <label class="form-check-label text-info" for="includeAnswers">gồm cả Đ.A</label>
 </div>
         </div>
-        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Tìm kiếm (vd: AI%ngân hàng)..." oninput="searchQuestions()" />
+        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Gõ nội dung tìm kiếm... (vd: AI%ngân hàng)" oninput="searchQuestions()" />
       </div>
       </div>
       <div id="searchResults"></div>
     </div>
     <div id="aboutTab" class="card h-100" style="display:none;">
   <div class="card-body text-info">
-    <h5 class="card-title">Chào bạn!</h5>
+    <h5 class="card-title">Bạn thân mến!</h5>
         <p class="card-text">
-<hr>
+<hr><p>
 📌 Nội dung ôn luyện mang tính chất tham khảo. Các câu hỏi và đáp án trong phần này có thể không chính xác.<br>
 Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tới🏆
+</p>
 <p>
-🚨 Một số phím tắt sử dụng trong trang
-        web: Phím mũi tên trái/lên (trở về câu trước), phải/xuống (câu tiếp),
+  🚨 Cập nhập: Lưu trữ nhiều bộ đề thi; khi tìm kiếm có thể chọn tìm toàn bộ bao gồm các bộ đề cũ; chuẩn hóa bộ câu hỏi và nội dung tìm kiếm theo normalizeVietnameseText!
+</p>
+<p>
+🚨 Phím
+        tắt: Phím mũi tên trái/lên (trở về câu trước), phải/xuống (câu tiếp),
         Space (câu tiếp/câu chưa làm), Ctrl+I (Xem đáp án).)
 </p>
 <hr></p>
