@@ -294,8 +294,8 @@ select:focus {
       <!-- Cấu hình -->
       <div id="configSection" class="card mb-1">
         <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-1">
-             <span class="badge-soft text-info">🥇 Chọn bộ đề</span>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+             <span class="badge-soft text-info">🥇 Chọn bộ đề và lĩnh vực</span>
   <select id="quizListSelect" class="form-select" onchange="loadSelectedQuiz()">
    
   </select>
@@ -337,7 +337,6 @@ select:focus {
             background:#101522; border-top:1px solid #333; 
             padding:8px 12px; text-align:center; z-index:1000;">
   <button class="btn btn-secondary me-2" onclick="backToConfig()">🏠 Trang chủ</button>
-  <a href="#" class="btn btn-primary" onclick="goToTop()">🢁 Về đầu trang</a>
 </div>
 
       <!-- Màn hình Kết quả (ẩn trước khi nộp) -->
@@ -396,7 +395,7 @@ select:focus {
   <label class="form-check-label text-info" for="includeAnswers">gồm cả Đ.A</label>
 </div>
         </div>
-        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Gõ nội dung tìm kiếm... (vd: AI%ngân hàng)" oninput="searchQuestions()" />
+        <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Nội dung tìm kiếm... (vd: AI%ngân hàng)" oninput="searchQuestions()" />
       </div>
       </div>
       <div id="searchResults"></div>
