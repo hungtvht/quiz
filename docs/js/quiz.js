@@ -38,6 +38,7 @@ function lsLoadCounts() {
 function lsSaveCounts(map) {
   try {
     localStorage.setItem(LS_KEY_FIELD_COUNTS, JSON.stringify(map || {}));
+    console.log("Lưu cấu hình lĩnh vực:", map);
   } catch {}
 }
 function readCountsFromInputs() {
@@ -53,15 +54,50 @@ function readCountsFromInputs() {
 }
 /* ====== [HẾT BỔ SUNG] ====== */
 
+let quizList = [];
+let currentQuizSource = "../data/questions.json";
+
+async function loadQuizList() {
+  const res = await fetch("../data/quizlist.json");
+  if (!res.ok) throw new Error("Không tải được danh sách bộ đề");
+  quizList = await res.json();
+  quizList = quizList.slice(0, 10);
+  const select = document.getElementById("quizListSelect");
+  quizList.forEach((qz, inx) => {
+    const opt = document.createElement("option");
+    opt.value = qz.source;
+    opt.textContent = inx + 1 + ". " + qz.title;
+    select.appendChild(opt);
+  });
+  const savedSource = localStorage.getItem("quizSelectedSource");
+  if (savedSource) {
+    select.value = savedSource;
+    currentQuizSource = savedSource;
+  } else if (quizList.length > 0) {
+    // Nếu chưa chọn lần nào, mặc định load bộ đầu tiên
+    currentQuizSource = quizList[0].source;
+    select.value = currentQuizSource;
+  }
+}
+
+async function loadSelectedQuiz() {
+  const sel = document.getElementById("quizListSelect");
+  if (!sel.value) return;
+  currentQuizSource = sel.value;
+
+  await loadQuestionsFromJSON(currentQuizSource);
+  populateFields();
+}
+
 // 2. Hàm fetch + parse XML
-async function loadQuestionsFromJSON() {
-  const jsonUrl = "../data/questions.json"; // hoặc raw.githubusercontent nếu chưa dùng Pages
+async function loadQuestionsFromJSON(customUrl) {
+  const jsonUrl = customUrl || "../data/questions.json"; // hoặc raw.githubusercontent nếu chưa dùng Pages
   const res = await fetch(jsonUrl);
   if (!res.ok) throw new Error("Không tải được JSON");
 
   const resdata = await res.json();
   const data = resdata.questions;
-  document.getElementById("eXamTitle").innerText = resdata.ExamTitle;
+  //document.getElementById("eXamTitle").innerText = resdata.ExamTitle;
   // build mảng mới
   const arr = data.map((q) => {
     const field = q.Field || "";
@@ -271,7 +307,7 @@ function populateFields() {
   /* [BỔ SUNG] lấy cấu hình đã lưu (nếu có) */
   const savedCounts = lsLoadCounts();
 
-  Object.keys(questionsByField).forEach((field) => {
+  Object.keys(questionsByField).forEach((field, idx) => {
     const max = questionsByField[field].length;
     const defaultVal =
       typeof savedCounts[field] === "number" ? savedCounts[field] : 0;
@@ -281,7 +317,7 @@ function populateFields() {
     col.innerHTML = `
       <div class="p-3 rounded" style="background: #2a2a2a;border:1px solid #2a2f3a;">
         <div class="d-flex justify-content-between align-items-center mb-2 text-white">
-          <strong>${field}</strong>
+          <strong>${idx + 1}. ${field}</strong>
           <span class="badge-soft">${max} câu</span>
         </div>
         <label class="form-label muted">Số câu chọn</label>
@@ -293,6 +329,11 @@ function populateFields() {
       </div>
     `;
     fieldInputs.appendChild(col);
+    fieldInputs.querySelectorAll("input").forEach((inp) => {
+      inp.addEventListener("focus", (e) => {
+        e.target.select();
+      });
+    });
   });
 
   /* [BỔ SUNG] lắng nghe thay đổi để lưu ngay vào LocalStorage */
@@ -334,31 +375,57 @@ function switchTab(tab) {
     goTopBtn.style.display = tab === "search" ? "inline-flex" : "none";
 }
 
+let cachedAllQuestions = null;
+let libraryLoaded = false;
+
+async function openLibraryTab() {
+  switchTab("search");
+
+  if (!libraryLoaded) {
+    document.getElementById("searchResults").innerHTML =
+      "<div class='text-center text-info'>Đang tải dữ liệu thư viện...</div>";
+
+    cachedAllQuestions = await loadAllQuestions();
+    libraryLoaded = true;
+
+    document.getElementById(
+      "searchResults"
+    ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
+  }
+}
 // ================== BẮT ĐẦU THI ==================
 function startPractice() {
   mode = "practice";
   prepareQuiz();
 }
 function showReview() {
-  // 1️⃣ Lấy danh sách câu hỏi theo cấu hình lĩnh vực (như khi ôn thi)
-  // 1️⃣ Lấy danh sách câu hỏi theo cấu hình lĩnh vực (như khi ôn thi)
-  const selectedCounts = lsLoadCounts();
-  const selectedQuestions = [];
-  for (const fieldName in selectedCounts) {
-    const count = selectedCounts[fieldName];
-    const fieldQuestions = questionData.filter(
-      (q) => q.field === fieldName || q.Field === fieldName
-    );
-    selectedQuestions.push(...shuffle(fieldQuestions).slice(0, count));
-  }
+  selectedQuestions = [];
+  userAnswers = {};
+  currentIndex = 0;
 
+  const inputs = document.querySelectorAll('#fieldInputs input[type="number"]');
+
+  const mapToSave = {};
+  for (const input of inputs) {
+    const field = input.dataset.field;
+    const count = parseInt(input.value || "0", 10);
+    const pool = questionsByField[field] || [];
+
+    if (count > pool.length) {
+      alert(`Lĩnh vực "${field}" chỉ có ${pool.length} câu hỏi.`);
+      return;
+    }
+    if (count > 0) {
+      selectedQuestions.push(...shuffle(pool).slice(0, count));
+    }
+    mapToSave[field] = isNaN(count) ? 0 : count;
+  }
+  lsSaveCounts(mapToSave);
+  localStorage.setItem("quizSelectedSource", currentQuizSource);
   if (selectedQuestions.length === 0) {
-    alert(
-      "⚠️ Vui lòng chọn số lượng câu hỏi ở từng lĩnh vực trước khi ôn tập!"
-    );
+    alert("Vui lòng chọn ít nhất một câu hỏi.");
     return;
   }
-
   // ẩn phần cấu hình
   document.getElementById("configSection").style.display = "none";
   document.getElementById("resultView").style.display = "none";
@@ -451,7 +518,7 @@ function prepareQuiz() {
     mapToSave[field] = isNaN(count) ? 0 : count;
   }
   lsSaveCounts(mapToSave);
-
+  localStorage.setItem("quizSelectedSource", currentQuizSource);
   if (selectedQuestions.length === 0) {
     alert("Vui lòng chọn ít nhất một câu hỏi.");
     return;
@@ -728,8 +795,59 @@ function matchWithWildcard(text, pattern) {
   return true;
 }
 
+// ======================================================
+// 🧩 TẢI TOÀN BỘ CÂU HỎI TỪ CÁC BỘ ĐỀ (CHO CHỨC NĂNG TÌM KIẾM)
+// ======================================================
+// ======================================================
+// 🧩 TẢI TOÀN BỘ CÂU HỎI TỪ THƯ VIỆN GỘP TRÙNG (questions.json)
+// ======================================================
+
+// ======================================================
+// 🧩 TẢI TOÀN BỘ CÂU HỎI TỪ THƯ VIỆN (questions.json)
+// ======================================================
+async function loadAllQuestions() {
+  try {
+    const includeAllSources =
+      document.getElementById("includeAllSources")?.checked ?? false;
+    if (!includeAllSources) {
+      return questionData;
+    }
+    const res = await fetch("../data/questions.json");
+    if (!res.ok) throw new Error("Không tải được file questions.json");
+
+    const json = await res.json();
+
+    // 🔹 Tự động nhận dạng kiểu dữ liệu
+    const allQuestions = Array.isArray(json) ? json : json.questions || [];
+
+    if (!Array.isArray(allQuestions) || allQuestions.length === 0) {
+      throw new Error("File questions.json không chứa dữ liệu hợp lệ.");
+    }
+
+    console.log(
+      `📚 Đã tải ${allQuestions.length} câu hỏi từ thư viện tổng hợp.`
+    );
+
+    // 🔹 Chuẩn hoá định dạng
+    return allQuestions.map((q) => ({
+      field: q.Field || q.field || "",
+      text: q.Text || q.text || "",
+      options: q.Options || q.options || [],
+      correct: q.Correct || q.correct || "",
+      citation: q.Citation || q.citation || "",
+      sources: q.Sources || q.sources || q.Library || "Thư viện tổng hợp",
+    }));
+  } catch (err) {
+    console.error("⚠️ Lỗi khi tải thư viện câu hỏi:", err);
+    alert("Không thể tải thư viện câu hỏi tổng hợp (questions.json)!");
+    return [];
+  }
+}
+
 function searchQuestions() {
-  const inputRaw = document.getElementById("searchInput").value.trim();
+  const inputRaw = normalizeVietnameseText(
+    document.getElementById("searchInput").value.trim()
+  );
   const input = inputRaw.toLowerCase();
   const container = document.getElementById("searchResults");
 
@@ -744,7 +862,7 @@ function searchQuestions() {
   // 1️⃣ Lọc dữ liệu: tự động dùng matchWithWildcard nếu có ký tự %
   const includeAnswers =
     document.getElementById("includeAnswers")?.checked ?? false;
-  const results = questionData
+  const results = cachedAllQuestions
     .map((q, i) => ({ ...q, stt: i + 1 }))
 
     .filter((q) => {
@@ -800,7 +918,7 @@ function searchQuestions() {
             <thead>
               <tr>
                 <th style="width:70%">Câu hỏi</th>
-                <th>Đáp án đúng</th>
+                <th>Đáp án</th>
               </tr>
             </thead>
             <tbody>
@@ -812,13 +930,16 @@ function searchQuestions() {
       correctIdx >= 0 && correctIdx < q.options.length
         ? `<div class="text-info">${htmlesc(q.options[correctIdx])}</div>`
         : "";
-    const fieldsText = Array.from(q.fields).join(", ");
-
+    const fieldsText = Array.from(q.fields).join("; ");
+    const sourcesText =
+      q.sources && Array.from(q.sources).length
+        ? Array.from(q.sources).join("; ")
+        : "Bộ đề hiện tại";
     html += `
       <tr>
         <td>
           <div>${htmlesc(q.text)}</div>
-          <div class="text-muted small"><i>📘 ${fieldsText}</i></div>
+          <div class="text-muted small"><i>📘 ${fieldsText} (${sourcesText})</i></div>
         </td>
         <td>${answers}</td>
       </tr>
@@ -886,7 +1007,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // 👉 BẮT ĐẦU TÁC VỤ NẶNG — đây là lúc spinner hoạt động!
-    await loadQuestionsFromJSON(); // <-- fetch JSON, có thể mất 1–5s
+    await loadQuizList();
+
+    await loadQuestionsFromJSON(currentQuizSource); // <-- fetch JSON, có thể mất 1–5s
     populateFields();
 
     // 👉 Hoàn thành — ẩn spinner, hiện nội dung
@@ -1015,4 +1138,13 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+document
+  .getElementById("includeAllSources")
+  ?.addEventListener("click", async () => {
+    // Lưu trạng thái
+    cachedAllQuestions = await loadAllQuestions();
+    document.getElementById(
+      "searchResults"
+    ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
+  });
 /* ====== [HẾT BỔ SUNG] ====== */
