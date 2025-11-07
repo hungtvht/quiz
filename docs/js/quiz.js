@@ -862,7 +862,9 @@ function searchQuestions() {
   // 1️⃣ Lọc dữ liệu: tự động dùng matchWithWildcard nếu có ký tự %
   const includeAnswers =
     document.getElementById("includeAnswers")?.checked ?? false;
-  const results = cachedAllQuestions
+  const includeAllSources =
+    document.getElementById("includeAllSources")?.checked ?? false;
+  const results = (includeAllSources ? cachedAllQuestions : questionData)
     .map((q, i) => ({ ...q, stt: i + 1 }))
 
     .filter((q) => {
@@ -1142,9 +1144,11 @@ document
   .getElementById("includeAllSources")
   ?.addEventListener("click", async () => {
     // Lưu trạng thái
-    cachedAllQuestions = await loadAllQuestions();
-    document.getElementById(
-      "searchResults"
-    ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
+    if (cachedAllQuestions === null) {
+      cachedAllQuestions = await loadAllQuestions();
+      document.getElementById(
+        "searchResults"
+      ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
+    }
   });
 /* ====== [HẾT BỔ SUNG] ====== */
