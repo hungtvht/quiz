@@ -2,7 +2,9 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>🌞 TG - Quiz</title>
+  <title>TG - Quiz</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon.ico">
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -228,15 +230,20 @@ select:focus {
     /* === GoTop floating button === */
     #goTopBtn{
       position: fixed;
-      color: rgb(14, 12, 12);
+      color: rgb(15, 71, 175);
       right: calc(50vw - 50px);
       bottom: 6px; /* nằm trên thanh nav cố định */
       z-index: 1040;
+      padding: 3px 17px;
       display: none; /* chỉ hiện ở tab Thư viện */
       /*border-radius: 999px;*/
-      background: rgba(240, 237, 237, 0.85) !important;
+      background: rgba(17, 24, 39, 03) !important;
       border: none !important;
+      
     }
+     #goTopBtn:hover{
+      background: rgba(29, 78, 216, 0.85) !important;
+      color: #fff;
     @media (max-width: 576px){
       #goTopBtn{ bottom: 6px; }
     }
@@ -295,7 +302,7 @@ select:focus {
       <div id="configSection" class="card mb-1">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-3">
-             <span class="badge-soft text-info">🥇 Chọn bộ đề và lĩnh vực</span>
+             <span class="badge-soft text-info mb-1">🥇 Chọn bộ đề và lĩnh vực</span>
   <select id="quizListSelect" class="form-select" onchange="loadSelectedQuiz()">
    
   </select>
@@ -373,7 +380,7 @@ select:focus {
     </div>
 
     <div class="d-flex justify-content-center gap-2">
-      <button class="btn btn-outline-light" onclick="resetToHome()">🏠 Home</button>
+      <button class="btn btn-outline-primary" onclick="resetToHome()">🏠</button>
       <button id="rsActionBtn" class="btn btn-outline-primary">🔁 Thi lại</button>
     </div>
   </div>
@@ -382,7 +389,7 @@ select:focus {
     </div>
 
     <!-- Thư viện câu hỏi -->
-    <div id="searchTab" onclick="openLibraryTab()" style="display:none;">
+    <div id="searchTab" style="display:none;">
       <div class="card mb-3">
       <div class="card-body p-1">
         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -398,23 +405,26 @@ select:focus {
         <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Nội dung tìm kiếm... (vd: AI%ngân hàng)" oninput="searchQuestions()" />
       </div>
       </div>
-      <div id="searchResults"></div>
+      <div id="searchResults">
+        <div class="text-align text-muted ">Nhập từ khóa để tìm kiếm câu hỏi trong thư viện. Không phân biệt chữ hoa, chữ thường, sử dụng ký tự % để thay cho từ bất kỳ (ví dụ khi gõ "AI%ngân hàng" thì sẽ liệt kê tất cả nội dung có chứa "AI" và "ngân hàng" như "Ai trong hoạt động ngân hàng", "Với AI, lĩnh vực ngân hàng sẽ có nhiều bước tiến đột phá",...)</div>
+      </div>
     </div>
     <div id="aboutTab" class="card h-100" style="display:none;">
   <div class="card-body text-info">
-    <h5 class="card-title">Bạn thân mến!</h5>
+    <h5 class="card-title">Help</h5>
         <p class="card-text">
-<hr><p>
-📌 Nội dung ôn luyện mang tính chất tham khảo. Các câu hỏi và đáp án trong phần này có thể không chính xác.<br>
-Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tới🏆
-</p>
+<hr>
 <p>
-  🚨 Cập nhập: Lưu trữ nhiều bộ đề thi; khi tìm kiếm có thể chọn tìm toàn bộ bao gồm các bộ đề cũ; chuẩn hóa bộ câu hỏi và nội dung tìm kiếm theo normalizeVietnameseText!
+  🚨 Cập nhập tính năng mới: Lưu trữ nhiều bộ đề thi; khi tìm kiếm có thể chọn tìm toàn bộ bao gồm các bộ đề cũ; chuẩn hóa bộ câu hỏi và nội dung tìm kiếm theo tiêu chuẩn!
 </p>
 <p>
 🚨 Phím
         tắt: Phím mũi tên trái/lên (trở về câu trước), phải/xuống (câu tiếp),
         Space (câu tiếp/câu chưa làm), Ctrl+I (Xem đáp án).)
+</p>
+<p>
+📌 Nội dung ôn luyện mang tính chất tham khảo. Các câu hỏi và đáp án trong phần này có thể không chính xác.<br>
+Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tới🏆
 </p>
 <hr></p>
 
