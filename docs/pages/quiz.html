@@ -310,20 +310,19 @@ select:focus {
       <div id="configSection" class="card mb-1">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-3">
-             <span class="badge-soft text-info mb-1">🥇 Chọn bộ đề và lĩnh vực</span>
+             <span class="badge-soft text-info mb-1">🥇 Chọn bộ đề/lĩnh vực</span>
              <div class="mb-1">
-  <label for="examTime" class="form-label fw-bold text-info">⏱️ Thời gian làm bài</label>
+  <label for="examTime" class="form-label fw-bold text-info">⏱️ Thời gian</label>
   <div class="input-group">
-    <span class="input-group-text"><i class="bi bi-stopwatch"></i></span>
-    <select id="examTime" class="form-select">
-      <option value="0">Không giới hạn</option>
-      <option value="300">5 phút</option>
-      <option value="600">10 phút</option>
-      <option value="1800">30 phút</option>
-      <option value="2700">45 phút</option>
-      <option value="3600" selected>60 phút</option>
-      <option value="5400">90 phút</option>
-    </select>
+    <input 
+  type="number" 
+  class="form-control" 
+  id="examTime" 
+  min="0" 
+  step="1" 
+  value="0"
+  required
+>
   </div>
 </div>
 
