@@ -290,6 +290,11 @@ function tryResumeSession() {
   document.getElementById("quizContainer").style.display = "block";
   document.getElementById("navBar").style.display = "flex";
   renderQuestion();
+
+  // 👉 Khôi phục thời gian đã trôi
+  const elapsedSec = Math.floor((Date.now() - quizStartAt) / 1000);
+  startQuizTimer(elapsedSec);
+
   return true;
 }
 
@@ -518,6 +523,7 @@ function prepareQuiz() {
     mapToSave[field] = isNaN(count) ? 0 : count;
   }
   lsSaveCounts(mapToSave);
+  localStorage.setItem("examTime", document.getElementById("examTime").value);
   localStorage.setItem("quizSelectedSource", currentQuizSource);
   if (selectedQuestions.length === 0) {
     alert("Vui lòng chọn ít nhất một câu hỏi.");
@@ -532,9 +538,97 @@ function prepareQuiz() {
   document.getElementById("quizContainer").style.display = "block";
   document.getElementById("navBar").style.display = "flex";
   renderQuestion();
-
+  startQuizTimer();
   saveActiveSession(); // lưu ngay phiên mới
 }
+
+// ================== BẮT ĐẦU ĐẾM THỜI GIAN ==================
+// ================== BẮT ĐẦU HOẶC TIẾP TỤC ĐẾM THỜI GIAN ==================
+let quizTimer = null;
+let quizTotalTime = 0;
+let quizElapsed = 0;
+
+function startQuizTimer(elapsedAlready = 0) {
+  quizTotalTime = parseInt(document.getElementById("examTime").value); //mode === "exam" ? 30 : 20; // exam: 30 phút, practice: 10 phút
+  quizElapsed = elapsedAlready;
+
+  if (quizTotalTime === 0) {
+    console.log("⏸️ Không có giới hạn thời gian — bỏ qua đồng hồ đếm.");
+    const progressBar = document.getElementById("timeProgress");
+    if (progressBar) {
+      progressBar.style.width = "0%";
+    }
+    return; // ⛔ Dừng ngay, không chạy timer
+  }
+
+  const progressBar = document.getElementById("timeProgress");
+  if (!progressBar) return;
+
+  // Reset giao diện
+  const percent = (quizElapsed / quizTotalTime) * 100;
+  progressBar.style.width = percent + "%";
+  progressBar.className = "position-absolute top-0 start-0 bg-success";
+  progressBar.style.opacity = "0.3";
+  progressBar.dataset.flash = "off";
+  progressBar.style.boxShadow = "";
+
+  // Nếu đã hết giờ (resume quá muộn)
+  if (quizElapsed >= quizTotalTime) {
+    if (mode === "exam") {
+      alert("⏰ Hết giờ! Hệ thống sẽ tự động nộp bài.");
+      submitQuiz(true);
+    } else {
+      alert("⏰ Hết thời gian ôn thi! Hãy nộp bài để xem kết quả.");
+    }
+    return;
+  }
+
+  // Xóa timer cũ nếu có
+  if (quizTimer) clearInterval(quizTimer);
+
+  quizTimer = setInterval(() => {
+    quizElapsed++;
+    const percent = (quizElapsed / quizTotalTime) * 100;
+    progressBar.style.width = percent + "%";
+
+    // Đổi màu theo tiến trình
+    if (percent > 70 && percent < 90) {
+      progressBar.classList.replace("bg-success", "bg-warning");
+    } else if (percent >= 90) {
+      progressBar.classList.replace("bg-warning", "bg-danger");
+    }
+
+    const remain = quizTotalTime - quizElapsed;
+
+    // 🕔 Thông báo trước 5 phút (chỉ thi thật)
+    if (mode === "exam" && remain === 300) {
+      alert("⚠️ Còn 5 phút nữa là hết giờ, hãy rà soát lại bài của bạn!");
+    }
+
+    // 🔴 10 GIÂY CUỐI: nhấp nháy cảnh báo mà không làm dịch layout
+    // Flash nhấp nháy 10 giây cuối
+    if (mode === "exam" && remain <= 10 && remain > 0) {
+      progressBar.style.animation = "dangerFlash 0.5s infinite alternate";
+    } else {
+      progressBar.style.animation = "";
+    }
+
+    // ⏰ Hết giờ
+    if (quizElapsed >= quizTotalTime) {
+      clearInterval(quizTimer);
+      quizTimer = null;
+      if (mode === "exam") {
+        alert("⏰ Hết giờ! Hệ thống sẽ tự động nộp bài.");
+        submitQuiz(true);
+      } else {
+        alert(
+          "⏰ Hết thời gian ôn thi! Hãy bấm 'Nộp bài' nếu muốn xem kết quả."
+        );
+      }
+    }
+  }, 1000);
+}
+
 // ================== QUAY LẠI CHỌN LĨNH VỰC KHI ÔN TẬP ==================
 function backToConfig() {
   // Ẩn phần ôn tập
@@ -705,9 +799,18 @@ function goNotSelected() {
 }
 
 // ================== NỘP BÀI & THOÁT ==================
-function submitQuiz() {
+function submitQuiz(auto = false) {
   if (!isQuizStarted) return;
-  if (!confirm("❓Bạn có chắc muốn nộp bài không?")) return;
+
+  // Nếu KHÔNG phải tự động => hỏi xác nhận
+  if (!auto && !confirm("❓Bạn có chắc muốn nộp bài không?")) return;
+
+  // Ngắt timer nếu đang chạy
+  if (quizTimer) {
+    clearInterval(quizTimer);
+    quizTimer = null;
+  }
+
   document
     .getElementById("navBar")
     .style.setProperty("display", "none", "important");
@@ -1002,6 +1105,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 👉 Hiển thị spinner NGAY khi DOM có sẵn (người dùng thấy ngay!)
   const spinner = document.getElementById("globalSpinner");
   const appContent = document.getElementById("appContent");
+  const examTime = localStorage.getItem("examTime");
+  if (examTime) {
+    document.getElementById("examTime").value = examTime;
+  }
 
   // Đảm bảo spinner hiện, content ẩn
   spinner.style.display = "flex";
@@ -1144,7 +1251,7 @@ document
   .getElementById("includeAllSources")
   ?.addEventListener("click", async () => {
     // Lưu trạng thái
-    if (cachedAllQuestions === null) {
+    if (event.target.checked && cachedAllQuestions === null) {
       cachedAllQuestions = await loadAllQuestions();
       document.getElementById(
         "searchResults"
