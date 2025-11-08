@@ -549,7 +549,7 @@ let quizTotalTime = 0;
 let quizElapsed = 0;
 
 function startQuizTimer(elapsedAlready = 0) {
-  quizTotalTime = parseInt(document.getElementById("examTime").value); //mode === "exam" ? 30 : 20; // exam: 30 phút, practice: 10 phút
+  quizTotalTime = parseInt(document.getElementById("examTime").value) * 60; //mode === "exam" ? 30 : 20; // exam: 30 phút, practice: 10 phút
   quizElapsed = elapsedAlready;
 
   if (quizTotalTime === 0) {
@@ -1208,6 +1208,13 @@ function selectSearchNoScroll() {
   if (!tab) return;
 
   const handler = (e) => {
+    // Nếu phần tử được click/chạm là checkbox hoặc label của checkbox, HÃY BỎ QUA
+    if (
+      e.target.classList.contains("form-check-input") ||
+      e.target.classList.contains("form-check-label")
+    ) {
+      return;
+    }
     // Chỉ chạy khi tab đang hiển thị
     if (tab.style.display === "none") return;
 
