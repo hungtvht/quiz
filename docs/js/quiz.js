@@ -523,7 +523,13 @@ function prepareQuiz() {
     mapToSave[field] = isNaN(count) ? 0 : count;
   }
   lsSaveCounts(mapToSave);
-  localStorage.setItem("examTime", document.getElementById("examTime").value);
+  const examTimeInput = document.getElementById("examTime");
+  var examTimeInputVal = parseInt(examTimeInput.value || "0", 0);
+  if (examTimeInputVal < 0) {
+    examTimeInputVal = 0;
+  }
+  examTimeInput.value = examTimeInputVal;
+  localStorage.setItem("examTime", examTimeInputVal);
   localStorage.setItem("quizSelectedSource", currentQuizSource);
   if (selectedQuestions.length === 0) {
     alert("Vui lòng chọn ít nhất một câu hỏi.");
