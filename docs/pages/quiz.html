@@ -124,7 +124,10 @@ select:focus {
   border-color: var(--accent);
   box-shadow: none;
 }
-
+#searchTab .form-check-input,
+#searchTab .form-check-label {
+  touch-action: manipulation;
+}
   </style>
 
   <style>
@@ -237,13 +240,13 @@ select:focus {
       padding: 3px 17px;
       display: none; /* chỉ hiện ở tab Thư viện */
       /*border-radius: 999px;*/
-      background: rgba(17, 24, 39, 03) !important;
+      background: rgba(17, 24, 39, 0.35) !important;
       border: none !important;
       
     }
      #goTopBtn:hover{
       background: rgba(29, 78, 216, 0.85) !important;
-      color: #fff;
+      color: #fff;}
     @media (max-width: 576px){
       #goTopBtn{ bottom: 6px; }
     }
@@ -256,6 +259,11 @@ select:focus {
   0% { transform: scale(1); box-shadow: 0 0 0 rgba(13, 110, 189, 0.5);}
   50% { transform: scale(1.2); box-shadow: 0 0 20px rgba(5, 11, 65, 0.7);}
   100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,255,127,0);}
+}
+
+@keyframes dangerFlash {
+  0%, 100% { opacity: 0.3; box-shadow: 0 0 10px rgba(255,0,0,0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 20px rgba(255,0,0,0.8); }
 }
 
 /* Animation: sai */
@@ -303,6 +311,22 @@ select:focus {
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-3">
              <span class="badge-soft text-info mb-1">🥇 Chọn bộ đề và lĩnh vực</span>
+             <div class="mb-1">
+  <label for="examTime" class="form-label fw-bold text-info">⏱️ Thời gian làm bài</label>
+  <div class="input-group">
+    <span class="input-group-text"><i class="bi bi-stopwatch"></i></span>
+    <select id="examTime" class="form-select">
+      <option value="0">Không giới hạn</option>
+      <option value="300">5 phút</option>
+      <option value="600">10 phút</option>
+      <option value="1800">30 phút</option>
+      <option value="2700">45 phút</option>
+      <option value="3600" selected>60 phút</option>
+      <option value="5400">90 phút</option>
+    </select>
+  </div>
+</div>
+
   <select id="quizListSelect" class="form-select" onchange="loadSelectedQuiz()">
    
   </select>
@@ -324,8 +348,12 @@ select:focus {
 
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
       <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-<div id="navBar" class="toolbar justify-content-between align-items-center m-0 p-1 flex-nowrap" style="display:none !important;">
-  <div class="row m-auto">
+<div id="navBar" class="toolbar justify-content-between align-items-center m-0 p-1 flex-nowrap  overflow-hidden" style="display:none !important;">
+  <div id="timeProgress"
+       class="position-absolute top-0 start-0 bg-info"
+       style="height: 100%; width: 50%; opacity: 0.75; z-index: 0; transition: width 1s linear;">
+  </div>
+  <div class="row m-auto z-3">
   <div class="d-flex col-auto p-0 justify-content-between flex-shrink-1">
     <button class="btn btn-soft px-3 text-warming" style="color: yellow" onclick="submitQuiz()">➜]</button>
     <button id="helpme" class="btn btn-soft px-3" style="color:#0d6efd" title="Hiển thị đáp án (Ctrl+I)" onclick="showHelp()">ⓘ</button>
@@ -338,6 +366,7 @@ select:focus {
 
   </div>
 </div>
+
 <!-- 🧭 Thanh điều hướng dưới khi ôn tập -->
 <div id="reviewNavBar" 
      style="display:none; position:fixed; bottom:0; left:0; right:0; 
@@ -393,14 +422,15 @@ select:focus {
       <div class="card mb-3">
       <div class="card-body p-1">
         <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers" checked>
+  <label class="form-check-label text-info" for="includeAnswers">Tìm cả Đ.A</label>
+</div>
          <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="includeAllSources">
-  <label class="form-check-label text-info" for="includeAllSources">Tìm trong mọi bộ đề</label>
+  <label class="form-check-label text-info" for="includeAllSources">lấy tất cả bộ đề</label>
 </div>
-  <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers" checked>
-  <label class="form-check-label text-info" for="includeAnswers">gồm cả Đ.A</label>
-</div>
+
         </div>
         <input id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="🔍 Nội dung tìm kiếm... (vd: AI%ngân hàng)" oninput="searchQuestions()" />
       </div>
@@ -438,5 +468,6 @@ Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tớ
 
   <script src="../js/custom.js"></script>
   <script src="../js/quiz.js"></script>
+  
 </body>
 </html>
