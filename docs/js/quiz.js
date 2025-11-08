@@ -575,10 +575,10 @@ function startQuizTimer(elapsedAlready = 0) {
   // Nếu đã hết giờ (resume quá muộn)
   if (quizElapsed >= quizTotalTime) {
     if (mode === "exam") {
-      alert("⏰ Hết giờ! Hệ thống sẽ tự động nộp bài.");
+      //alert("⏰ Hết giờ! Hệ thống sẽ tự động nộp bài.");
       submitQuiz(true);
     } else {
-      alert("⏰ Hết thời gian ôn thi! Hãy nộp bài để xem kết quả.");
+      alert("⏰ Hết thời gian ôn thi!");
     }
     return;
   }
