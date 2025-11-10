@@ -308,31 +308,31 @@ select:focus {
           <div class="d-flex justify-content-between align-items-center mb-2">
             <span class="badge-soft text-info w-auto me-3">🥇 Chọn bộ đề/lĩnh vực</span>
             
-            <div class="d-flex align-items-center justify-content-end" style="max-width: 200px;">
-                
-                <label for="examTime" class="text-info me-auto pe-2">⏱️ trong</label> 
+            <div class="d-flex align-items-center justify-content-end" >
+        
+        <label for="examTime" class="text-info  me-1">⏱️</label> 
 
-                <div class="input-group input-group-sm" style="width: 100px;" title="Chọn thời gian thi (để 0 nếu không tính thời gian)"> 
-                    <input 
-                        type="number" 
-                        class="form-control"
-                        id="examTime" 
-                        min="0" 
-                        step="1" 
-                        value="0"
-                        required
-                    >
-                    <span class="input-group-text p-1 text-info" style="background-color: transparent !important; border-color: var(--border) !important;">phút</span>
-                </div>
-            </div>
+       <div class="input-group input-group-sm" style="width: 100px;"> 
+    <input 
+        type="number" 
+        class="form-control"
+        id="examTime" 
+        min="0" 
+        step="1" 
+        value="0"
+        required
+    >
+    <span class="input-group-text p-1 text-info" style="background-color: transparent !important; border-color: var(--border) !important;">phút</span>
+</div>
+    </div>
         </div>
 
   <select id="quizListSelect" class="form-select" style="color: var(--bs-warning) !important;" onchange="loadSelectedQuiz()">
    
   </select>
-  <hr class="text-info">
+  <hr class="text-light">
            <div id="fieldInputs" class="row g-3"></div>
-            <hr class="text-info">
+            <hr class="text-light">
           <div class="text-center mt-3">
             <button class="btn btn-outline-primary me-2" onclick="startPractice()">Ôn thi</button>
             <button class="btn btn-outline-warning me-2" onclick="showReview()">Ôn tập</button>
