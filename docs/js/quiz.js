@@ -1249,3 +1249,14 @@ document.addEventListener("keydown", function (event) {
     // ... Thực hiện hành động tuỳ ý ở đây ...
   }
 });
+document
+  .getElementById("includeAllSources")
+  ?.addEventListener("change", async () => {
+    // Lưu trạng thái
+    if (event.target.checked && cachedAllQuestions === null) {
+      cachedAllQuestions = await loadAllQuestions();
+      document.getElementById(
+        "searchResults"
+      ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
+    }
+  });
