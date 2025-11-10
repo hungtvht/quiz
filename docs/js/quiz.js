@@ -66,7 +66,7 @@ async function loadQuizList() {
   quizList.forEach((qz, inx) => {
     const opt = document.createElement("option");
     opt.value = qz.source;
-    opt.textContent = inx + 1 + ". " + qz.title;
+    opt.textContent = (inx + 1).toString().padStart(2, "0") + ". " + qz.title;
     select.appendChild(opt);
   });
   const savedSource = localStorage.getItem("quizSelectedSource");
@@ -524,10 +524,10 @@ function prepareQuiz() {
   }
   lsSaveCounts(mapToSave);
   const examTimeInput = document.getElementById("examTime");
-  var examTimeInputVal = parseInt(examTimeInput.value || "0", 0);
-  if (examTimeInputVal < 0) {
-    examTimeInputVal = 0;
-  }
+  // Tối ưu: Dùng parseInt(..., 10) và Math.max để đảm bảo số nguyên dương
+  let examTimeInputVal = parseInt(examTimeInput.value || "0", 10);
+  examTimeInputVal = Math.max(0, examTimeInputVal);
+
   examTimeInput.value = examTimeInputVal;
   localStorage.setItem("examTime", examTimeInputVal);
   localStorage.setItem("quizSelectedSource", currentQuizSource);
@@ -624,7 +624,7 @@ function startQuizTimer(elapsedAlready = 0) {
       clearInterval(quizTimer);
       quizTimer = null;
       if (mode === "exam") {
-        alert("⏰ Hết giờ! Hệ thống sẽ tự động nộp bài.");
+        //alert("⏰ Hết giờ! Hệ thống sẽ tự động nộp bài.");
         submitQuiz(true);
       } else {
         alert(
@@ -696,7 +696,7 @@ function renderQuestion() {
         }
 
         // Tự gỡ class animation sau khi chạy xong để lần sau còn tái sử dụng
-        /*   setTimeout(() => {
+        /* setTimeout(() => {
           btn.classList.remove("correct-burst", "wrong-shake");
         }, 700); */
       }
@@ -776,13 +776,12 @@ function getUnansweredIndices() {
 function goNotSelected() {
   const unanswered = getUnansweredIndices();
   const btn = document.getElementById("btnNotSelected");
-  if (btn) btn.textContent = unanswered.length; // cập nhật số ngay lúc bấm
 
   if (unanswered.length === 0) {
     alert("✅ Không còn câu chưa làm.");
     return;
   }
-
+  if (btn) btn.textContent = unanswered.length; // cập nhật số ngay lúc bấm
   const firstUn = unanswered[0];
 
   // Nếu đang ở chính câu "chưa làm đầu tiên" và có vị trí cũ -> quay lại
@@ -1101,13 +1100,6 @@ function shuffle(array) {
 // ================== BOOTSTRAP ==================
 // 👇 1. Chờ DOM sẵn sàng — KHÔNG chờ ảnh, font, JS...
 document.addEventListener("DOMContentLoaded", async () => {
-  // Thiết lập checkbox "includeAnswers" từ LocalStorage
-  const chk = document.getElementById("includeAnswers");
-  chk.checked = loadUIState("includeAnswers", false);
-  chk.addEventListener("change", () =>
-    saveUIState("includeAnswers", chk.checked)
-  );
-
   // 👉 Hiển thị spinner NGAY khi DOM có sẵn (người dùng thấy ngay!)
   const spinner = document.getElementById("globalSpinner");
   const appContent = document.getElementById("appContent");
@@ -1165,8 +1157,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("searchTab").style.display !== "none"
       ) {
         selectSearchNoScroll();
-        // You can call a function or perform an action here
-        // e.g., myFunction();
       }
     });
   } catch (error) {
@@ -1259,16 +1249,3 @@ document.addEventListener("keydown", function (event) {
     // ... Thực hiện hành động tuỳ ý ở đây ...
   }
 });
-
-document
-  .getElementById("includeAllSources")
-  ?.addEventListener("click", async () => {
-    // Lưu trạng thái
-    if (event.target.checked && cachedAllQuestions === null) {
-      cachedAllQuestions = await loadAllQuestions();
-      document.getElementById(
-        "searchResults"
-      ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
-    }
-  });
-/* ====== [HẾT BỔ SUNG] ====== */
