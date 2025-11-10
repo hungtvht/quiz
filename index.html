@@ -100,6 +100,17 @@
         class="container-fluid d-flex justify-content-between align-items-center"
       >
         <span class="logo"><i class="fa-solid fa-cloud-sun"></i> TG</span>
+
+        <div class="position-relative text-info">
+          <i class="fa-solid fa-universal-access fa-2x"></i>
+          <span
+            id="visitscounter"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-info"
+          >
+            👁️
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </div>
         <button class="btn btn-outline-info btn-sm d-none" id="darkToggle">
           🌙 Dark Mode
         </button>
@@ -159,6 +170,7 @@
     </div>
 
     <!-- Script -->
+    <script src="docs/js/custom.js"></script>
     <script>
       const toggleBtn = document.getElementById("darkToggle");
       toggleBtn.addEventListener("click", () => {
@@ -173,6 +185,9 @@
           document.body.style.color = "#f1f1f1";
           toggleBtn.textContent = "🌙 Light Mode";
         }
+      });
+      document.addEventListener("DOMContentLoaded", async () => {
+        getVisits("visitscounter");
       });
     </script>
   </body>
