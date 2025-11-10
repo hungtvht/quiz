@@ -287,8 +287,7 @@ select:focus {
   </style>
 </head>
 <body>
-  <!-- 👇 Đặt spinner ở đầu body -->
-<div id="globalSpinner" class="justify-content-center align-items-center vh-100 w-100 position-fixed top-0 start-0 bg-white bg-opacity-90 z-3" style="display: flex;">
+  <div id="globalSpinner" class="justify-content-center align-items-center vh-100 w-100 position-fixed top-0 start-0 bg-white bg-opacity-90 z-3" style="display: flex;">
   <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
     <span class="visually-hidden">Đang tải dữ liệu...</span>
   </div>
@@ -297,60 +296,59 @@ select:focus {
   <div id="appContent" class="container p-0" style="display: none;">
     <h3 class="text-center mb-1 fw-bold d-none">Trắc nghiệm - Quiz</h3>
 
-    <!-- Tabs -->
     <ul class="nav navbar-tabs mb-1" id="mainTabs">
       <li class="nav-item"><a class="nav-link active" href="#" onclick="switchTab('home')">Trắc nghiệm</a></li>
       <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('search')">Thư viện</a></li>
       <li class="nav-item"><a class="nav-link" href="#" onclick="switchTab('about')">Help</a></li>
     </ul>
 
-    <!-- Trang chủ -->
     <div id="homeTab">
-      <!-- Cấu hình -->
       <div id="configSection" class="card mb-1">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-2">
-    <span class="badge-soft text-info w-auto me-3">🥇 Chọn bộ đề/lĩnh vực</span>
+            <span class="badge-soft text-info w-auto me-3">🥇 Chọn bộ đề/lĩnh vực</span>
+            
+            <div class="d-flex align-items-center justify-content-end" style="max-width: 200px;">
+                
+                <label for="examTime" class="text-info me-auto pe-2">⏱️ trong</label> 
 
-    <div class="d-flex align-items-center justify-content-end" >
-        
-        <label for="examTime" class="text-info  me-1">⏱️ (phút)</label> 
+                <div class="input-group input-group-sm" style="width: 100px;" title="Chọn thời gian thi (để 0 nếu không tính thời gian)"> 
+                    <input 
+                        type="number" 
+                        class="form-control"
+                        id="examTime" 
+                        min="0" 
+                        step="1" 
+                        value="0"
+                        required
+                    >
+                    <span class="input-group-text p-1 text-info" style="background-color: transparent !important; border-color: var(--border) !important;">phút</span>
+                </div>
+            </div>
+        </div>
 
-        <input 
-            type="number" 
-            class="form-control form-control-sm"
-            style="width: 50px;" 
-            id="examTime" 
-            min="0" 
-            step="1" 
-            value="0"
-            required
-        > 
-    </div>
-</div>
-
-  <select id="quizListSelect" class="form-select" onchange="loadSelectedQuiz()">
+  <select id="quizListSelect" class="form-select" style="color: var(--bs-warning) !important;" onchange="loadSelectedQuiz()">
    
   </select>
-          </div>
-          
-
-          <div id="fieldInputs" class="row g-3"></div>
+  <hr class="text-info">
+           <div id="fieldInputs" class="row g-3"></div>
+            <hr class="text-info">
           <div class="text-center mt-3">
             <button class="btn btn-outline-primary me-2" onclick="startPractice()">Ôn thi</button>
             <button class="btn btn-outline-warning me-2" onclick="showReview()">Ôn tập</button>
             <button class="btn btn-outline-success" onclick="startExam()">Thi thật</button>
             <a class="btn btn-outline-primary"href="../../index.html">🏠</a>
           </div>
+</div>
+          
+
+         
         </div>
       </div>
 
-      <!-- Câu hỏi -->
       <div id="quizContainer"></div>
 
-      <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-      <!-- Thanh điều hướng + hành động (ẩn trước khi thi) -->
-<div id="navBar" class="toolbar justify-content-between align-items-center m-0 p-1 flex-nowrap  overflow-hidden" style="display:none !important;">
+      <div id="navBar" class="toolbar justify-content-between align-items-center m-0 p-1 flex-nowrap  overflow-hidden" style="display:none !important;">
   <div id="timeProgress"
        class="position-absolute top-0 start-0 bg-info"
        style="height: 100%; width: 50%; opacity: 0.75; z-index: 0; transition: width 1s linear;">
@@ -369,16 +367,14 @@ select:focus {
   </div>
 </div>
 
-<!-- 🧭 Thanh điều hướng dưới khi ôn tập -->
 <div id="reviewNavBar" 
      style="display:none; position:fixed; bottom:0; left:0; right:0; 
-            background:#101522; border-top:1px solid #333; 
+            background-color: transparent !important;
             padding:8px 12px; text-align:center; z-index:1000;">
-  <button class="btn btn-secondary me-2" onclick="backToConfig()">🏠 Trang chủ</button>
+  <button class="btn btn-secondary me-2" style="background: rgba(17, 24, 39, 0.35) !important;" onclick="backToConfig()">🏠 Trang chủ</button>
 </div>
 
-      <!-- Màn hình Kết quả (ẩn trước khi nộp) -->
-<div id="resultView" class="card mt-3" style="display:none;">
+      <div id="resultView" class="card mt-3" style="display:none;">
   <div class="card-body text-center">
     <div id="resultIcon" style="font-size:36px; line-height:1.2;">🏆</div>
     <h4 class="mt-2 mb-3 text-info">Kết quả</h4>
@@ -419,18 +415,17 @@ select:focus {
 
     </div>
 
-    <!-- Thư viện câu hỏi -->
     <div id="searchTab" style="display:none;">
       <div class="card mb-3">
       <div class="card-body p-1">
         <div class="d-flex justify-content-between align-items-center mb-2">
             <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers" checked>
+  <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers">
   <label class="form-check-label text-info" for="includeAnswers">Tìm cả Đ.A</label>
 </div>
          <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="includeAllSources">
-  <label class="form-check-label text-info" for="includeAllSources">lấy tất cả bộ đề</label>
+  <label class="form-check-label text-info" for="includeAllSources">trong tất cả bộ đề</label>
 </div>
 
         </div>
@@ -464,7 +459,6 @@ Chúc bạn luôn vui vẻ 😊 và đạt điểm cao trong kỳ thi sắp tớ
 </div>
   </div>
 
-  <!-- Nút ảo GoTop: focus + select searchInput -->
   <button id="goTopBtn" class="btn fw-semibold rounded-circle" onclick="goTopFocusSearch()" title="Nhảy lên ô tìm kiếm & chọn sẵn">⬆
   </button>
 
