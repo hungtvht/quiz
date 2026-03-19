@@ -20,6 +20,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+
     <style>
       body {
         background: radial-gradient(circle at top left, #0d1117, #000);
@@ -109,11 +110,7 @@
             id="visitscounter"
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-info"
           >
-            <img
-              src="https://komarev.com/ghpvc/?username=viet-hung-quiz-2026&label=VIEWS&color=007bff&style=flat"
-              alt="Visit Counter"
-              onerror="this.style.display = 'none'"
-            />
+            👁️
             <span class="visually-hidden">unread messages</span>
           </span>
         </div>
@@ -177,6 +174,45 @@
 
     <!-- Script -->
     <script src="docs/js/custom.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+      // 2. Cấu hình thông tin từ Bước 4
+      const firebaseConfig = {
+        databaseURL:
+          "https://visits-7f5c2-default-rtdb.asia-southeast1.firebasedatabase.app",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+
+      // 3. Hàm tăng lượt truy cập (Thay cho recordVisit cũ)
+      function recordVisit() {
+        const visitRef = db.ref("visits"); // Trỏ thẳng vào node 'visits' đã tạo ở B3
+
+        visitRef.transaction(
+          (currentValue) => {
+            // Nếu chưa có dữ liệu thì bắt đầu từ 0, ngược lại tăng thêm 1
+            return (currentValue || 0) + 1;
+          },
+          (error, committed, snapshot) => {
+            if (committed) {
+              const total = snapshot.val();
+              console.log("🚀 Tổng lượt truy cập:", total);
+
+              // Cập nhật số lên giao diện
+              const counter = document.getElementById("visitscounter");
+              if (counter) counter.innerText = formatNumberVN(total);
+            }
+          },
+        );
+      }
+
+      // Chạy khi trang tải xong
+      document.addEventListener("DOMContentLoaded", recordVisit);
+    </script>
+
     <script>
       const toggleBtn = document.getElementById("darkToggle");
       toggleBtn.addEventListener("click", () => {
@@ -193,7 +229,7 @@
         }
       });
       document.addEventListener("DOMContentLoaded", async () => {
-        getVisits("visitscounter");
+        //getVisits("visitscounter");
       });
     </script>
   </body>
