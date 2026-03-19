@@ -25,48 +25,7 @@ function loadUIState(key, defaultValue) {
   const v = localStorage.getItem(key);
   return v ? JSON.parse(v) : defaultValue;
 }
-const VISIT_API_URL =
-  "https://quiz-backend-nhyy.onrender.com/api/v1/visits/increment";
 
-/**
- * Ghi nhận một lượt truy cập bằng cách gọi API backend.
- * Sử dụng kỹ thuật "fire-and-forget" (gửi yêu cầu mà không chờ hoặc quan tâm đến phản hồi)
- * để không làm chậm quá trình tải quiz.
- */
-function recordVisit() {
-  fetch(VISIT_API_URL, {
-    method: "POST",
-    mode: "cors",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        console.warn("⚠️ API đếm lượt truy cập lỗi:", response.status);
-      }
-    })
-    .catch((error) => {
-      // Lỗi mạng hoặc lỗi CORS
-      console.error("Lỗi khi gửi API visits:", error.message);
-    });
-}
-async function getVisits(id) {
-  fetch("https://quiz-backend-nhyy.onrender.com/api/v1/visits", {
-    method: "GET",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("👁️ Lượt truy cập:", data.count);
-      const counter = document.getElementById(id);
-      if (counter) counter.innerText = formatNumberVN(data.count);
-    })
-    .catch((err) => console.error("⚠️ Lỗi khi gửi API visits:", err));
-}
-document.addEventListener("DOMContentLoaded", async () => {
-  recordVisit();
-});
 function formatNumberVN(num) {
   return new Intl.NumberFormat("en", { notation: "compact" }).format(num);
 }
