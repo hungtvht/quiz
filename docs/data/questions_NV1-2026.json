@@ -1,5 +1,5 @@
 {
-  "ExamTitle": "KỲ THI NGHIỆP VỤ ĐỢT 1 - 2026",
+  "ExamTitle": "KỲ THI NGHIỆP VỤ ĐỢT 1 NĂM 2026",
   "questions": [
     {
       "Field": "Tín dụng KHDN",
@@ -52863,15 +52863,2283 @@
     },
     {
       "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
-      "Text": "5",
+      "Text": "Khi Tổng giám đốc Agribank phân công công việc trực tiếp cho Phó giám đốc chi nhánh loại I, hành động này thuộc loại nào?",
       "Options": [
-        "Agribank có bao nhiêu người đại diện theo pháp luật?",
+        "Phân công vượt cấp, cần xin ý kiến phê duyệt.",
+        "Phân công trực tiếp xuống cấp dưới liền kề trong trường hợp cần thiết.",
+        "Phân công thay thế tạm thời trong thời gian khẩn cấp.",
+        "Ủy quyền ngắn hạn theo cơ chế nội bộ."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1.2 Điều 20 Quyết định số 799/QĐ - HĐTV - UBNS ngày 15/8/2017 của HĐTV"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định số 799/QĐ - HĐTV - UBNS ngày 15/8/2017 của HĐTV, trong trường hợp cần thiết, người quản lý đứng đầu đơn vị có thể phân công trực tiếp cho cấp dưới liền kề. Vậy trong trường hợp này, Tổng Giám đốc có thể phân công trực tiếp cho ai?",
+      "Options": [
+        "Giám đốc Phòng giao dịch.",
+        "Phó giám đốc Chi nhánh loại I.",
+        "Trưởng phòng nghiệp vụ thuộc Chi nhánh loại II.",
+        "Phó phòng nghiệp vụ thuộc Chi nhánh loại I."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1.2 Điều 20 Quyết định số 799/QĐ - HĐTV - UBNS ngày 15/8/2017 của HĐTV"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hạng chi nhánh theo quy định tại Quy chế tổ chức và hoạt động của Chi nhánh, phòng giao dịch là gì?",
+      "Options": [
+        "Là cấp độ mà Chi nhánh được sắp xếp dựa trên các tiêu chí nhất định theo quy định nội bộ của Agribank trong từng thời kỳ.",
+        "Là thứ hạng chi nhánh được Agribank ban hành trong từng thời kỳ.",
+        "Là cấp độ chi nhánh được Ngân hàng Nhà nước quy định trong từng thời kỳ.",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 3 Điều 2 Quy chế 1589/QC - HĐTV - TCNS ngày 31/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy chế tổ chức và hoạt động của Chi nhánh, Phòng giao dịch số 1589/QC - HĐTV - TCNS ngày 31/12/2024, Phòng giao dịch duy trì từ mấy lao động thực tế trong định biên, có kho tiền đủ tiêu chuẩn theo quy định của NHNN thì Giám đốc Chi nhánh quản lý Phòng giao dịch được thành lập Tổ Kế toán và ngân quỹ?",
+      "Options": [
+        "05",
+        "06",
+        "07 lao động thực tế trong định biên trở lên.",
+        "08"
+      ],
+      "Correct": "3",
+      "Citation": "Điểm đ Khoản 3 Điều 3 Quy chế 1589/QC - HĐTV - TCNS ngày 31/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank có bao nhiêu người đại diện theo pháp luật?",
+      "Options": [
         "1",
         "2",
-        "3"
+        "3",
+        "4"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 1 Điều 9 Điều lệ Agribank 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Ai là Người đại diện theo pháp luật của Agribank hiện nay?",
+      "Options": [
+        "Chủ tịch Hội đồng thành viên.",
+        "Tổng Giám đốc.",
+        "Chủ tịch Hội đồng thành viên và Tổng Giám đốc.",
+        "Người do Chủ tịch Hội đồng thành viên ủy quyền."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 9 Điều lệ Agribank 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Kể từ ngày kết thúc năm tài chính, trong thời hạn bao nhiêu ngày, Agribank phải công khai các báo cáo tài chính theo quy định của pháp luật, Ngân hàng Nhà nước?",
+      "Options": [
+        "120 ngày.",
+        "90 ngày.",
+        "60 ngày.",
+        "150 ngày."
+      ],
+      "Correct": "1",
+      "Citation": "Điều 65 Điều lệ Agribank 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy chế quản trị điều hành nội bộ Agribank, \"quản trị điều hành\" được hiểu là hệ thống nào sau đây?",
+      "Options": [
+        "Hệ thống quy trình nghiệp vụ nhằm điều hành hoạt động kinh doanh ngân hàng.",
+        "Hệ thống cơ chế, quy chế và quy trình xử lý công việc, kiểm tra, giám sát hoạt động nội bộ của Agribank vì lợi ích của chủ sở hữu và người có quyền lợi liên quan.",
+        "Hệ thống văn bản pháp lý nội bộ điều chỉnh hoạt động của Hội đồng thành viên.",
+        "Hệ thống quản lý rủi ro và kiểm soát nội bộ trong hoạt động tài chính."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1, Điều 1 Quyết định số 799/QĐ - HĐTV - UBNS ngày 15/8/2017 của HĐTV"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy chế quản trị điều hành nội bộ Agribank, hành vi nào sau đây bị nghiêm cấm tuyệt đối nhằm phòng ngừa xung đột lợi ích và bảo vệ lợi ích của Agribank?",
+      "Options": [
+        "Tham gia ý kiến chuyên môn trong giao dịch liên quan.",
+        "Công khai lợi ích liên quan theo quy định.",
+        "Sử dụng thông tin, cơ hội kinh doanh của Agribank để tư lợi cá nhân hay để phục vụ lợi ích của tổ chức hoặc cá nhân khác.",
+        "Báo cáo giao dịch với người có liên quan."
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 1, 3, Điều 24 Quyết định số 799/QĐ - HĐTV - UBNS ngày 15/8/2017 của HĐTV"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Nhận định nào sau đây là đúng và đầy đủ nhất?",
+      "Options": [
+        "Agribank mở tài khoản thanh toán tại các ngân hàng thương mại khác để phục vụ thanh toán và dự trữ thanh khoản.",
+        "Agribank mở tài khoản thanh toán tại Ngân hàng Nhà nước và duy trì số tiền dự trữ bắt buộc trên tài khoản này.",
+        "Agribank mở tài khoản tại Ngân hàng Nhà nước nhưng việc duy trì dự trữ bắt buộc được thực hiện tại quỹ tiền mặt của ngân hàng.",
+        "Agribank chỉ mở tài khoản thanh toán tại Ngân hàng Nhà nước khi có yêu cầu điều hành chính sách tiền tệ."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 20 Điều lệ Agribank 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trong nghi thức bắt tay chào hỏi, quy định nào thể hiện tính thứ bậc rõ ràng nhất?",
+      "Options": [
+        "Người trẻ tuổi chủ động bắt tay người lớn tuổi.",
+        "Người có chức vụ thấp hơn chủ động bắt tay trước.",
+        "Người có chức vụ cao hơn chủ động bắt tay trước.",
+        "Bắt tay lần lượt mọi người."
+      ],
+      "Correct": "3",
+      "Citation": "Phần II – Mục 2. Chuẩn mực trong chào hỏi"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Nguyên tắc nào được coi là bắt buộc khi viết email công việc tại Agribank?",
+      "Options": [
+        "Có thể dùng email cá nhân nếu thuận tiện",
+        "Nội dung càng chi tiết càng tốt",
+        "Phải kiểm tra lỗi chính tả trước khi gửi",
+        "Có thể gộp nhiều nội dung không liên quan"
+      ],
+      "Correct": "3",
+      "Citation": "Phần II – Mục 6. Chuẩn mực trong viết, trả lời thư điện tử"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Câu chào nào sau đây không đúng theo quy định trong Cẩm nang văn hóa Agribank?",
+      "Options": [
+        "Chào sếp!",
+        "Chào Giám đốc!",
+        "Chào bác!",
+        "Chào anh!"
+      ],
+      "Correct": "1",
+      "Citation": "Chuẩn mực trong ứng xử, giao tiếp với đồng nghiệp – Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Cán bộ Agribank được nhận quà tặng từ khách hàng, đối tác trong trường hợp nào?",
+      "Options": [
+        "Quà tặng là một chiếc điện thoại thông minh đời mới.",
+        "Quà tặng là một voucher mua hàng trị giá 1.000.000 đồng.",
+        "Quà tặng là 500.000 đồng tiền mặt.",
+        "Không được phép nhận quà."
       ],
       "Correct": "4",
-      "Citation": "1"
+      "Citation": "Trách nhiệm của cán bộ viên chức Agribank – Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank thực hiện và xây dựng Văn hóa Agribank để:",
+      "Options": [
+        "Văn hóa doanh nghiệp trở thành cầu nối giữa các thế hệ trong mái nhà chung Agribank.",
+        "Văn hóa doanh nghiệp trở thành nguồn sức mạnh nội lực trong kinh doanh.",
+        "Văn hóa doanh nghiệp trở thành chuỗi giá trị giàu bản sắc của lớp lớp thế hệ người lao động Agribank.",
+        "Đem lại sự hài lòng cao nhất cho khách hàng."
+      ],
+      "Correct": "2",
+      "Citation": "Website Agribank, phần Văn hóa"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024, khi trao đổi công việc với đồng nghiệp ngang cấp, cán bộ Agribank cần:",
+      "Options": [
+        "Tránh tranh luận để không làm mất lòng đồng nghiệp",
+        "Chỉ đưa ra ý kiến khi chắc chắn đúng",
+        "Tập trung vào ý kiến cá nhân hơn là thảo luận nhóm",
+        "Trao đổi công việc công khai, cởi mở, sẵn sàng lắng nghe ý kiến, tranh luận và góp ý trên tinh thần cầu thị, xây dựng"
+      ],
+      "Correct": "4",
+      "Citation": "Điểm c Khoản 3 Điều 6 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Nguyên tắc nào cần được áp dụng khi giải quyết bất đồng quan điểm trong công việc theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024?",
+      "Options": [
+        "\"Lắng nghe - Hợp tác\"",
+        "\"Minh bạch - Lắng nghe - Hợp tác\"",
+        "\"Hợp tác\"",
+        "\"Lắng nghe\""
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 4 Điều 6 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Một trong những mục tiêu dài hạn của Agribank được nêu trong Quy định Chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank là gì?",
+      "Options": [
+        "Xây dựng Agribank hiện đại và hội nhập, hoạt động an toàn, hiệu quả, giữ vững vị trí chủ lực trên thị trường tài chính nông nghiệp, nông thôn",
+        "Đẩy mạnh các hoạt động hỗ trợ cộng đồng",
+        "Mở rộng mạng lưới chi nhánh, điểm giao dịch trên toàn quốc",
+        "Tăng trưởng doanh thu hàng năm của Agribank"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 2 Điều 2 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Quy định Chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank góp phần bảo vệ, xây dựng và phát triển yếu tố nào của Agribank?",
+      "Options": [
+        "Nguồn nhân lực chất lượng cao",
+        "Văn hóa doanh nghiệp, văn hóa kinh doanh",
+        "Các chiến lược đầu tư dài hạn",
+        "Quan hệ đối tác với các ngân hàng quốc tế"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 2 Điều 2 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Một trong những yêu cầu về tính tuân thủ đối với cán bộ Agribank trong Quy định Chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank là gì?",
+      "Options": [
+        "Chỉ cần nắm vững các quy trình nghiệp vụ cơ bản",
+        "Nắm vững các quy trình, thủ tục, thuần thục các thao tác chuyên môn, nghiệp vụ",
+        "Tự do sử dụng thông tin và cơ hội kinh doanh của Agribank để thu lợi cá nhân",
+        "Tập trung vào việc đạt được chỉ tiêu kinh doanh mà không cần tuân thủ quy định"
+      ],
+      "Correct": "2",
+      "Citation": "Điểm b khoản 1 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, người trực tiếp sử dụng lao động là người được giao phụ trách, quản lý một nhóm người lao động, gồm:",
+      "Options": [
+        "Chủ nhiệm Ủy ban, Trưởng khối nghiệp vụ, Trưởng Ban và Trưởng các đơn vị tương đương tại Trụ sở chính",
+        "Trưởng phòng của: Đơn vị sự nghiệp, Văn phòng đại diện, Chi nhánh loại I",
+        "Giám đốc Chi nhánh loại II; Giám đốc Phòng giao dịch trực thuộc Chi nhánh loại I, loại II",
+        "Tất cả các đáp án trên đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Theo khoản 5 Điều 2 Nội quy lao động số 429"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, trường hợp hợp đồng lao động hết hạn trong thời gian lao động nữ mang thai hoặc nuôi con dưới 12 tháng tuổi thì được:",
+      "Options": [
+        "Ưu tiên giao kết hợp đồng lao động mới",
+        "Chấm dứt hợp đồng lao động",
+        "Thời gian nghỉ thai sản không được tính vào thời gian thực hiện hợp đồng",
+        "Sa thải"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 3 Điều 11 Nội quy lao động số 429"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, lao động nữ được nghỉ thai sản trước và sau khi sinh con là 06 tháng; thời gian nghỉ trước khi sinh không quá:",
+      "Options": [
+        "01 tháng",
+        "02 tháng",
+        "03 tháng",
+        "06 tháng"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 12 Nội quy lao động số 429"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, thiệt hại mức 1 là thiệt hại có giá trị không quá bao nhiêu tháng lương tối thiểu vùng?",
+      "Options": [
+        "05 tháng lương tối thiểu vùng",
+        "06 tháng lương tối thiểu vùng",
+        "07 tháng lương tối thiểu vùng",
+        "10 tháng lương tối thiểu vùng"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 13 Điều 2 Nội quy lao động số 429"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, lao động nữ trong thời gian nuôi con dưới 12 tháng tuổi được nghỉ bao nhiêu phút mỗi ngày trong thời gian làm việc ?",
+      "Options": [
+        "30 phút",
+        "45 phút",
+        "60 phút",
+        "90 phút"
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 4 Điều 11 Nội quy lao động số 429"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, hành vi nào sau đây có thể bị buộc rời khỏi Trụ sở làm việc?",
+      "Options": [
+        "Gây rối, mất trật tự tại Trụ sở làm việc",
+        "Chơi game trong giờ làm việc",
+        "Nói xấu người khác trong giờ làm việc",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 3 Điều 5 Nội quy lao động số 429"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, thời hạn tạm đình chỉ công việc trong trường hợp đặc biệt không được quá bao nhiêu ngày?",
+      "Options": [
+        "90 ngày làm việc",
+        "60",
+        "60 ngày làm việc",
+        "90"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 2 Điều 57 Nội quy lao động 429"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, người lao động làm việc theo ca được nghỉ trong thời gian bao lâu trước khi chuyển sang ca làm việc tiếp theo?",
+      "Options": [
+        "Ít nhất 6 giờ.",
+        "Ít nhất 9 giờ.",
+        "Ít nhất 12 giờ.",
+        "Ít nhất 18 giờ."
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 2, Điều 4 Nội quy lao động số 429/NQLĐ - HĐTV - TCNS ngày 25/7/2022"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, người có thẩm quyền xử lý kỷ luật lao động là:",
+      "Options": [
+        "Người sử dụng lao động; Người đại diện theo pháp luật.",
+        "Người đại diện theo pháp luật.",
+        "Người sử dụng lao động theo ủy quyền.",
+        "Người sử dụng lao động; Người đại diện theo pháp luật; Người sử dụng lao động theo ủy quyền."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 3 Điều 48 Nội quy lao động số 429/NQLĐ - HĐTV - TCNS ngày 25/7/2022"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nội quy lao động trong hệ thống Agribank, hành vi nào dưới đây vi phạm về bảo vệ bí mật nhà nước?",
+      "Options": [
+        "Mang thiết bị, máy móc hoặc bất kỳ tài sản nào của đơn vị ra khỏi Trụ sở làm việc mà không có sự đồng ý của người có thẩm quyền.",
+        "Mang tài liệu, vật chứa bí mật nhà nước ra khỏi nơi lưu giữ trái quy định của pháp luật lao động, Agribank.",
+        "Mang vũ khí, các vật gây cháy nổ hoặc các vật dụng nguy hiểm khác vào Trụ sở làm việc.",
+        ""
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 2, Điều 25 Nội quy lao động số 429/NQLĐ - HĐTV - TCNS ngày 25/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Chuyển đổi số là việc của ai?",
+      "Options": [
+        "Người lãnh đạo",
+        "Chuyên gia công nghệ",
+        "Nhà nước",
+        "Tất cả mọi người"
+      ],
+      "Correct": "4",
+      "Citation": "Cẩm nang chuyển đổi số - Bộ Thông tin - Truyền thông"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Lợi ích của chuyển đổi số là gì?",
+      "Options": [
+        "Tăng năng suất",
+        "Giảm chi phí",
+        "Tạo ra các giá trị mới ngoài các giá trị truyền thống vốn có",
+        "Cả ba phương án trên"
+      ],
+      "Correct": "4",
+      "Citation": "Cẩm nang chuyển đổi số - Bộ Thông tin - Truyền thông"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Chuyển đổi số KHÔNG bao gồm yếu tố nào sau đây?",
+      "Options": [
+        "Văn hóa tổ chức",
+        "Hệ thống dữ liệu",
+        "Công nghệ thông tin",
+        "Tăng cường hoạt động đoàn thể"
+      ],
+      "Correct": "4",
+      "Citation": "Các nguồn tham khảo khác"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trong mô hình ngân hàng số, yếu tố nào là then chốt nhất?",
+      "Options": [
+        "Thiết kế văn phòng hiện đại",
+        "Gia tăng vốn tự có",
+        "Ứng dụng công nghệ số và dữ liệu khách hàng",
+        "Tăng số lượng chi nhánh"
+      ],
+      "Correct": "3",
+      "Citation": "Các nguồn tham khảo khác"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Dữ liệu cá nhân là gì?",
+      "Options": [
+        "Dữ liệu liên quan đến tài chính, kế toán của tổ chức",
+        "Các tệp tài liệu lưu trữ trên máy tính cá nhân",
+        "Dữ liệu tổng hợp và ẩn danh, không liên quan đến bất kỳ cá nhân nào",
+        "Thông tin dưới dạng ký hiệu, chữ viết, chữ số, hình ảnh, âm thanh hoặc dạng tương tự trên môi trường điện tử gắn liền với một con người cụ thể hoặc giúp xác định một con người cụ thể"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 1 Điều 2 Nghị định số 13/2023/NĐ - CP"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định 1228/QyĐ - NHNo - KHCN ngày 21/05/2024, khách hàng được quyền đề nghị tra soát, khiếu nại trong thời hạn bao nhiêu ngày kể từ ngày phát sinh giao dịch?",
+      "Options": [
+        "Trong vòng 30 ngày",
+        "Trong vòng 45 ngày",
+        "Trong vòng 60 ngày",
+        "Trong vòng 90 ngày"
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 1 Điều 14 Quyết định số 1228/QyĐ - NHNo - KHCN ngày 21/05/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Kênh nào sau đây KHÔNG thuộc các kênh tiếp nhận thông tin tra soát, khiếu nại chính thức của Agribank?",
+      "Options": [
+        "Bất kỳ điểm giao dịch nào của Agribank trên toàn quốc",
+        "Qua Tổng đài hỗ trợ khách hàng 24/7",
+        "Qua chức năng Tra soát online trên dịch vụ Agribank Plus",
+        "Qua tin nhắn cá nhân của cán bộ ngân hàng"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 2 Điều 14 Quyết định số 1228/QyĐ - NHNo - KHCN ngày 21/05/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Các dịch vụ hiện có của dịch vụ Agribank Plus, gồm:",
+      "Options": [
+        "Dịch vụ tài chính.",
+        "Dịch vụ phi tài chính.",
+        "Các dịch vụ thẻ.",
+        "Tất cả các đáp án trên."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 1 Điều 4 Quyết định số 1228/QyĐ - NHNo - KHCN ngày 21/05/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khi có khiếu nại về dịch vụ ngân hàng điện tử, khách hàng thực hiện qua các kênh nào tại Agribank?",
+      "Options": [
+        "Tại bất kỳ điểm giao dịch nào của Agribank trên toàn quốc.",
+        "Qua Tổng đài hỗ trợ khách hàng 24/7 và các kênh tiếp nhận yêu cầu hỗ trợ của Trung tâm Chăm sóc khách hàng.",
+        "Qua tổng đài hỗ trợ khách hàng của các đối tác hợp tác triển khai dịch vụ.",
+        "Đáp án 1 và 2 đều đúng."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 2 Điều 14 Quyết định số 1228/QyĐ - NHNo - KHCN ngày 21/05/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Dịch vụ phi tài chính của dịch vụ SMS banking là dịch vụ nào?",
+      "Options": [
+        "Vấn tin số dư tài khoản; Sao kê 05 giao dịch gần nhất.",
+        "Chuyển khoản liên ngân hàng.",
+        "Chuyển khoản trong hệ thống Agribank.",
+        "Tất cả các đấp án trên đều đúng"
+      ],
+      "Correct": "1",
+      "Citation": "Tiết II, Điểm a, khoản 2 Điều 4 Quyết định số 1228/QyĐ - NHNo - KHCN ngày 21/05/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trong các dịch vụ sau của Agribank dịch vụ nào là dịch vụ tài chính trên SMS Banking?",
+      "Options": [
+        "Tự động thông báo số dư; vấn tin số dư và liệt kê 5 giao dịch gần nhất.",
+        "ATransfer: Dịch vụ cho phép khách hàng chuyển khoản trong hệ thống Agribank.",
+        "Tra cứu thông tin; Quản lý đầu tư.",
+        ""
+      ],
+      "Correct": "2",
+      "Citation": "Tiết I, Điểm b, khoản 2 Điều 4 Quyết định số 1228/QyĐ - NHNo - KHCN ngày 21/05/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khách hàng phải làm gì để hủy dịch vụ Agribank Plus?",
+      "Options": [
+        "Đến bất kỳ chi nhánh nào của Agribank để hủy dịch vụ.",
+        "Đến chi nhánh đăng ký dịch vụ để hủy dịch vụ.",
+        "Gọi điện đến Trung tâm chăm sóc khách hàng của Agribank để hủy dịch vụ trong trường hợp khẩn cấp.",
+        "Tất cả các đáp án trên đều đúng."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 5 Điều 3 Quyết định số 1228/QyĐ - NHNo - KHCN ngày 21/05/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank cung cấp những gói dịch vụ nào cho khách hàng trên kênh Agribank eBanking?",
+      "Options": [
+        "Gói mặc định; Gói dịch vụ và Gói tùy chỉnh.",
+        "Gói dùng chung; Gói tiêu chuẩn; Gói cao cấp và Gói riêng biệt.",
+        "Gói dùng chung và Gói cao cấp; Gói tiêu chuẩn.",
+        "Gói cao cấp và Gói riêng biệt; Gói tiêu chuẩn."
+      ],
+      "Correct": "1",
+      "Citation": "Phần I, Điều 4, khoản 1 - Quy trình 4416/QTr - NHNo - NHS ngày 30/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Dịch vụ Agribank eBanking cung cấp cho khách hàng qua kênh nào?",
+      "Options": [
+        "Qua website tại địa chỉ: https: //ebanking.agribank.com.vn",
+        "Qua ứng dụng (Agribank Corporate eBanking dành cho khách hàng tổ chức; Agribank Retail eBanking dành cho khách hàng cá nhân) được cài đặt trên điện thoại thông minh/máy tính bảng.",
+        "Qua website tại địa chỉ: https: //ebanking.agribank.com.vn; và/hoặc Qua ứng dụng (Agribank Corporate eBanking dành cho khách hàng tổ chức; Agribank Retail eBanking dành cho khách hàng cá nhân) được cài đặt trên điện thoại thông minh/máy tính bảng",
+        "Qua website tại địa chỉ: https: //ibank.agribank.com.vn; và/hoặc Qua ứng dụng (Agribank Corporate eBanking dành cho khách hàng tổ chức) được cài đặt trên điện thoại thông minh/máy tính bảng"
+      ],
+      "Correct": "3",
+      "Citation": "Phần I, Điều 2, khoản 2 - Quy trình 4416/QTr - NHNo - NHS ngày 30/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank quy định như thế nào về Tên đăng nhập dịch vụ Agribank eBanking?",
+      "Options": [
+        "Tên đăng nhập: là số điện thoại di động của khách hàng đăng ký sử dụng dịch vụ;",
+        "Có độ dài tối thiểu 06 (sáu) ký tự; không có ký tự đặc biệt, không có dấu cách, không có dấu tiếng Việt.",
+        "Có độ dài tối thiểu 08 (tám) ký tự; không có ký tự đặc biệt, không có dấu cách, không có dấu tiếng Việt.",
+        "Có độ dài tối thiểu 06 (sáu) ký tự; không có ký tự đặc biệt, không có dấu cách, có dấu tiếng Việt."
+      ],
+      "Correct": "2",
+      "Citation": "Phần I, Điều 5, khoản 1 - Quy trình 4416/QTr - NHNo - NHS ngày 30/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khách hàng có thể lập yêu cầu giao dịch có ngày hiệu lực trong tương lai trên hệ thống Agribank eBanking không?",
+      "Options": [
+        "Có",
+        "Không",
+        "",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Phần I, Điều 8, khoản 2.1 - Quy trình 4416/QTr - NHNo - NHS ngày 30/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo VB 4416/QTr - NHNo - NHS ngày 30/12/2024; Đối tượng nào quản lý thông tin ma trận phê duyệt (approval matrix) trên Agribank eBanking?",
+      "Options": [
+        "Chi nhánh",
+        "Khách hàng",
+        "Chi nhánh và khách hàng",
+        "Trung tâm CNTT"
+      ],
+      "Correct": "4",
+      "Citation": "Chương III, mục 2, điều 36, khoản 2 - Quy trình 4416/QTr - NHNo - NHS ngày 30/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khách hàng Agribank eBanking được quyền tra soát, khiếu nại trong thời gian nào?",
+      "Options": [
+        "15 ngày",
+        "30 ngày",
+        "45 ngày",
+        "60 ngày"
+      ],
+      "Correct": "4",
+      "Citation": "Chương II, mục 4, điều 31, khoản 1 - Quy trình 4416/QTr - NHNo - NHS ngày 30/12/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank KHÔNG cung cấp dịch vụ ngân hàng điện tử trong trường hợp nào sau đây?",
+      "Options": [
+        "Tài khoản khách hàng hoạt động bình thường",
+        "Tài khoản tạm khóa hoặc phong tỏa",
+        "Tài khoản có giao dịch chuyển khoản liên ngân hàng",
+        "Tài khoản đang có số dư lớn"
+      ],
+      "Correct": "2",
+      "Citation": "Điều 3, Quy định 1228/QyĐ - NHNo - KHCN ngày 21/5/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khách hàng có được phép chỉnh sửa hoặc hủy các giao dịch đã thực hiện qua hệ thống điện tử của Agribank không?",
+      "Options": [
+        "Có, nếu chưa quá 5 phút",
+        "Có, nếu giao dịch dưới 10 triệu đồng",
+        "Không được phép chỉnh sửa hoặc hủy",
+        "Có, nếu gọi tổng đài trong 10 phút"
+      ],
+      "Correct": "3",
+      "Citation": "Điều 3, Quy định 1228/QyĐ - NHNo - KHCN ngày 21/5/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 239/QĐ - NHNo - TTKH về quy trình dịch vụ Agripay, khách hàng nhận tiền có thể nhận tiền tại:",
+      "Options": [
+        "Tại chi nhánh, phòng giao dịch cùng tỉnh, thành phố với chi nhánh chuyển tiền đi",
+        "Tại chi nhánh, phòng giao dịch khác tỉnh, thành phố với chi nhánh chuyển tiền đi",
+        "Tại bất kỳ chi nhánh, phòng giao dịch thuộc hệ thống Agribank.",
+        "Tại chi nhánh, phòng giao dịch được chỉ định trên lệnh thanh toán"
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 6 Điều 2 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 239/QĐ - NHNo - TTKH về quy trình dịch vụ Agripay, người nhận tiền cần xuất trình những loại giấy tờ tùy thân nào sau đây để nhận tiền?",
+      "Options": [
+        "Chứng minh nhân dân, căn cước công dân hoặc hộ chiếu còn hiệu lực.",
+        "Sổ hộ khẩu",
+        "Giấy phép lái xe",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 8 Điều 2 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định tại Quyết định 239/QĐ - NHNo - TTKH của Agribank về quy trình dịch vụ Agripay, Chi nhánh chỉ được chi tiền cho người thụ hưởng khi nào?",
+      "Options": [
+        "Khách hàng cung cấp đầy đủ, chính xác mã số chuyển tiền",
+        "Khách hàng cung cấp giấy tờ tùy thân hợp lệ",
+        "Khách hàng cung cấp đầy đủ, chính xác thông tin trên phiếu nhận tiền, mã số chuyển tiền và Giấy tờ tùy thân hợp lệ",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 3 Điều 3 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 333/QĐ - NHNo - TTKH về giao dịch gửi, rút tiền nhiều nơi đối với khách hàng có tài khoản thanh toán, tài khoản tiền gửi tiết kiệm trong hệ thống Agribank và các văn bản sửa đổi, đồng tiền được phép gửi, rút tiền nhiều nơi bao gồm những đồng tiền nào?",
+      "Options": [
+        "VND",
+        "VND, USD",
+        "VND, USD, EUR",
+        "VND và ngoại tệ được phép giao dịch"
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 3 Điều 1 QĐ1782/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 205/QĐ - NHNo - TTKH về quy định cung ứng, quản lý và sử dụng dịch vụ kết nối thanh toán với khách hàng, khách hàng sử dụng dịch vụ là những đối tượng nào?",
+      "Options": [
+        "Cá nhân",
+        "Tổ chức kinh tế, cá nhân",
+        "Tổ chức kinh tế, Định chế tài chính được thành lập và hoạt động hợp pháp theo quy định của pháp luật Việt Nam",
+        "Không có đáp án nào đúng"
+      ],
+      "Correct": "3",
+      "Citation": "Điểm b khoản 2 Điều 1 QĐ 205/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định tại Quyết định 239/QĐ - NHNo - TTKH của Agribank về quy trình dịch vụ Agripay, chi nhánh phải xử lý đối với các giao dịch chuyển tiền Agri - pay sau thời gian bao lâu không có người nhận?",
+      "Options": [
+        "3 tháng",
+        "6 tháng",
+        "9 tháng",
+        "12 tháng"
+      ],
+      "Correct": "2",
+      "Citation": "Điều 9 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định tại Quyết định 333/QĐ - NHNo - TTKH quy định về giao dịch gửi, rút tiền nhiều nơi đối với khách hàng có tài khoản thanh toán, tài khoản tiền gửi tiết kiệm trong hệ thống Agribank và các văn bản sửa đổi, hạn mức rút tiền mặt của khách hàng tại hội sở chi nhánh loại I, loại II được áp dụng như thế nào?",
+      "Options": [
+        "Tối đa 1 tỷ đồng",
+        "Tối đa 5 tỷ đồng",
+        "Theo quy định của Tổng Giám đốc trong từng thời kỳ",
+        "Theo quy định của Giám đốc chi nhánh loại I"
+      ],
+      "Correct": "3",
+      "Citation": "Điểm a Khoản 5 Điều 3 QĐ 333/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy trình 2086/QĐ - NHNo - TTKH về Thu ngân sách nhà nước tại Agribank và các văn bản sửa đổi, khách hàng thực hiện nộp thuế là những đối tượng nào?",
+      "Options": [
+        "Cá nhân",
+        "Tổ chức",
+        "Tổ chức, cá nhân",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Điểm b Khoản 2 Điều 1 QĐ số 2086/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Loại tài khoản nào được rút tiền ngoại tệ tại quầy của chi nhánh khác chi nhánh mở tài khoản?",
+      "Options": [
+        "Tài khoản thanh toán của khách hàng cá nhân",
+        "Tài khoản thanh toán của khách hàng tổ chức",
+        "Tài khoản tiền gửi có kỳ hạn của khách hàng tổ chức",
+        "Cả 1 và 2"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 4 Điều 3 QĐ 333/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hạn mức giao dịch Agripay tại quầy tối đa là bao nhiêu tiền trên một giao dịch?",
+      "Options": [
+        "100 triệu đồng",
+        "200 triệu đồng",
+        "300 triệu đồng",
+        "400 triệu đồng"
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 1 Điều 6 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 239/QĐ - NHNo - TTKH về quy trình dịch vụ Agripay, khách hàng chuyển tiền qua các kênh giao dịch nào?",
+      "Options": [
+        "Quầy giao dịch của Agribank",
+        "Agribank Plus của Agribank",
+        "Tất cả các đáp án trên",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 10 Điều 2 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Chọn đáp án đúng nhất: Theo Quyết định 333/QĐ - NHNo - TTKH về giao dịch gửi, rút tiền nhiều nơi đối với khách hàng có tài khoản thanh toán, tài khoản tiền gửi tiết kiệm trong hệ thống Agribank và các văn bản sửa đổi, giao dịch rút tiền mặt, chuyển khoản, chuyển tiền được áp dụng đối với những loại sản phẩm tiền gửi nào sau đây?",
+      "Options": [
+        "Tài khoản tiền gửi thanh toán",
+        "Tài khoản Tiết kiệm không kỳ hạn, tiết kiệm gửi góp, tiết kiệm học đường",
+        "Tài khoản thanh toán, tài khoản tiết kiệm (sản phẩm có đặc tính rút nhiều lần)",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Điểm b khoản 2 Điều 4 QĐ 333/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 239/QĐ - NHNo - TTKH về quy trình dịch vụ Agripay, khi thực hiện điều chỉnh sai sót, Chi nhánh không được phép điều chỉnh yếu tố nào sau đây?",
+      "Options": [
+        "Số tiền chuyển",
+        "Tên khách hàng chuyển",
+        "Tên khách hàng nhận",
+        "Thông tin giấy tờ tùy thân của người chuyển và người nhận"
+      ],
+      "Correct": "1",
+      "Citation": "Điểm c Khoản 1 Điều 8 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 239/QĐ - NHNo - TTKH về quy trình dịch vụ Agripay, Mã số chuyển tiền bao gồm mấy chữ số?",
+      "Options": [
+        "04 Chữ số",
+        "06 Chữ số",
+        "08 Chữ số",
+        "10 Chữ số"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 9 Điều 2 QĐ 239/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định 333/QĐ - NHNo - TTKH về giao dịch gửi, rút tiền nhiều nơi đối với khách hàng có tài khoản thanh toán, tài khoản tiền gửi tiết kiệm trong hệ thống Agribank và các văn bản sửa đổi, giao dịch viên không được thực hiện giao dịch gửi rút nhiều nơi đối với trường hợp nào sau đây?",
+      "Options": [
+        "Tài khoản thanh toán đang bị phong tỏa, tạm khóa; tài khoản thanh toán chung, tài khoản tiền gửi tiết kiệm trong danh sách phong tỏa, cầm cố, thế chấp",
+        "Loại sản phẩm tiền gửi tiết kiệm không được rút trước hạn khi chưa đến hạn, tài khoản tiền gửi tiết kiệm đồng sở hữu",
+        "Thừa kế đối với khách hàng cá nhân",
+        "Tất cả các áp trên"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 7 Điều 4 QĐ 333/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định tại Quy trình số 1786/QTr - NHNo - TTKH ngày 26/6/2025, loại tiền tệ được sử dụng trong nghiệp vụ chuyển tiền đi đối với dịch vụ MoneyGram là loại tiền tệ nào?",
+      "Options": [
+        "USD, EUR,",
+        "VND, USD.",
+        "VND, USD, EUR.",
+        ""
+      ],
+      "Correct": "2",
+      "Citation": "Quy trình số 1786/QTr - NHNo - TTKH ngày 26/6/2025"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định hiện hành của Agribank về hồ sơ và hạn mức chuyển tiền ngoại tệ ra nước ngoài đối với khách hàng cá nhân, Giấy tờ chứng minh tư cách người đại diện theo pháp luật của cá nhân là:",
+      "Options": [
+        "Giấy tờ chứng minh quan hệ cha/mẹ với con chưa thành niên",
+        "Trích lục đăng ký giám hộ của Ủy ban Nhân dân cấp xã, hoặc Trích lục đăng ký giám hộ của Ủy ban Nhân dân cấp huyện (trường hợp đăng ký giám hộ có yếu tố nước ngoài)",
+        "Văn bản chỉ định Người đại diện của Tòa án",
+        "Tất cả các đáp án trên đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 18 Điều 2 Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định hiện hành của Agribank về hồ sơ và hạn mức chuyển tiền ngoại tệ ra nước ngoài đối với khách hàng cá nhân, khách hàng có thể xuất trình hồ sơ chuyển tiền tại đâu?",
+      "Options": [
+        "Trực tiếp tại Phòng giao dịch/Chi nhánh cấp II không được thanh toán quốc tế trực tiếp",
+        "Trực tiếp tại chi nhánh chuyển tiền (chi nhánh được phép thực hiện nghiệp vụ chuyển tiền quốc tế trực tiếp)",
+        "Trực tuyến tại hệ thống/chương trình do Agribank cung cấp về dịch vụ ngân hàng điện tử",
+        "Tất cả các đáp án trên đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Để đảm bảo khả năng thanh toán của Người chuyển tiền đối với nghiệp vụ chuyển tiền ngoại tệ cá nhân qua hệ thống SWIFT, nhận định nào sau đây là đúng?",
+      "Options": [
+        "Người chuyển tiền phải đảm bảo đủ số tiền yêu cầu chuyển đi và các khoản phí phát sinh (nếu có)",
+        "Người chuyển tiền cam kết nguồn tiền hợp pháp (nguồn vốn tự có; nguồn tiền vay của Agribank hoặc TCTD khác; nguồn tiền hợp pháp khác theo quy định của pháp luật)",
+        "Chi nhánh chuyển tiền phải kiểm tra khả năng thanh toán của Người chuyển tiền, đảm bảo đủ tiền trước khi thực hiện giao dịch",
+        "Tất cả các đáp án trên đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 1 Điều 5 QĐ 1403/QĐ - NHNo - TTKH ngày 09/07/2018"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Nguồn ngoại tệ chuyển ra nước ngoài của khách hàng là Người cư trú là công dân Việt Nam.",
+      "Options": [
+        "Khách hàng là Người cư trú là công dân Việt Nam chỉ được sử dụng VND mua ngoại tệ của Agribank để chuyển ra nước ngoài",
+        "Khách hàng là Người cư trú là công dân Việt Nam được sử dụng ngoại tệ tự có của cá nhân (ngoại tệ trên tài khoản thanh toán, tiền gửi có kỳ hạn bằng ngoại tệ, tiền gửi tiết kiệm bằng ngoại tệ, ngoại tệ tự cất giữ) hoặc mua của Agribank để chuyển ra nước ngoài",
+        "Khách hàng là Người cư trú là công dân Việt Nam chỉ được sử dụng ngoại tệ tự có của cá nhân để chuyển ra nước ngoài",
+        "Khách hàng là Người cư trú là công dân Việt Nam được sử dụng ngoại tệ tự có của cá nhân để chuyển ra nước ngoài thanh toán xuất nhập khẩu và ngoại tệ mua của Agribank để chuyển tiền một chiều ra nước ngoài"
+      ],
+      "Correct": "2",
+      "Citation": "Điều 35 Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Người cư trú là công dân Việt Nam được mua, chuyển ngoại tệ ra nước ngoài theo quy định của Ngân hàng Nhà nước Việt Nam cho các mục đích chuyển tiền một chiều nào nào sau đây?",
+      "Options": [
+        "Học tập, chữa bệnh ở nước ngoài; Đi công tác, du lịch, thăm viếng ở nước ngoài",
+        "Trả các loại phí, lệ phí cho nước ngoài; Trợ cấp cho thân nhân ở nước ngoài",
+        "Chuyển tiền thừa kế cho người hưởng thừa kế ở nước ngoài; Chuyển tiền trong trường hợp định cư ở nước ngoài",
+        "Tất cả các đáp án trên đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 13, 14, 15, 16, 17, 19 Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Đối với nghiệp vụ chuyển tiền ngoại tệ cá nhân trên hệ thống ARS, Mã số giao dịch được hiểu là:",
+      "Options": [
+        "Là chuỗi ký hiệu gồm các ký tự chữ cái và/hoặc số được sử dụng để giúp Agribank, Đối tác, Người chuyển tiền và Người nhận tiền nhận biết chính xác giao dịch chuyển tiền. Mỗi mã số giao dịch là bí mật và duy nhất",
+        "Là chuỗi các số và/hoặc chữ cái theo tên của khách hàng được sử dụng để nhận biết giao dịch nhận tiền kiều hối tại Agribank. Mỗi mã số giao dịch là bí mật và duy nhất",
+        "Là chuỗi các chữ cái theo tên của khách hàng được sử dụng để nhận biết giao dịch nhận tiền kiều hối tại Agribank",
+        "Là chuỗi các chữ cái theo họ tên khách hàng hoặc số theo giấy tờ tùy thân của khách hàng được sử dụng để nhận biết giao dịch nhận tiền kiều hối tại Agribank. Mỗi mã số giao dịch là bí mật và duy nhất"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 2 Điều 2 QĐ 1381/QĐ - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định hiện hành của Agribank, chi nhánh xử lý giao dịch kiều hối qua Western Union và Money Gram trên hệ thống nào?",
+      "Options": [
+        "Host To Host",
+        "IPCAS",
+        "ARS",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Điều 2 Quy trình 1786/QTr - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Quy định cung cấp chứng từ đối với hồ sơ giao dịch của khách hàng được sử dụng để chuyển tiền nhiều lần đối với nghiệp vụ chuyển tiền ngoại tệ cá nhân ra nước ngoài tại Agribank là:",
+      "Options": [
+        "Khách hàng phải cung cấp đủ hồ sơ của tất cả các lần giao dịch",
+        "Khách hàng không cần cung cấp lại các chứng từ còn hiệu lực đã có trong hồ sơ giao dịch của những lần chuyển tiền trước đó",
+        "Khách hàng chỉ cần cung cấp hồ sơ giao dịch cho lần đầu tiên, không cần cung cấp hồ sơ trong những lần chuyển tiền tiếp theo",
+        ""
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 2 Điều 5 Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định hiện hành về chuyển tiền ngoại tệ cá nhân ra nước ngoài, mục đích chuyển tiền thanh toán cho mục đích công tác, du lịch, thăm viếng ở nước ngoài áp dụng cho đối tượng khách hàng nào sau đây?",
+      "Options": [
+        "Người đi công tác, du lịch, thăm viếng là Người cư trú có quốc tịch Việt Nam.",
+        "Người nước ngoài đến Việt Nam công tác, du lịch, thăm viếng",
+        "Người không cư trú đi công tác du lịch, thăm viếng tại nước ngoài",
+        "Tất cả đáp án trên."
+      ],
+      "Correct": "1",
+      "Citation": "Điều 19 Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023, , người chuyển tiền trong giao dịch chuyển tiền ra nước ngoài để nộp học phí là những đối tượng nào?",
+      "Options": [
+        "Du học sinh/Người đại diện theo pháp luật của du học sinh",
+        "Thân nhân của du học sinh/Người đại diện theo pháp luật của thân nhân du học sinh",
+        "Người được du học sinh/thân nhân của du học sinh ủy quyền",
+        "Tất cả các đáp án trên đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 13 Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023, hạn mức chuyển tiền cho mục đích định cư được xác định là:",
+      "Options": [
+        "Mức ngoại tệ tối đa cá nhân được phép mang qua cửa khẩu quốc tế mà không phải khai báo hải quan",
+        "Mức ngoại tệ tối thiểu cá nhân được phép mang qua cửa khẩu quốc tế mà phải khai báo hải quan",
+        "Theo đề nghị của khách hàng và phù hợp với Giấy tờ chứng minh nguồn gốc của số tiền chuyển",
+        "Mức thu nhập bình quân đầu người theo giá hiện hành của quốc gia nơi khách hàng định cư"
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 3 Điều 17 QĐ 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023, người chuyển tiền tại Việt Nam có thể chuyển chi phí học tập của du học sinh cho người hưởng là những đối tượng nào?",
+      "Options": [
+        "Du học sinh/người đại diện theo pháp luật ở nước ngoài của du học sinh",
+        "Cơ sở đào tạo nước ngoài",
+        "Cơ sở cung cấp dịch vụ liên quan đến học tập ở nước ngoài",
+        "Tất cả các đáp án trên đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 5 Điều 13 Quy trình 3110/QTr - NHNo - TTKH ngày 14/12/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy trình 1786/QTr - NHNo - TTKH, Loại tiền nào được sử dụng để chi trả dịch vụ Western Union và MoneyGram?",
+      "Options": [
+        "Đồng Việt Nam (VND)",
+        "Đô la Mỹ (USD)",
+        "Cả 1 và 2",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Điều 7 Quy trình 1786/QTr - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Thời gian giao dịch của dịch vụ Western Union và Money Gram tại Điểm giao dịch trên hệ thống là:",
+      "Options": [
+        "07h00 đến 17h00 các ngày làm việc trong tuần.",
+        "09h00 đến 16h00 các ngày làm việc trong tuần.",
+        "07h00 đến 17h00 các ngày làm việc trong tuần, trừ những Điểm giao dịch đăng ký thời gian giao dịch khác với thời gian trên hệ thống",
+        "08h00 đến 16h00 các ngày làm việc trong tuần, trừ những Điểm giao dịch đăng ký thời gian giao dịch khác với thời gian trên hệ thống"
+      ],
+      "Correct": "3",
+      "Citation": "Điều 6 Quy trình 1786/QTr - NHNo - TTKH"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khi gửi tiền gửi tiết kiệm chung, người nào phải trực tiếp đến địa điểm giao dịch của Agribank?",
+      "Options": [
+        "Tất cả người gửi tiền",
+        "Người được ủy quyền",
+        "Người đứng tên trên sổ tiết kiệm chung",
+        "Ít nhất 02 người gửi tiền"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 1 Điều 11 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khi rút tiền gửi tiết kiệm, người gửi tiền phải xuất trình giấy tờ xác minh thông tin của tất cả người gửi tiền trong trường hợp nào?",
+      "Options": [
+        "Tiền gửi tiết kiệm của nhiều người gửi tiền/một người gửi tiền",
+        "Tiền gửi tiết kiệm chung",
+        "Tiền gửi tiết kiệm chung thỏa thuận tất cả người gửi tiền cùng thực hiện",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Tiết 1.2 Khoản 1 Điều 19 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Việc cấp lại thẻ tiết kiệm mới trong trường hợp Thẻ tiết kiệm bị mất, hỏng được thực hiện tại đâu?",
+      "Options": [
+        "Các chi nhánh, phòng giao dịch Agribank",
+        "Agribank nơi mở thẻ tiết kiệm",
+        "Agribank nơi giao dịch",
+        "Chi nhánh nơi khách hàng mở tài khoản thanh toán"
+      ],
+      "Correct": "2",
+      "Citation": "Điểm b Tiết 1.1 Khoản 1 và điểm c Tiết 1.2 Khoản 1 Điều 23 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định số 656/QĐ - HĐTV - KHNV, khách hàng nào dưới đây không thuộc đối tượng gửi tiền gửi có kỳ hạn?",
+      "Options": [
+        "Người cư trú là tổ chức, cá nhân",
+        "Cơ quan đại diện ngoại giao, lãnh sự, cơ quan đại diện của tổ chức quốc tế tại Việt Nam; Văn phòng đại diện, văn phòng dự án của các tổ chức nước ngoài tại Việt Nam",
+        "Cá nhân nước ngoài được phép cư trú tại Việt Nam với thời hạn dưới 6 (sáu) tháng.",
+        "Công dân Việt Nam đi du lịch, học tập, chữa bệnh và thăm viếng ở nước ngoài"
+      ],
+      "Correct": "3",
+      "Citation": "Điều 3 Quyết định số 656/QĐ - HĐTV - KHNV ngày 15/8/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Đối với TGTK có kỳ hạn trả lãi sau, trường hợp người gửi tiền rút TGTK trước hạn, tiền lãi rút trước hạn được tính trên cơ sở nào?",
+      "Options": [
+        "Tính trên cơ sở số dư, số ngày duy trì số dư tiền gửi thực tế, hình thức trả lãi và mức lãi suất rút trước hạn TGTK.",
+        "Tính trên số ngày thực tế gửi.",
+        "Tính trên số ngày thực tế gửi và mức lãi suất trên sổ.",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 2 Điều 18 Quyết định 2209/QĐ - NHNo - KHNV"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Tiền lãi tiền gửi tiết kiệm được tính trên cơ sở nào?",
+      "Options": [
+        "Số dư và lãi suất tiền gửi tiết kiệm tại ngày gửi tiền tùy theo đặc tính của từng loại sản phẩm tiền gửi tiết kiệm",
+        "Số dư, lãi suất và số ngày duy trì số dư tiền gửi thực tế tùy theo đặc tính của từng loại sản phẩm tiền gửi tiết kiệm",
+        "Số dư và lãi suất tiền gửi tiết kiệm tại ngày đến hạn tùy theo đặc tính của từng loại sản phẩm tiền gửi tiết kiệm",
+        ""
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 2 Điều 4 Quyết định 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định về tiền gửi tiết kiệm trong hệ thống Agribank, số ngày duy trì số dư tiền gửi thực tế được xác định như thế nào?",
+      "Options": [
+        "Được tính từ ngày người gửi tiền gửi tiền vào Agribank đến ngày người gửi tiền rút tiền (tính ngày đầu và ngày cuối)",
+        "Được tính từ sau ngày người gửi tiền gửi tiền vào Agribank đến hết ngày liền kề trước ngày người gửi tiền rút tiền (bỏ ngày đầu, tính ngày cuối)",
+        "Được tính từ ngày người gửi tiền gửi tiền vào Agribank đến hết ngày liền kề trước ngày người gửi tiền rút tiền (tính ngày đầu, bỏ ngày cuối)",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 2 Điều 4 Quyết định 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank quy định phương thức trả lãi đối với tiền gửi tiết kiệm không kỳ hạn như thế nào?",
+      "Options": [
+        "Lãi được chi trả (hoặc nhập gốc) hàng tháng và vào ngày tất toán tài khoản",
+        "Lãi được chi trả vào ngày khách hàng gửi tiền",
+        "Lãi được chi trả định kỳ cho khách hàng vào ngày đầu tháng",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 3 Điều 4 Quyết định 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Cấp nào tại Agribank quy định biểu phí đối với các giao dịch tiền gửi tiết kiệm, dịch vụ liên quan đến tiền gửi tiết kiệm?",
+      "Options": [
+        "Chủ tịch Hội đồng thành viên",
+        "Hội đồng thành viên",
+        "Trưởng Ban Kế hoạch chiến lược",
+        "Tổng Giám đốc"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 5 Quyết định 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank cấp lại Thẻ tiết kiệm cho người gửi tiền trong thời gian bao lâu kể từ ngày người gửi tiền hoàn tất thủ tục báo mất Thẻ tiết kiệm (trường hợp các thông tin được xác định đúng, đầy đủ, không có tranh chấp, khiếu kiện)?",
+      "Options": [
+        "Sau 3 ngày làm việc.",
+        "Sau 5 ngày làm việc.",
+        "Sau 7 ngày làm việc.",
+        "Sau 10 ngày làm việc."
+      ],
+      "Correct": "4",
+      "Citation": "Điều 23 Quyết định 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019 của Agribank, đồng tiền chi trả tiền gửi tiết kiệm là loại nào?",
+      "Options": [
+        "VND và USD",
+        "Người gửi tiền gửi tiết kiệm bằng đồng tiền nào thì được chi trả tiền gửi tiết kiệm (gốc và lãi) bằng đồng tiền đó",
+        "Người gửi tiền gửi tiết kiệm bằng ngoại tệ được rút ra bằng đồng Việt Nam",
+        "Theo yêu cầu của người gửi tiền"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 14 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank thực hiện chấm dứt việc phong tỏa tiền gửi tiết kiệm khi:",
+      "Options": [
+        "Khách hàng báo mất Thẻ tiết kiệm",
+        "Theo đề nghị bằng văn bản của tổ chức nhận bảo đảm bằng số dư tiền gửi tiết kiệm đối với trường hợp tài sản bảo đảm được giải chấp",
+        "Agribank nhận được văn bản thông báo người gửi tiền mất tích",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 và 2, Điều 25 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Vào ngày đến hạn trả lãi, nếu khách hàng không đến nhận và không có yêu cầu nào khác, tùy theo từng loại sản phẩm tiền gửi tiết kiệm, lãi tiền gửi tiết kiệm có thể:",
+      "Options": [
+        "Nhập gốc và tiếp tục hưởng lãi",
+        "Không được trả lãi",
+        "Chuyển vào tài khoản thanh toán của người gửi tiền",
+        "Cả 1 và 3 đều đúng"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 4 Điều 4 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định, Agribank có thể nhận tiền gửi tiết kiệm đối với loại tiền nào?",
+      "Options": [
+        "VND, USD và JPY",
+        "VND, USD và EUR",
+        "VND, USD và GBP",
+        ""
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 7 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định của Agribank, thủ tục chuyển quyền sở hữu tiền gửi tiết kiệm được thực hiện tại đâu?",
+      "Options": [
+        "Các chi nhánh, phòng giao dịch Agribank",
+        "Agribank nơi mở Thẻ tiết kiệm",
+        "Trên ứng dụng Agribank Plus",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 22 Quyết định số 2209/QĐ - NHNo - KHNV ngày 18/10/2019"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank không được cấp tín dụng đối với trường hợp nào?",
+      "Options": [
+        "Cấp tín dụng để góp vốn, mua cổ phần của tổ chức tín dụng.",
+        "Cấp tín dụng trên cơ sở nhận bảo đảm bằng cổ phiếu của TCTD.",
+        "Cấp tín dụng cho người thẩm định, đề xuất và xét duyệt cấp tín dụng.",
+        "Cả 1 và 2."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 5, 6 Điều 22 QC 656/QC - HĐTV - TD được sửa đổi, bổ sung tại QC 579/QC - HĐTV - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định hiện hành của Agribank, Thỏa thuận cho vay được quy định như thế nào?",
+      "Options": [
+        "Thỏa thuận cho vay phải được ký kết bởi người đại diện có thẩm quyền của Agribank và khách hàng.",
+        "Thỏa thuận cho vay phải được giao kết bởi người đại diện có thẩm quyền của Agribank và khách hàng theo quy định của pháp luật.",
+        "Thỏa thuận cho vay được ký kết bởi người đại diện có thẩm quyền theo quy định của pháp luật của Agribank và khách hàng.",
+        "Thỏa thuận cho vay được ký kết bởi người đại diện của Agribank và khách hàng."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 17 QC 656/QC - HĐTV - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Agribank xem xét quyết định việc cơ cấu lại thời hạn trả nợ trên cơ sở nào?",
+      "Options": [
+        "Đề nghị của khách hàng và kết quả đánh giá khả năng trả nợ của khách hàng là có khả năng trả nợ đầy đủ nợ gốc và/hoặc lãi tiền vay theo kỳ hạn, thời hạn trả nợ sau khi cơ cấu lại thời hạn trả nợ.",
+        "Đề nghị của khách hàng, phù hợp với khả năng tài chính của Agribank và kết quả đánh giá khả năng trả nợ của khách hàng là có khả năng trả nợ đầy đủ nợ gốc và/hoặc lãi tiền vay theo kỳ hạn, thời hạn trả nợ sau khi cơ cấu lại thời hạn trả nợ.",
+        "Đề nghị của khách hàng, khả năng tài chính của khách hàng và kết quả đánh giá là có khả năng trả nợ đầy đủ nợ gốc và/hoặc lãi tiền vay theo kỳ hạn, thời hạn trả nợ sau khi cơ cấu lại thời hạn trả nợ.",
+        "Đề nghị của Người quản lý nợ và khả năng tài chính của khách hàng."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 40 QC 656/QC - HĐTV - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định của Agribank, cho vay phục vụ nhu cầu đời sống là như thế nào?",
+      "Options": [
+        "Agribank cho vay đối với khách hàng là cá nhân để thanh toán các chi phí cho mục đích tiêu dùng, sinh hoạt của cá nhân, gia đình của cá nhân đó.",
+        "Agribank cho vay đối với khách hàng là cá nhân để thanh toán các chi phí cho mục đích tiêu dùng, sinh hoạt của cá nhân.",
+        "Agribank cho vay đối với khách hàng là cá nhân để thanh toán các chi phí cho mục đích tiêu dùng, sinh hoạt của hộ gia đình.",
+        "Agribank cho vay đối với khách hàng là cá nhân để thanh toán các chi phí cho mục đích kinh doanh của cá nhân, gia đình của cá nhân đó."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 6 Điều 2 QC 656/QC - HĐTV - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Đối với cho vay trung, dài hạn thực hiện đầu tư phục vụ hoạt động kinh doanh, giải ngân vốn đối ứng là giá trị ngày công tự làm, tài sản khác của khách hàng cá nhân tham gia thực hiện như thế nào?",
+      "Options": [
+        "Tài sản khác thực hiện theo tiến độ kế hoạch, phần vốn đối ứng còn lại giải ngân trước khi giải ngân vốn vay.",
+        "Chi phí ngày công thực hiện theo tiến độ kế hoạch, phần vốn đối ứng còn lại giải ngân trước khi giải ngân vốn vay.",
+        "Chi phí ngày công, tài sản khác thực hiện theo tiến độ kế hoạch, phần vốn đối ứng còn lại giải ngân trước khi giải ngân vốn vay.",
+        "Chi phí ngày công, tài sản khác thực hiện theo tiến độ kế hoạch, phần vốn đối ứng còn lại giải ngân sau khi giải ngân vốn vay."
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 4 Điều 56 QyĐ 2268/QyĐ - NHNo - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Người có liên quan của khách hàng KHÔNG bao gồm trường hợp nào sau đây?",
+      "Options": [
+        "Cha dượng, mẹ kế của khách hàng.",
+        "Anh, chị, em ruột của khách hàng.",
+        "Cháu ngoại của khách hàng.",
+        "Em họ, anh họ của khách hàng."
+      ],
+      "Correct": "4",
+      "Citation": "Điều 1 khoản 1 điểm b Quy chế 579/QC - HĐTV - TD bổ sung khoản 37, 38 - Quy chế 656/QC - HĐTV - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025, \"Khách hàng trẻ tuổi\" được hiểu là:",
+      "Options": [
+        "Là cán bộ, công chức nhà nước tuổi đời không quá 35 tuổi (theo ngày tháng năm sinh) tính đến thời điểm quyết định cho vay.",
+        "Là công chức, viên chức, người lao động không quá 35 tuổi (theo ngày tháng năm sinh) tính đến thời điểm quyết định cho vay.",
+        "Là công chức, viên chức, người lao động dưới 35 tuổi (theo ngày tháng năm sinh) tính đến thời điểm quyết định cho vay.",
+        "Là cán bộ, người lao động dưới 35 tuổi (theo ngày tháng năm sinh) tính đến thời điểm quyết định cho vay."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1, Điều 3 Quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025."
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025, Khách hàng phải đáp ứng điều kiện nào về lịch sử tín dụng?",
+      "Options": [
+        "Không có nợ quá hạn tại Agribank trong 06 tháng gần nhất.",
+        "Không có nợ xấu tại Agribank và các tổ chức tín dụng khác trong 03 năm gần nhất.",
+        "Không có nợ đã xử lý rủi ro tại bất kỳ tổ chức tín dụng nào.",
+        "Không có nợ xấu tại Agribank và các tổ chức tín dụng khác trong 01 năm gần nhất tính đến thời điểm quyết định cho vay; không có nợ đã xử lý rủi ro, nợ đã bán cho VAMC, DATC tại Agribank và các tổ chức tín dụng khác tại thời điểm thẩm định, quyết định cho vay."
+      ],
+      "Correct": "4",
+      "Citation": "Điểm b, Khoản 1, Điều 4 Quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025."
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025, tổng dư nợ cho vay tối đa đối với một khách hàng là bao nhiêu?",
+      "Options": [
+        "Không vượt quá 05 tỷ đồng.",
+        "Không vượt quá 01 tỷ đồng.",
+        "Không vượt quá 03 tỷ đồng.",
+        "Không vượt quá 36 tháng lương."
+      ],
+      "Correct": "1",
+      "Citation": "Điều 8 Quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025, thời hạn cho vay tối đa đối với KH trẻ tuổi vay mua nhà ở là:",
+      "Options": [
+        "Tối đa không quá 25 năm và khách hàng không vượt quá tuổi nghỉ hưu theo quy định của Bộ Luật Lao động tại thời điểm tất toán khoản vay.",
+        "Tối đa không quá 30 năm và khách hàng không vượt quá tuổi nghỉ hưu theo quy định của Bộ Luật Lao động tại thời điểm tất toán khoản vay.",
+        "Tối đa không quá 35 năm và khách hàng không vượt quá tuổi nghỉ hưu theo quy định của Bộ Luật Lao động tại thời điểm tất toán khoản vay.",
+        "Tối đa không quá 40 năm và khách hàng không vượt quá tuổi nghỉ hưu theo quy định của Bộ Luật Lao động tại thời điểm tất toán khoản vay."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 1 Điều 9 Quy định số 999/QĐ - NHNo - KHCN ngày 26/3/2025"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định cho vay đối với khách hàng cá nhân mua ô tô phục vụ nhu cầu đời sống, mức cho vay tối đa 70% giá trị xe áp dụng dối với Tài sản bảo đảm nào sau đây?",
+      "Options": [
+        "Tài sản bảo đảm hình thành từ vốn vay là xe ô tô mới.",
+        "Tài sản bảo đảm hình thành từ vốn vay là xe ô tô đã qua sử dụng từ trên 01 tháng đến dưới 06 tháng.",
+        "Bất động sản/tài sản có tính thanh khoản cao.",
+        "Tất cả các đáp án trên."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 2 Điều 6 QĐ 1009/QyĐ - NHNo - KHCN ngày 26/3/2025"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trong Hướng dẫn cho vay khách hàng pháp nhân trả nợ trước hạn khoản vay tại tổ chức tín dụng khác, thời hạn cho vay tối đa được xác định như thế nào?",
+      "Options": [
+        "Không vượt quá thời hạn cho vay của khoản vay tại TCTD đã cho vay.",
+        "Không vượt quá 01 tỷ đồng.",
+        "Không vượt quá 03 tỷ đồng.",
+        "Không vượt quá thời hạn cho vay còn lại của khoản vay tại TCTD đã cho vay."
+      ],
+      "Correct": "4",
+      "Citation": "Điều 7 Hướng dẫn 12868/HD - NHNo - KHDN ngày 02/11/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trong Quy định cho vay đối với khách hàng cá nhân mua ô tô phục vụ nhu cầu đời sống, thời hạn cho vay được quy định như thế nào?",
+      "Options": [
+        "Tối đa 07 năm áp dụng đối với khoản vay có TSBĐ là Bất động sản/tài sản có tính thanh khoản cao.",
+        "Tối đa 05 năm áp dụng đối với khoản vay có TSBĐ hình thành từ vốn vay là xe ô tô.",
+        "Từ 05 đến 07 năm áp dụng đối với khoản vay có TSBĐ hình thành từ vốn vay là xe ô tô mới mua lần đầu.",
+        "Đáp án 1 và 2"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 1 Điều 5 Quy định số 1009/QĐ - NHNo - KHCN ngày 26/3/2025"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khi thực hiện tạm ngừng cho vay, chấm dứt cho vay, thu hồi nợ trước hạn Agribank nơi cho vay thông báo cho khách hàng tối thiểu nội dung gì?",
+      "Options": [
+        "Thời điểm tạm ngừng/chấm dứt cho vay, thu hồi nợ trước hạn; số dư nợ gốc bị thu hồi trước hạn; thời hạn hoàn trả số dư nợ gốc bị thu hồi trước hạn; thời điểm chuyển nợ quá hạn và lãi suất áp dụng đối với số dư nợ gốc bị thu hồi trước hạn; các biện pháp sẽ áp dụng để thu hồi nợ cho vay.",
+        "Không cần thông báo cho khách hàng.",
+        "Thông báo cho khách hàng lý do.",
+        "Các loại phí áp dụng đối với khoản vay."
+      ],
+      "Correct": "1",
+      "Citation": "Điểm a Khoản 3 Điều 62 QyĐ 2268/QyĐ - NHNo - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Ân hạn là gì?",
+      "Options": [
+        "Là khoảng thời gian kể từ ngày khách hàng nhận tiền vay cho đến hết ngày bắt đầu của kỳ trả nợ gốc đầu tiên.",
+        "Là khoảng thời gian kể từ ngày khách hàng nhận tiền vay lần đầu tiên cho đến hết ngày trước liền kề ngày bắt đầu của kỳ trả nợ gốc đầu tiên.",
+        "Là khoảng thời gian kể từ ngày khách hàng nhận tiền vay lần đầu tiên cho đến ngày bắt đầu của kỳ trả nợ gốc đầu tiên.",
+        "Tất cả đáp án trên."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 3 Điều 2 QC 656/QC - HĐTV - TD"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định về thu nợ thẻ tín dụng TRONG HẠN, thứ tự ưu tiên thanh toán nào sau đây là đúng?",
+      "Options": [
+        "Lãi - > Các khoản phí - > Dư nợ ứng tiền mặt và thanh toán hàng hóa dịch vụ",
+        "Các khoản phí - > Lãi - > Dư nợ ứng tiền mặt và thanh toán hàng hóa dịch vụ",
+        "Dư nợ gốc - > Lãi - > Các khoản phí",
+        "Các khoản phí - > Dư nợ gốc - > Lãi"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 11 Quy định 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Các khoản phí được ưu tiên thu đầu tiên khi thanh toán dư nợ thẻ tín dụng bao gồm những loại nào?",
+      "Options": [
+        "Phí thường niên, phí ứng tiền mặt, phí chuyển đổi ngoại tệ, phí chậm trả...",
+        "Phí thẩm định hồ sơ, phí bảo hiểm thẻ",
+        "Phí duy trì tài khoản thanh toán của chủ thẻ",
+        "Phí tin nhắn SMS và phí chuyển khoản nội bộ"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 1 & 2 Điều 11 Quy định 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Loại thẻ nào sau đây không cho phép phát hành thẻ phụ?",
+      "Options": [
+        "Thẻ tín dụng quốc tế Visa hạng chuẩn.",
+        "Thẻ tín dụng quốc tế Visa hạng Vàng.",
+        "Thẻ tín dụng quốc tế JCB hạng Bạch Kim.",
+        "Thẻ công ty."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 7 Điều 2 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Thẻ nào sau đây là thẻ quốc tế?",
+      "Options": [
+        "Thẻ mang nhãn hiệu Success.",
+        "Thẻ mang nhãn hiệu Lộc Việt.",
+        "Thẻ mang nhãn hiệu JCB.",
+        "Thẻ liên kết sinh viên."
+      ],
+      "Correct": "3",
+      "Citation": "Điều 3 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Thẻ nào sau đây không thuộc nhóm sản phẩm Thẻ của Agribank?",
+      "Options": [
+        "Thẻ ghi nợ",
+        "Thẻ Tín dụng.",
+        "Thẻ phi vật lý.",
+        "Thẻ mua sắm."
+      ],
+      "Correct": "4",
+      "Citation": "Điều 3 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hiện tại Agribank đang có sản phẩm thẻ tín dụng mang thương thiệu JCB với hạng nào?",
+      "Options": [
+        "Hạng chuẩn và hạng vàng.",
+        "Hạng vàng và hạng bạch kim.",
+        "Hạng vàng và hạng kim cương.",
+        "Hạng kim cương."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 2 Điều 3 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hiện tại Agribank phát hành thẻ tín dụng nội địa nào?",
+      "Options": [
+        "Lộc Việt.",
+        "Visa.",
+        "MasterCard.",
+        "Tất cả các đáp án trên."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 2 Điều 3 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Yếu tố bảo mật CVV2 có mặt trên loại thẻ nào do Agribank phát hành?",
+      "Options": [
+        "Visa.",
+        "MasterCard.",
+        "JCB.",
+        "Success."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 1 Điều 4 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Yếu tố bảo mật CAV2 có mặt trên loại thẻ nào do Agribank phát hành?",
+      "Options": [
+        "Visa.",
+        "MasterCard.",
+        "JCB.",
+        "Success."
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 1 Điều 4 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Yếu tố nào sau đây không có mặt trên thẻ phi vật lý của Agribank?",
+      "Options": [
+        "Tên thương hiệu và/hoặc Logo của Agribank.",
+        "Dải chữ ký.",
+        "Số thẻ.",
+        "Họ, tên chủ thẻ."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 4 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hãy cho biết thời hạn hiệu lực của Thẻ liên kết thương hiệu?",
+      "Options": [
+        "Tối đa 03 năm kể từ ngày phát hành.",
+        "Tối đa 05 năm kể từ ngày phát hành.",
+        "Tối đa 02 năm kể từ ngày phát hành.",
+        "Tối đa 01 năm kể từ ngày phát hành."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 5 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hãy cho biết thời hạn hiệu lực của Thẻ ghi nợ nội địa hạng chuẩn?",
+      "Options": [
+        "03 năm kể từ ngày phát hành.",
+        "05 năm kể từ ngày phát hành.",
+        "02 năm kể từ ngày phát hành.",
+        "06 năm kể từ ngày phát hành."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 1 Điều 5 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hãy cho biết thời hạn hiệu lực của Thẻ ghi nợ nội địa Lộc Việt?",
+      "Options": [
+        "03 năm kể từ ngày phát hành.",
+        "05 năm kể từ ngày phát hành.",
+        "02 năm kể từ ngày phát hành.",
+        "04 năm kể từ ngày phát hành."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 5 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Thời hạn hiệu lực của thẻ Lập nghiệp là bao lâu?",
+      "Options": [
+        "2 năm kể từ ngày phát hành.",
+        "3 năm kể từ ngày phát hành.",
+        "4 năm kể từ ngày phát hành.",
+        "5 năm kể từ ngày phát hành."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 1 Điều 5 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hãy cho biết thời hạn hiệu lực của Thẻ liên kết sinh viên?",
+      "Options": [
+        "Tối thiểu 02 năm và phù hợp với thời gian đào tạo theo khóa học của trường.",
+        "Tối thiểu 03 năm và phù hợp với thời gian đào tạo theo khóa học của trường.",
+        "Tối thiểu 04 năm và phù hợp với thời gian đào tạo theo khóa học của trường.",
+        "Tối thiểu 05 năm và phù hợp với thời gian đào tạo theo khóa học của trường."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 1 Điều 5 Quy Định số 2239/QyĐ - NHNo - TTT ngày 31/7/2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Điền vào chỗ trống bằng đáp án đúng nhất: \" … là việc Ngân hàng Nhà nước Việt Nam áp dụng các yêu cầu, biện pháp hạn chế đối với tổ chức tín dụng và yêu cầu tổ chức tín dụng đó thực hiện phương án khắc phục dưới sự giám sát của Ngân hàng Nhà nước nhằm khắc phục tình trạng xếp hạng dưới mức trung bình theo quy định của Thống đốc Ngân hàng Nhà nước\"",
+      "Options": [
+        "Can thiệp sớm.",
+        "Áp dụng biện pháp hạn chế.",
+        "Giám sát.",
+        "Tất cả các đáp án trên."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 3 Điều 4, Khoản 1 Điều 156, Luật các TCTD 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định của Luật các Tổ chức tín dụng, thế nào là tài khoản thanh toán?",
+      "Options": [
+        "Là tài khoản tiền gửi không kỳ hạn của khách hàng mở tại ngân hàng, chi nhánh ngân hàng nước ngoài để sử dụng dịch vụ thanh toán do ngân hàng, chi nhánh ngân hàng nước ngoài cung ứng.",
+        "ÀL tài khoản tiết kiệm do ngân hàng cấp cho khách hàng có nhu cầu gửi tiền tiết kiệm tại ngân hàng.",
+        "Là tài khoản tiền gửi không kỳ hạn tại ngân hàng, không sử dụng đồng Việt Nam.",
+        "Là tài khoản được ngân hàng cấp cho khách hàng khi mở thẻ tín dụng."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 35 Điều 4, Luật các TCTD 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Luật các Tổ chức tín dụng, vốn pháp định là gì?",
+      "Options": [
+        "Là mức vốn tối thiểu phải có theo quy định của pháp luật để thành lập tổ chức tín dụng, chi nhánh ngân hàng nước ngoài.",
+        "Là hành vi của tổ chức, cá nhân nhằm hợp pháp hóa nguồn gốc của tài sản do phạm tội mà có.",
+        "Là mức vốn tối thiểu cần có để duy trì hoạt động thường xuyên của tổ chức tín dụng.",
+        "Là số vốn tối đa mà tổ chức tín dụng được phép huy động trong năm tài chính đầu tiên."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 44, Điều 4, Luật các TCTD 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định của Bộ luật Dân sự 2015, quyền sử dụng:",
+      "Options": [
+        "Là quyền khai thác công dụng, hưởng hoa lợi, lợi tức từ tài sản.",
+        "Có thể được chuyển giao cho người khác theo thỏa thuận hoặc theo quy định của pháp luật.",
+        "Cả 1 và 2 đều đúng.",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Điều 189 Bộ luật Dân sự 2015"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trường hợp nào sau đây là Người có liên quan theo quy định của Luật các tổ chức tín dụng hiện hành?",
+      "Options": [
+        "Công ty hoặc tổ chức tín dụng với người quản lý, kiểm soát viên, thành viên Ban kiểm soát của công ty hoặc tổ chức tín dụng đó hoặc với công ty, tổ chức có thẩm quyền bổ nhiệm những người đó và ngược lại.",
+        "Công ty hoặc tổ chức tín dụng với tổ chức, cá nhân sở hữu từ 05% vốn điều lệ hoặc vốn cổ phần có quyền biểu quyết trở lên tại công ty hoặc tổ chức tín dụng đó và ngược lại.",
+        "Pháp nhân, cá nhân khác có mối quan hệ tiềm ẩn rủi ro cho hoạt động của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài được xác định theo quy định nội bộ của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài hoặc theo yêu cầu bằng văn bản của Ngân hàng Nhà nước thông qua hoạt động thanh tra, giám sát.",
+        "Tất cả các đáp án trên."
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 24 Điều 4 Luật các TCTD 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Người điều hành của tổ chức tín dụng là ai theo quy định của Luật các tổ chức tín dụng hiện hành?",
+      "Options": [
+        "Tổng Giám đốc (Giám đốc), Phó Tổng Giám đốc (Phó giám đốc), Kế toán trưởng, Giám đốc chi nhánh và các chức danh tương đương theo quy định tại Điều lệ của tổ chức tín dụng.",
+        "Chủ tịch, thành viên khác của Hội đồng thành viên.",
+        "Thống đốc Ngân hàng Nhà nước.",
+        "Người được Thống đốc Ngân hàng Nhà nước ủy quyền điều hành tổ chức tín dụng."
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 26 Điều 4 Luật các TCTD 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Luật Phòng, chống rửa tiền năm 2022, \"rửa tiền\" được định nghĩa là:",
+      "Options": [
+        "Là việc biến đổi thu nhập phi pháp thành tài sản mà các cơ quan công quyền không thể truy ra nguồn gốc phi pháp ấy.",
+        "Là hành vi của tổ chức, cá nhân nhằm hợp pháp hóa nguồn gốc của tài sản do phạm tội mà có.",
+        "Là việc hợp pháp hóa tài sản có được trực tiếp hoặc gián tiếp từ hành vi phạm tội.",
+        "Là hợp pháp hóa phần thu nhập, hoa lợi, lợi tức, lợi nhuận sinh ra từ tài sản có được từ hành vi phạm tội."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 3 Luật Phòng, chống rửa tiền năm 2022"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Luật Phòng, chống rửa tiền năm 2022, thông tin nhận dạng khách hàng tổ chức bao gồm cả thông tin của những người có liên quan nào sau đây?",
+      "Options": [
+        "Thông tin về người thành lập, người đại diện theo pháp luật, Giám đốc hoặc Tổng Giám đốc, Kế toán trưởng hoặc người phụ trách kế toán (nếu có) của tổ chức.",
+        "Thông tin về người đại diện theo pháp luật, Giám đốc hoặc Tổng Giám đốc, Kế toán trưởng hoặc người phụ trách kế toán (nếu có) của tổ chức.",
+        "Thông tin về Giám đốc hoặc Tổng Giám đốc, Kế toán trưởng hoặc người phụ trách kế toán (nếu có) của tổ chức.",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Điều 10 Luật Phòng, chống rửa tiền năm 2022"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Luật Phòng, chống rửa tiền năm 2022, thời hạn lưu trữ thông tin, hồ sơ, tài liệu nhận biết khách hàng là:",
+      "Options": [
+        "05 năm kể từ ngày kết thúc giao dịch hoặc ngày đóng tài khoản hoặc ngày báo cáo.",
+        "10 năm kể từ ngày kết thúc giao dịch hoặc ngày đóng tài khoản hoặc ngày báo cáo.",
+        "15 năm kể từ ngày kết thúc giao dịch hoặc ngày đóng tài khoản hoặc ngày báo cáo.",
+        "Vĩnh viễn"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 2 Điều 38 Luật Phòng, chống rửa tiền năm 2022"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Đối với khách hàng lần đầu mở tài khoản thanh toán, Agribank cần phải thực hiện:",
+      "Options": [
+        "Giám sát khách hàng",
+        "Nhận biết khách hàng",
+        "Trì hoãn giao dịch",
+        "Áp dụng các biện pháp tăng cường"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 6 Nghị định số 19/2023/NĐ - CP"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khi khách hàng bổ sung thông tin, tài liệu, trường hợp nào Agribank phải thực hiện nhận biết khách hàng?",
+      "Options": [
+        "Thông tin, tài liệu không trùng khớp với thông tin, tài liệu đã cung cấp trước đó hoặc thông tin, tài liệu do Agribank thu thập, xác định.",
+        "Thông tin, tài liệu trùng khớp với thông tin, tài liệu đã cung cấp trước đó hoặc thông tin, tài liệu do Agribank thu thập, xác định.",
+        "Thông tin, tài liệu nhiều hơn so tài liệu đã cung cấp.",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 1 Điều 6 Nghị định số 19/2023/NĐ - CP"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trường hợp mua lại bất động sản do việc xử lý nợ, ngân hàng thương mại phải bảo đảm tỷ lệ giá trị còn lại của tài sản cố định như thế nào?",
+      "Options": [
+        "Không được vượt quá 50% vốn điều lệ và quỹ dự trữ bổ sung vốn điều lệ ghi trên sổ sách kế toán",
+        "Không được vượt quá 100% vốn điều lệ và quỹ dự trữ bổ sung vốn điều lệ ghi trên sổ sách kế toán",
+        "Không được vượt quá 70% vốn điều lệ và quỹ dự trữ bổ sung vốn điều lệ ghi trên sổ sách kế toán",
+        "Không được vượt quá 55% vốn điều lệ và quỹ dự trữ bổ sung vốn điều lệ ghi trên sổ sách kế toán"
+      ],
+      "Correct": "1",
+      "Citation": "Khoản 3 Điều 144 Luật các TCTD 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Nếu không trong trường hợp đang được kiểm soát đặc biệt, kể từ ngày kết thúc năm tài chính, trong thời hạn bao lâu thì tổ chức tín dụng phải công khai các báo cáo tài chính theo Luật các Tổ chức tín dụng 2024?",
+      "Options": [
+        "60 ngày",
+        "90 ngày",
+        "120 ngày",
+        "30 ngày"
+      ],
+      "Correct": "3",
+      "Citation": "Điều 154 Luật các TCTD 2024"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định của Luật Phòng chống tham nhũng về nội dung ứng dụng khoa học, công nghệ và chuyển đổi số trong quản lý, trách nhiệm nào sau đây được xác định đúng và đầy đủ nhất đối với cơ quan, tổ chức, đơn vị?",
+      "Options": [
+        "Tập trung đầu tư trang thiết bị công nghệ khi có nguồn kinh phí phù hợp, việc kết nối cơ sở dữ liệu được thực hiện theo nhu cầu từng giai đoạn.",
+        "Có trách nhiệm tăng cường đầu tư trang thiết bị, nâng cao năng lực, đẩy mạnh ứng dụng khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số trong tổ chức và hoạt động của cơ quan, tổ chức, đơn vị; có trách nhiệm đẩy mạnh xây dựng, vận hành hệ thống thông tin, cơ sở dữ liệu; kết nối, tích hợp, chia sẻ đồng bộ với cơ sở dữ liệu quốc gia, bảo đảm liên thông, an toàn thông tin và khai thác, sử dụng hiệu quả tài nguyên số, dữ liệu số theo quy định của pháp luật.",
+        "Ưu tiên xây dựng hệ thống thông tin nội bộ, việc chia sẻ dữ liệu với cơ sở dữ liệu quốc gia được thực hiện trên cơ sở tự nguyện.",
+        "Chuyển đổi số chủ yếu phục vụ hoạt động chuyên môn, không bắt buộc gắn với khai thác, sử dụng tài nguyên số và dữ liệu số."
+      ],
+      "Correct": "2",
+      "Citation": "Điều 28 Luật sửa đổi, bổ sung một số điều của Luật PCTN 2025"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định pháp luật, nhận định nào sau đây xác định đúng bản chất pháp lý của chuyển tiền điện tử?",
+      "Options": [
+        "Chuyển tiền điện tử là giao dịch chuyển tiền được thực hiện qua phương tiện điện tử giữa hai tổ chức tài chính khác nhau, người thụ hưởng bắt buộc phải là bên thứ ba.",
+        "Chuyển tiền điện tử là giao dịch được thực hiện bằng phương thức điện tử theo yêu cầu của người khởi tạo thông qua tổ chức tài chính nhằm chuyển một số tiền nhất định cho người thụ hưởng tại tổ chức tài chính của người thụ hưởng; người thụ hưởng có thể là người khởi tạo.",
+        "Chuyển tiền điện tử là giao dịch thanh toán không dùng tiền mặt giữa các tài khoản, không phụ thuộc vào yêu cầu của người khởi tạo.",
+        "Chuyển tiền điện tử là giao dịch chuyển tiền nội bộ trong cùng một tổ chức tài chính, không áp dụng đối với giao dịch liên ngân hàng."
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 5 Điểu 3 Luật PCRT 2022"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 238/QĐ - HĐTV - TTh ngày 07/5/2021, đồng phục áo dài đối với nữ được quy định như thế nào?",
+      "Options": [
+        "Áo dài truyền thống, màu đỏ booc đô, viền cổ vàng; quần màu vàng",
+        "Áo dài truyền thống, có cổ, màu đỏ booc đô; quần màu vàng",
+        "Áo dài truyền thống, không cổ, màu đỏ booc đô; quần màu vàng",
+        "Áo dài truyền thống, màu đỏ booc đô; quần màu đỏ"
+      ],
+      "Correct": "2",
+      "Citation": "Điểm b Khoản 1 Điều 4 Quy định số 238/QĐ - HĐTV - TTh ngày 07/5/2021"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 238/QĐ - HĐTV - TTh ngày 07/5/2021, trang phục đối với nữ trong thời gian mang thai được quy định thế nào?",
+      "Options": [
+        "Chân váy ngang gối trở xuống hoặc quần âu màu đen hoặc xanh đen; Áo sơ mi trắng trơn, dài hoặc ngắn tay (phù hợp với người đang trong thời gian mang thai). Áo vest màu đen hoặc xanh đen cùng màu với màu chân váy/quần",
+        "Váy liền: Phần thân trên (áo) màu trắng trơn, dài hoặc ngắn tay; phần thân dưới (chân váy) ngang gối trở xuống màu đen hoặc xanh đen. Áo vest màu đen hoặc xanh đen cùng màu với màu chân váy/quần",
+        "Váy/áo yếm màu đen hoặc xanh đen, bên trong áo trắng trơn, dài hoặc ngắn tay. Áo vest màu đen hoặc xanh đen cùng màu với màu chân váy/quần",
+        "Lựa chọn 1 trong 3 trang phục trên"
+      ],
+      "Correct": "4",
+      "Citation": "Điểm c Khoản 1 Điều 4 Quy định số 238/QĐ - HĐTV - TTh ngày 07/5/2021"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 238/QĐ - HĐTV - TTh ngày 07/5/2021, trang phục nào không đúng với quy định về trang phục đối với nữ trong thời gian mang thai?",
+      "Options": [
+        "Chân váy ngang gối trở xuống hoặc quần âu màu đen hoặc xanh đen; Áo sơ mi trắng trơn, dài hoặc ngắn tay (phù hợp với người đang trong thời gian mang thai). Áo vest màu đen hoặc xanh đen cùng màu với màu chân váy/quần",
+        "Váy liền, váy/áo yếm lịch sự phù hợp với người đang trong thời gian mang thai",
+        "Váy/áo yếm màu đen hoặc xanh đen, bên trong áo trắng trơn, dài hoặc ngắn tay. Áo vest màu đen hoặc xanh đen cùng màu với màu chân váy/quần",
+        "Váy liền: Phần thân trên (áo) màu trắng trơn, dài hoặc ngắn tay; phần thân dưới (chân váy) ngang gối trở xuống màu đen hoặc xanh đen. Áo vest màu đen hoặc xanh đen cùng màu với màu chân váy/quần"
+      ],
+      "Correct": "2",
+      "Citation": "Điểm c Khoản 1 Điều 4 Quy định số 238/QĐ - HĐTV - TTh ngày 07/5/2021"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hành vi nào KHÔNG đúng khi nói chuyện điện thoại?",
+      "Options": [
+        "Nhấc máy sau hồi chuông thứ 2",
+        "Giữ thái độ hòa nhã, bình tĩnh",
+        "Nói ngắn gọn, tránh lòng vòng, rườm rà",
+        "Ngắt điện thoại khi khách hàng tranh cãi"
+      ],
+      "Correct": "4",
+      "Citation": "Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trong ứng xử với khách hàng và đối tác, cán bộ Agribank cần có thái độ như thế nào?",
+      "Options": [
+        "Tôn trọng, lịch sự, chân thành, thân thiện, đúng mực",
+        "Tôn trọng, lịch sự, nhường nhịn, gần gũi",
+        "Tôn trọng, lịch sự, thân thiện, nhiệt tình",
+        "Tôn trọng, lịch sự, thẳng thắn, thân thiện."
+      ],
+      "Correct": "1",
+      "Citation": "Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Cán bộ Agribank được phép vỗ vai khách hàng trong trường hợp nào sau đây?",
+      "Options": [
+        "Khách hàng đã quan hệ lâu năm để thể hiện sự thân mật, gần gũi.",
+        "Để chia sẻ, an ủi.",
+        "Khách hàng là người ít tuổi hơn.",
+        "Không được phép."
+      ],
+      "Correct": "4",
+      "Citation": "Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Vị trí ngồi giữa ở ghế sau trong xe ô tô con 4 chỗ dành cho đối tượng nào?",
+      "Options": [
+        "Đối tượng ưu tiên số 1.",
+        "Đối tượng ưu tiên số 2.",
+        "Người có chức vụ thấp hơn.",
+        "Người có chức vụ cao hơn."
+      ],
+      "Correct": "3",
+      "Citation": "Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo quy định hiện hành, cán bộ Agribank có được nhận quà tặng có giá trị nhỏ từ khách hàng, đối tác không?",
+      "Options": [
+        "Không được phép",
+        "Được phép",
+        "",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Các hành vi KHÔNG được thực hiện khi tham gia hội họp là:",
+      "Options": [
+        "Nói chuyện điện thoại hoặc nhắn tin",
+        "Không để điện thoại ở chế độ im lặng",
+        "Nói chuyện riêng, làm việc riêng",
+        "Tất cả các phương án nêu trên"
+      ],
+      "Correct": "4",
+      "Citation": "Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo cẩm nang văn hóa Agribank, các hành vi KHÔNG nên thực hiện trong thang máy, gồm:",
+      "Options": [
+        "Trao đổi công việc",
+        "Nói chuyện, nói điện thoại",
+        "Ăn uống, hút thuốc lá",
+        "Tất cả các phương án nêu trên"
+      ],
+      "Correct": "4",
+      "Citation": "Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Đặc trưng văn hóa Agribank KHÔNG bao gồm đặc tính nào sau đây?",
+      "Options": [
+        "Thân thiện.",
+        "Tam nông.",
+        "Hội nhập.",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Đặc trưng văn hóa Agribank – Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Cẩm nang văn hóa Agribank, tầm nhìn của Agribank là:",
+      "Options": [
+        "Tăng trưởng - an toàn - hiệu quả - bền vững.",
+        "Phát triển - an toàn - hiệu quả - bền vững.",
+        "Tăng trưởng - phát triển - bền vững - hiệu quả",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Tầm nhìn của Agribank – Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Khi bắt tay, cán bộ Agribank ứng xử như thế nào?",
+      "Options": [
+        "Cấp trên chủ động bắt tay cấp dưới.",
+        "Người ít tuổi chủ động bắt tay người lớn tuổi hơn.",
+        "Bắt tay từ người có chức vụ thấp đến người có chức vụ cao.",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Chuẩn mực trong Chào hỏi – Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Việc giới thiệu và tự giới thiệu trong văn hóa Agribank được thực hiện theo thứ tự nào?",
+      "Options": [
+        "Giới thiệu bản thân rồi đến những người đi cùng, giới thiệu người có chức vụ thấp rồi đến cao.",
+        "Giới thiệu bản thân rồi đến những người đi cùng, giới thiệu người có chức vụ cao rồi đến thấp.",
+        "Giới thiệu những người đi cùng rồi đến bản thân, giới thiệu người có chức vụ cao rồi đến thấp.",
+        ""
+      ],
+      "Correct": "3",
+      "Citation": "Chuẩn mực trong giới thiệu và tự giới thiệu – Cẩm nang văn hóa Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023, đối tượng áp dụng các quy định chính sách chăm sóc khách hàng trong hệ thống Agribank là:",
+      "Options": [
+        "Khách hàng cá nhân, tổ chức",
+        "Đơn vị thành viên Trụ sở chính, Chi nhánh loại I, II và các đơn vị cá nhân có liên quan thuộc Agribank",
+        "Công ty con",
+        "Cả đáp án 1 và 2"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 1, Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023, tin nhắn SMS Brandname là:",
+      "Options": [
+        "Tin nhắn thương hiệu Agribank",
+        "Tín nhắn thương hiệu",
+        "Tin nhắn của E Mobile Agribank",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "K8 Điều 2, Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023, nguyên tắc thực hiện các chính sách chăm sóc khách hàng buộc phải phù hợp với các yếu tố nào sau đây?",
+      "Options": [
+        "Định hướng, chiến lược phát triển, tình hình thực tế và mục tiêu kinh doanh của Agribank trong từng thời kỳ",
+        "Mục tiêu kinh doanh của các Chi nhánh trong từng thời kỳ",
+        "Định hướng, chiến lược của các đơn vị trực thuộc trong hệ thống Agribank",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "K1 Điều 3, Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023, khi thực hiện các chính sách chăm sóc khách hàng buộc phải tuân thủ các quy định nào sau đây?",
+      "Options": [
+        "Quy định pháp luật Việt Nam",
+        "Quy định của Ngân hàng Nhà nước",
+        "Quy định của Agribank",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "4",
+      "Citation": "K1 Điều 3, Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quyết định số 1206/QĐ - NHNo - TTh ngày 23/6/2020, thời gian phản hồi các đơn vị, cộng tác viên về việc xử lý tin bài trên website tối đa trong bao lâu?",
+      "Options": [
+        "Trong ngày nhận thông tin",
+        "24h",
+        "Tối đa trong 2 ngày làm việc kể từ khi nhận được thông tin",
+        "Trong tuần"
+      ],
+      "Correct": "3",
+      "Citation": "Điều 5 Mục I chương II QĐ 1206/QĐ - NHNo - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023, đơn vị nào là đầu mối chăm sóc khách hàng tổ chức trong hệ thống Agribank?",
+      "Options": [
+        "Ban Khách hàng doanh nghiệp",
+        "Ban Khách hàng cá nhân",
+        "Ban Chính sách tín dụng",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "K1 Điều 4, Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023, đơn vị nào là đầu mối chăm sóc khách hàng cá nhân trong trường hợp khách hàng mở tài khoản tại Trụ sở chính?",
+      "Options": [
+        "Ban Khách hàng cá nhân",
+        "Trung tâm Chăm sóc khách hàng",
+        "Ban Tài chính - Kế toán",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "K1 Điều 4, Quy định số 1566/QyĐ - NHNo - CSKH ngày 30/6/2023"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo VBHN số 8494/VBHN - NHNo - TTh ngày 26/6/2024, trong trường hợp cần thiết ai trực tiếp cung cấp thông tin và trả lời phỏng vấn báo chí?",
+      "Options": [
+        "Chủ tịch Hội đồng thành viên",
+        "Tổng Giám đốc trực tiếp cung cấp thông tin và trả lời phỏng vấn báo chí hoặc chỉ định người thực hiện nhiệm vụ cung cấp thông tin và trả lời phỏng vấn báo chí đối với một nội dung cụ thể",
+        "Phó Tổng Giám đốc",
+        "Thành viên Hội đồng thành viên"
+      ],
+      "Correct": "2",
+      "Citation": "Điều 6 Văn bản hợp nhất số 8494/VBHN - NHNo - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo VBHN số 8494/VBHN - NHNo - TTh ngày 26/6/2024, các hình thức cung cấp thông tin đối với bên ngoài trong quá trình xử lý sự cố truyền thông",
+      "Options": [
+        "Đăng thông báo trên website Agribank",
+        "Gửi thông cáo báo chí/ thông tin cho báo chí",
+        "Chủ động tổ chức làm việc trực tiếp (không phải họp báo)với phóng viên báo chí, tổ chức họp báo để cung cấp thông tin",
+        "Tất cả các đáp trên"
+      ],
+      "Correct": "4",
+      "Citation": "Mục 2 Điều 14 Văn bản hợp nhất số 8494/VBHN - NHNo - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo VBHN số 8494/VBHN - NHNo - TTh, đối tượng nào áp dụng tại Quy định về công tác phối hợp tuyên truyền và xử lý sự cố truyền thông trong hệ thống Agribank?",
+      "Options": [
+        "Ủy ban, Ban, Trung tâm tại Trụ sở chính; Văn phòng đại diện khu vực; Đơn vị sự nghiệp; Chi nhánh loại I; Công đoàn; Đoàn Thanh niên Agribank.",
+        "Chi nhánh tại nước ngoài.",
+        "Cán bộ, nhân viên, người lao động làm việc trong hệ thống Agribank.",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 1 Văn bản hợp nhất số 8494/VBHN - NHNo - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Văn bản hợp nhất 8494/VBHN - NHNo - TTh, tại chi nhánh, thành viên Tổ xử lý truyền thông thuộc thành phần nào dưới đây?",
+      "Options": [
+        "Trưởng Phòng Tổng hợp; Trưởng phòng nghiệp vụ phát sinh sự cố truyền thông và thành viên khác do Giám đốc Chi nhánh quyết định",
+        "Trưởng Phòng Khách hàng cá nhân",
+        "Trưởng Phòng Khách hàng doanh nghiệp",
+        "Trưởng Phòng Tin học"
+      ],
+      "Correct": "1",
+      "Citation": "Điều 12 Văn bản hợp nhất 8374/VBHN - NHNo - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Văn bản hợp nhất 8374/VBHN - NHNo - TTh quy định về quản lý hình ảnh, thương hiệu và hoạt động truyền thông của Agribank trên mạng xã hội ngày 24/6/2024 áp dụng cho đối tượng nào?",
+      "Options": [
+        "Các đơn vị thành viên Trụ sở chính, chi nhánh, cán bộ nhân viên, người lao động Agribank.",
+        "Các đơn vị thành viên Trụ sở chính, chi nhánh, công ty con, cán bộ nhân viên, người lao động Agribank",
+        "Công ty con Agribank",
+        ""
+      ],
+      "Correct": "1",
+      "Citation": "Điều 2 Văn bản hợp nhất 8374/VBHN - NHNo - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Văn bản hợp nhất 8374/VBHN - NHNo - TTh ngày 24/6/2024, Agribank hỗ trợ khách hàng trên mạng xã hội như thế nào?",
+      "Options": [
+        "Thực hiện tương tác, hỗ trợ khách hàng kịp thời thông qua liên tục theo dõi ý kiến đóng góp, chia sẻ của khách hàng",
+        "Luôn sẵn sàng trả lời mọi thắc mắc, khiếu nại của khách hàng;",
+        "Thường xuyên theo dõi các nhận xét trực tuyến của khách hàng, từ đó sớm khắc phục những vấn đề liên quan đến Agribank",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 9 Văn bản hợp nhất 8374/VBHN - NHNo - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy chế số 168/QC - HĐTV - TTh, sự cố truyền thông là gì?",
+      "Options": [
+        "Là trường hợp xuất hiện tin đồn tiêu cực về Agribank trên mạng xã hội",
+        "Là trường hợp xuất hiện thông tin ảnh hưởng đến uy tín, thương hiệu Agribank trên báo chí",
+        "Là trường hợp tại chi nhánh, phòng giao dịch xảy ra tấn công, đe dọa nhân viên để cướp tài sản.",
+        "Là trường hợp xuất hiện thông tin, tin đồn tiêu cực về con người, sự việc nào đó có ảnh hưởng hoặc có nguy cơ ảnh hưởng đến hoạt động kinh doanh, uy tín, thương hiệu của Agribank"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 13 Điều 3 Quy chế số 168/QC - HĐTV - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy chế số 168/QC - HĐTV - TTh, việc công bố thông tin doanh nghiệp phải đảm bảo nguyên tắc nào?",
+      "Options": [
+        "Đầy đủ - chính xác - kịp thời",
+        "Công khai - đầy đủ - rộng rãi",
+        "Công khai - kịp thời - hiệu quả",
+        "Minh bạch - đầy đủ - kịp thời"
+      ],
+      "Correct": "1",
+      "Citation": "Điều 4 Quy chế số 168/QC - HĐTV - TTh"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Quy tắc nào sau đây không thuộc Quy tắc ứng xử chung trên mạng xã hội Theo QĐ số 874/QĐ - BTTTT?",
+      "Options": [
+        "Tôn trọng",
+        "Lành mạnh",
+        "Trách nhiệm",
+        "Công bằng"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 3, QĐ số 874/QĐ - BTTTT về Quy tắc ứng xử trên mạng xã hội"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo QĐ số 874/QĐ - BTTTT, quy tắc ứng xử chung trên mạng xã hội bao gồm:",
+      "Options": [
+        "Tôn trọng, tuân thủ pháp luật; Lành mạnh; An toàn, bảo mật thông tin; Trách nhiệm.",
+        "Tôn trọng; Lành mạnh; An toàn; Trách nhiệm; Công bằng.",
+        "Tôn trọng; Lành mạnh; Bảo mật thông tin; Trách nhiệm; Công bằng",
+        "Tôn trọng; Lành mạnh; An toàn, bảo mật thông tin; Trách nhiệm; Công bằng"
+      ],
+      "Correct": "1",
+      "Citation": "Điều 3, QĐ số 874/QĐ - BTTTT về Quy tắc ứng xử trên mạng xã hội"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Nghị định 15/2020/NĐ - CP, các hành vi bị xử phạt vi phạm hành chính vì lợi dụng mạng xã hội là:",
+      "Options": [
+        "Cung cấp, chia sẻ thông tin giả mạo, thông tin sai sự thật, xuyên tạc, vu khống, xúc phạm uy tín của cơ quan, tổ chức, danh dự, nhân phẩm của cá nhân",
+        "Cung cấp, chia sẻ thông tin cổ súy các hủ tục, mê tín, dị đoan, dâm ô, đồi trụy, không phù hợp với thuần phong, mỹ tục của dân tộc",
+        "Cung cấp, chia sẻ hình ảnh bản đồ Việt Nam nhưng không thể hiện hoặc thể hiện không đúng chủ quyền quốc gia",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 101, Nghị định 15/2020/NĐ - CP"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định Chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank nhằm hạn chế và ngăn ngừa rủi ro nào?",
+      "Options": [
+        "Rủi ro tài chính trong các giao dịch lớn",
+        "Rủi ro đạo đức có thể gây ra cho Agribank cũng như khách hàng, đối tác của Agribank",
+        "Rủi ro về nhân sự và tuyển dụng",
+        "Rủi ro trong các chiến lược marketing"
+      ],
+      "Correct": "2",
+      "Citation": "Khoản 1 Điều 2 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hành vi nào sau đây là vi phạm Quy định Chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank?",
+      "Options": [
+        "Hiểu biết pháp luật và tuân thủ đầy đủ quy định của pháp luật",
+        "Tuân thủ quy định nội bộ, quy trình nghiệp vụ của ngành Ngân hàng và Agribank",
+        "Nắm vững các quy trình, thủ tục, thuần thục các thao tác chuyên môn, nghiệp vụ",
+        "Sử dụng thông tin, cơ hội kinh doanh và tài sản của Agribank để thu lợi cá nhân"
+      ],
+      "Correct": "4",
+      "Citation": "Điểm d khoản 1 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Hành vi nào sau đây là vi phạm chuẩn mực về sự cẩn trọng (Theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024)?",
+      "Options": [
+        "Kỹ lưỡng trong quá trình giải quyết công việc",
+        "Có tinh thần trách nhiệm, hết lòng vì công việc",
+        "Tuân thủ nghiêm sự quản lý, kiểm tra, giám sát và kiểm toán theo quy định",
+        "Bao che các hành vi gian lận hoặc làm tắt bỏ qua các bước trong quy trình nghiệp vụ"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 2 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1345/QyĐ - HĐTV - TTh, khi phát hiện hành vi vi phạm hoặc nguy cơ xảy ra vi phạm, cán bộ Agribank cần:",
+      "Options": [
+        "Tự giải quyết theo kinh nghiệm cá nhân",
+        "Làm lơ nếu không ảnh hưởng đến công việc của mình",
+        "Báo cáo kịp thời cấp có thẩm quyền",
+        "Bảo mật thông tin để tránh ảnh hưởng đến danh tiếng cá nhân"
+      ],
+      "Correct": "3",
+      "Citation": "Điểm đ Khoản 3 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Sự tận tâm, chuyên cần trong chuẩn mực đạo đức nghề nghiệp của cán bộ Agribank được quy định như thế nào (Theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024)?",
+      "Options": [
+        "Sẵn sàng nhận nhiệm vụ, thực hiện công việc với sự tận tâm, chu đáo, tác phong, thái độ lịch sự, nghiêm túc; quyết tâm hoàn thành đạt kết quả cao nhất vì sự phát triển bền vững của Agribank, khách hàng và cộng đồng",
+        "Chuyên tâm, cần cù, chủ động học hỏi, tích luỹ kinh nghiệm, nâng cao kiến thức chuyên môn, khả năng sử dụng công nghệ, ngoại ngữ và kỹ năng quản trị, xử lý công việc.",
+        "Tuyệt đối không lơ là, tắc trách, thiếu tinh thần trách nhiệm; không để quá hạn, bỏ sót nhiệm vụ được phân công.",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "4",
+      "Citation": "Khoản 4 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Nội dung nào sau đây KHÔNG đúng với quy định của chuẩn mực Sự tận tâm, chuyên cần (Theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024)?",
+      "Options": [
+        "Sẵn sàng nhận nhiệm vụ, thực hiện công việc với sự tận tâm, chu đáo",
+        "Chuyên tâm, cần cù, chủ động học hỏi, tích luỹ kinh nghiệm, nâng cao kiến thức chuyên môn, khả năng sử dụng công nghệ, ngoại ngữ và kỹ năng quản trị, xử lý công việc.",
+        "Bỏ qua những công việc khó và chỉ thực hiện nhiệm vụ dễ",
+        "Tuyệt đối không lơ là, tắc trách, thiếu tinh thần trách nhiệm"
+      ],
+      "Correct": "3",
+      "Citation": "Khoản 4 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024, một cán bộ có tinh thần vượt khó sẽ:",
+      "Options": [
+        "Tìm cách né tránh những công việc khó khăn",
+        "Chỉ làm việc khi điều kiện thuận lợi",
+        "Dám đối mặt, vượt qua khó khăn, thách thức để hoàn thành công việc",
+        "Chờ đợi người khác giải quyết thay"
+      ],
+      "Correct": "3",
+      "Citation": "Điểm b Khoản 5 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Cán bộ Agribank KHÔNG được phép làm gì trong giờ làm việc (Theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024)?",
+      "Options": [
+        "Làm việc riêng",
+        "Sử dụng các thiết bị giải trí cá nhân",
+        "Tham gia các hoạt động khác không liên quan đến công việc trong giờ làm việc.",
+        "Tất cả các đáp án trên"
+      ],
+      "Correct": "4",
+      "Citation": "Điểm d Khoản 6 Điều 3 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Đâu KHÔNG phải trách nhiệm của cán bộ Agribank (Theo Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024)?",
+      "Options": [
+        "Trung thành vì lợi ích của Agribank",
+        "Bảo vệ tài sản của Agribank",
+        "Giảm sự tương tác giữa các phòng, ban để tránh xung đột",
+        "Bảo mật thông tin của Agribank, khách hàng, đối tác"
+      ],
+      "Correct": "3",
+      "Citation": "Điều 4 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "\"Bảo mật thông tin của Agribank, khách hàng, đối tác\" là trách nhiệm của ai (Theo Quy định số 1345/QyĐ - HĐTV - TTh)?",
+      "Options": [
+        "Cán bộ Agribank",
+        "Giao dịch viên Agribank",
+        "Trung tâm Công nghệ thông tin",
+        "Ban Khách hàng cá nhân"
+      ],
+      "Correct": "1",
+      "Citation": "Điều 4 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "\"Xây dựng và bảo vệ hình ảnh, thương hiệu, uy tín Agribank\" là trách nhiệm của ai (Theo Quy định số 1345/QyĐ - HĐTV - TTh)?",
+      "Options": [
+        "Người lao động tại Ban Truyền thông",
+        "Người lao động tại Trường Đào tạo cán bộ",
+        "Giao dịch viên Agribank",
+        "Toàn thể Ban lãnh đạo và người lao động Agribank"
+      ],
+      "Correct": "4",
+      "Citation": "Điều 4 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Cán bộ cấp trên ứng xử với cán bộ cấp dưới thế nào theo quy định ứng xử nội bộ trong Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024?",
+      "Options": [
+        "Né tránh trách nhiệm khi có vấn đề xảy ra",
+        "Chỉ thực hiện nhiệm vụ của mình mà không quan tâm đến cấp dưới",
+        "Luôn gương mẫu về cách hành xử trong công việc, lối sống; tuyệt đối không né tránh trách nhiệm, không đùn đẩy công việc",
+        "Phân công nhiệm vụ tùy ý mà không cần xem xét năng lực cấp dưới"
+      ],
+      "Correct": "3",
+      "Citation": "Điểm a Khoản 2 Điều 6 Quy định số 1345/QyĐ - HĐTV - TTh ngày 15/11/2024 Quy định chuẩn mực đạo đức nghề nghiệp và quy tắc ứng xử của cán bộ Agribank"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Theo QĐ 936/QyĐ - HĐTV - TCKT, thẩm quyền quyết định chi phí dịch vụ quảng cáo, truyền thông tại Chi nhánh loại I là bao nhiêu?",
+      "Options": [
+        "Tối đa 100 triệu đồng",
+        "Tối đa 200 triệu đồng",
+        "Tối đa 500 triệu đồng",
+        "Tối đa 300 triệu đồng"
+      ],
+      "Correct": "2",
+      "Citation": "Điều 4 và 5, QĐ 936/QyĐ - HĐTV - TCKT"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Trọng tâm của tư duy xử lý khiếu nại thời đại số là gì?",
+      "Options": [
+        "Giải quyết nhanh hồ sơ.",
+        "Giải quyết vấn đề và phục hồi niềm tin.",
+        "Giảm thiểu trách nhiệm.",
+        "Tuân thủ quy trình."
+      ],
+      "Correct": "2",
+      "Citation": "5.1. Tư duy xử lý khiếu nại thời đại số. Slide số 4"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Mục tiêu kép của Agribank trong xử lý khiếu nại là gì?",
+      "Options": [
+        "Bảo vệ lợi nhuận và thị phần.",
+        "Bảo vệ khách hàng và bảo vệ uy tín hệ thống.",
+        "Bảo vệ nhân viên và quy trình.",
+        "Bảo vệ dữ liệu và công nghệ."
+      ],
+      "Correct": "2",
+      "Citation": "5.1.1. Mục tiêu kép. Slide số 5"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "Vì sao không được phán đoán vội vàng khi tiếp nhận khiếu nại?",
+      "Options": [
+        "Vì Xử lý không chuẩn = tạo thêm \"effort\" cho khách hàng; Một sai sót nhỏ có thể gây rủi ro diện rộng.",
+        "Vì dễ làm kéo dài thời gian xử lý hồ sơ.",
+        "Vì có thể ảnh hưởng đến hình ảnh cá nhân người xử lý.",
+        "Vì làm ảnh hưởng đến uy tín của khách hàng và của ngân hàng."
+      ],
+      "Correct": "1",
+      "Citation": "5.1.2. Nguyên tắc vàng: nhanh – chuẩn – minh bạch – an toàn. Slide số 11"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "\"Minh bạch\" trong xử lý khiếu nại là gì?",
+      "Options": [
+        "Cung cấp toàn bộ thông tin nội bộ cho khách hàng.",
+        "Thông tin rõ ràng, đầy đủ và dễ hiểu cho khách hàng về quá trình xử lý.",
+        "Công khai chi tiết toàn bộ quy trình nội bộ của ngân hàng.",
+        "Báo cáo chi tiết cho cấp quản lý."
+      ],
+      "Correct": "2",
+      "Citation": "5.1.2 – Minh bạch. Slide số 9"
+    },
+    {
+      "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
+      "Text": "\"Xin lỗi phù hợp\" được hiểu đúng là:",
+      "Options": [
+        "Nhận lỗi hoàn toàn.",
+        "Xin lỗi vì trải nghiệm, chưa kết luận lỗi.",
+        "Chỉ xin lỗi khi có sai phạm.",
+        "Xin lỗi theo mẫu."
+      ],
+      "Correct": "2",
+      "Citation": "5.1.3. Quản trị kỳ vọng: nói đúng, nói đủ, nói kịp thời. Slide số 13"
     },
     {
       "Field": "Kiến thức chung+ Tiêu chuẩn GDV+ Kỹ năng quản lý cấp phòng",
