@@ -590,7 +590,44 @@
       word-break: break-word;
     }
 
+    /* Thanh 3 công tắc Thư viện */
+    .library-switches-bar {
+      gap: 6px;
+      padding: 2px 2px;
+      overflow-x: auto;
+    }
+
+    .library-switches-bar .form-check {
+      margin-bottom: 0;
+      padding-left: 2.3em;
+      min-height: auto;
+      white-space: nowrap;
+    }
+
+    .library-switches-bar .form-check-label {
+      font-size: 0.83rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .library-switches-bar .form-check-input {
+      cursor: pointer;
+    }
+
     @media (max-width: 576px) {
+      .library-switches-bar {
+        gap: 3px;
+        padding: 2px 0;
+      }
+
+      .library-switches-bar .form-check {
+        padding-left: 2.1em;
+      }
+
+      .library-switches-bar .form-check-label {
+        font-size: 0.77rem;
+      }
+
       #searchTab {
         padding-left: 0 !important;
         padding-right: 0 !important;
@@ -626,6 +663,16 @@
       #searchTab #searchInput {
         font-size: 0.9rem;
         padding: 6px 8px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .library-switches-bar .form-check {
+        padding-left: 1.9em;
+      }
+
+      .library-switches-bar .form-check-label {
+        font-size: 0.72rem;
       }
     }
   </style>
@@ -774,7 +821,7 @@
     <div id="searchTab" data-testid="tab-pane-search" style="display:none;">
       <div class="card mb-1 library-card">
         <div class="card-body library-card-body">
-          <div class="d-flex justify-content-between align-items-center mb-2">
+          <div class="d-flex justify-content-between align-items-center mb-2 flex-nowrap library-switches-bar">
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers"
                 onchange="searchQuestions()">
@@ -783,7 +830,12 @@
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="includeAllSources" checked
                 onchange="onToggleAllSources()">
-              <label class="form-check-label text-info" for="includeAllSources">trong tất cả bộ đề</label>
+              <label class="form-check-label text-info" for="includeAllSources">Tất cả đề</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="showSources"
+                onchange="onToggleShowSources()">
+              <label class="form-check-label text-info" for="showSources">Hiện nguồn</label>
             </div>
           </div>
           <input id="searchInput" class="form-control bg-dark text-light border-secondary"
