@@ -2,13 +2,13 @@ function htmlesc(s) {
   return (s ?? "").toString().replace(
     /[&<>"']/g,
     (m) =>
-      ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;",
-      }[m])
+    ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    }[m])
   );
 }
 // ================== DỮ LIỆU CÂU HỎI (hardcode) ==================
@@ -39,7 +39,7 @@ function lsSaveCounts(map) {
   try {
     localStorage.setItem(LS_KEY_FIELD_COUNTS, JSON.stringify(map || {}));
     console.log("Lưu cấu hình lĩnh vực:", map);
-  } catch {}
+  } catch { }
 }
 function readCountsFromInputs() {
   const map = {};
@@ -223,7 +223,7 @@ function saveActiveSessionLazy() {
           LS_KEY_SESSION,
           JSON.stringify({ ...payload, savedAt: Date.now() })
         );
-      } catch {}
+      } catch { }
     };
     if ("requestIdleCallback" in window) {
       requestIdleCallback(doSave, { timeout: SAVE_IDLE_TIMEOUT });
@@ -245,24 +245,23 @@ function saveActiveSession() {
   };
   try {
     localStorage.setItem(LS_KEY_SESSION, JSON.stringify(payload));
-  } catch {}
+  } catch { }
 }
 function clearActiveSession() {
   try {
     localStorage.removeItem(LS_KEY_SESSION);
-  } catch {}
+  } catch { }
 }
 function tryResumeSession() {
   let payload = null;
   try {
     payload = JSON.parse(localStorage.getItem(LS_KEY_SESSION) || "null");
-  } catch {}
+  } catch { }
   if (!payload) return false;
 
   // Hỏi người dùng có tiếp tục không
   const ok = confirm(
-    `❓Phát hiện bạn đang ${
-      payload.mode === "practice" ? "Ôn thi" : "Thi thật"
+    `❓Phát hiện bạn đang ${payload.mode === "practice" ? "Ôn thi" : "Thi thật"
     } dở dang.\n` + `Bạn có muốn tiếp tục không?`
   );
   if (!ok) return false;
@@ -500,25 +499,24 @@ function showReview() {
     )}</div>
         <div class="ps-0">
           ${q.options
-            .map((opt, idx) => {
-              if (!opt || opt.trim() === "") return; // ⭐ ẩn option trống
-              const letter = String.fromCharCode(65 + idx);
-              const isCorrect = idx === correctIdx;
-              return `
+        .map((opt, idx) => {
+          if (!opt || opt.trim() === "") return; // ⭐ ẩn option trống
+          const letter = String.fromCharCode(65 + idx);
+          const isCorrect = idx === correctIdx;
+          return `
                 <div class="answer-option ${isCorrect ? "selected" : ""}">
                   ${letter}. ${htmlesc(opt)}
                 </div>`;
-            })
-            .join("")}
+        })
+        .join("")}
         </div>
        
-        ${
+        ${q.citation
+        ? `<div class="small text-secondary mt-1">📚 ${htmlesc(
           q.citation
-            ? `<div class="small text-secondary mt-1">📚 ${htmlesc(
-                q.citation
-              )}</div>`
-            : ""
-        }
+        )}</div>`
+        : ""
+      }
       </div>
     `;
   });
@@ -765,9 +763,8 @@ function renderQuestion() {
   const btnNot = document.getElementById("btnNotSelected");
   if (btnNot) {
     const count = getUnansweredIndices().length;
-    btnNot.textContent = `${currentIndex + 1}/${
-      selectedQuestions.length
-    }:${count}`; // hiện số câu chưa làm
+    btnNot.textContent = `${currentIndex + 1}/${selectedQuestions.length
+      }:${count}`; // hiện số câu chưa làm
   }
 
   // ⭐ lần render nào cũng lưu phiên (vị trí câu…)
@@ -1082,8 +1079,8 @@ async function searchQuestions() {
     const sourceList = Array.isArray(q.sources)
       ? q.sources
       : typeof q.sources === "string" && q.sources
-      ? [q.sources]
-      : ["Bộ đề hiện tại"];
+        ? [q.sources]
+        : ["Bộ đề hiện tại"];
 
     if (!mergedMap.has(key)) {
       mergedMap.set(key, {
@@ -1102,31 +1099,21 @@ async function searchQuestions() {
   const isOver5 = totalCount > 5;
   const countColorStyle = isOver5
     ? "color: #ff4d4f; font-weight: 600;"
-    : "color: #8a8a8a; opacity: 0.75;";
+    : "color: #3124e4; font-weight: 600;";
 
   // 3️⃣ Render kết quả
   let html = `
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center mb-2 px-1">
-          <div style="${countColorStyle}">
-            🔍 Tìm thấy <b>${totalCount}</b> kết quả khớp${totalCount > MAX_RESULTS ? ` (hiển thị ${MAX_RESULTS})` : ""}
-          </div>
-          <div class="text-muted small" style="opacity: 0.6;">
-            <i>${(performance.now() - startTime).toFixed(1)}ms</i>
-          </div>
-        </div>
-        <div class="table-responsive">
-          <table class="table table-dark table-bordered">
-            <thead>
-              <tr>
-                <th style="width:70%">
-                  Câu hỏi <span class="ms-1" style="${countColorStyle}; font-weight: normal; font-size: 0.85em;">(${totalCount} dòng khớp)</span>
-                </th>
-                <th>Đáp án</th>
-              </tr>
-            </thead>
-            <tbody>
+    <div class="table-responsive mt-2">
+      <table class="table table-dark table-bordered table-sm search-results-table mb-1">
+        <thead>
+          <tr>
+            <th class="col-question">
+              Câu hỏi <span class="ms-1" style="${countColorStyle}; font-weight: normal; font-size: 0.85em;">(${totalCount} dòng khớp)</span>
+            </th>
+            <th class="col-answer">Đáp án</th>
+          </tr>
+        </thead>
+        <tbody>
   `;
 
   shownResults.forEach((q) => {
@@ -1143,33 +1130,36 @@ async function searchQuestions() {
       }
     }
 
-    const answers =
-      correctIdx >= 0 && q.options && correctIdx < q.options.length
-        ? `<div class="text-info">${htmlesc(q.options[correctIdx])}</div>`
-        : "";
+    let answers = "";
+    if (correctIdx >= 0 && q.options && correctIdx < q.options.length) {
+      const letter = String.fromCharCode(65 + correctIdx);
+      const rawOpt = q.options[correctIdx] || "";
+      const hasPrefix = /^[A-D]\s*[\.\:\)]/i.test(rawOpt.trim());
+      const displayOpt = hasPrefix ? rawOpt : `${letter}. ${rawOpt}`;
+      answers = `<div class="text-info">${htmlesc(displayOpt)}</div>`;
+    }
+
     const fieldsText = Array.from(q.fields).filter(Boolean).join("; ") || "—";
     const sourcesText =
       Array.from(q.allSources || []).filter(Boolean).join("; ") || "Bộ đề hiện tại";
     html += `
       <tr>
-        <td>
+        <td class="col-question">
           <div>${htmlesc(q.text)}</div>
           <div class="text-muted small"><i>📘 ${fieldsText} (${sourcesText})</i></div>
         </td>
-        <td>${answers}</td>
+        <td class="col-answer">${answers}</td>
       </tr>
     `;
   });
 
   html += `
-            </tbody>
-          </table>
-        </div>
-        <div class="small mt-2" style="${countColorStyle}">
-          Hiển thị ${shownResults.length}/${totalCount} kết quả khớp —
-          <i class="text-muted" style="opacity: 0.6;">${(performance.now() - startTime).toFixed(1)}ms</i>
-        </div>
-      </div>
+        </tbody>
+      </table>
+    </div>
+    <div class="small mt-2 px-1" style="${countColorStyle}">
+      Hiển thị ${shownResults.length}/${totalCount} kết quả khớp —
+      <i class="text-muted" style="opacity: 0.6;">${(performance.now() - startTime).toFixed(1)}ms</i>
     </div>
   `;
 
@@ -1242,7 +1232,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       () => {
         try {
           saveActiveSession();
-        } catch {}
+        } catch { }
       },
       { capture: true }
     );
@@ -1251,7 +1241,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (document.visibilityState === "hidden") {
         try {
           saveActiveSession();
-        } catch {}
+        } catch { }
       }
     });
     // 👇 2. Bắt sự kiện toàn cục (nếu cần) — ví dụ: phím tắt
