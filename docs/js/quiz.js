@@ -38,7 +38,6 @@ function lsLoadCounts() {
 function lsSaveCounts(map) {
   try {
     localStorage.setItem(LS_KEY_FIELD_COUNTS, JSON.stringify(map || {}));
-    console.log("Lưu cấu hình lĩnh vực:", map);
   } catch { }
 }
 function readCountsFromInputs() {
@@ -595,7 +594,6 @@ function startQuizTimer(elapsedAlready = 0) {
   quizElapsed = elapsedAlready;
 
   if (quizTotalTime === 0) {
-    console.log("⏸️ Không có giới hạn thời gian — bỏ qua đồng hồ đếm.");
     const progressBar = document.getElementById("timeProgress");
     if (progressBar) {
       progressBar.style.width = "0%";
@@ -965,10 +963,6 @@ async function loadAllQuestions() {
       throw new Error("File questions.json không chứa dữ liệu hợp lệ.");
     }
 
-    console.log(
-      `📚 Đã tải ${allQuestions.length} câu hỏi từ thư viện tổng hợp.`
-    );
-
     // 🔹 Chuẩn hoá định dạng
     return allQuestions.map((q) => {
       const rawText = q.Text || q.text || "";
@@ -1004,6 +998,18 @@ async function onToggleAllSources() {
   searchQuestions();
 }
 
+function onToggleShowSources() {
+  const isShow = document.getElementById("showSources")?.checked ?? false;
+  const sourceElements = document.querySelectorAll("#searchResults .source-info");
+  if (sourceElements.length > 0) {
+    sourceElements.forEach((el) => {
+      el.style.display = isShow ? "block" : "none";
+    });
+  } else {
+    searchQuestions();
+  }
+}
+
 async function searchQuestions() {
   const startTime = performance.now();
   const rawValue = document.getElementById("searchInput")?.value?.trim() || "";
@@ -1017,6 +1023,8 @@ async function searchQuestions() {
     document.getElementById("includeAnswers")?.checked ?? false;
   const includeAllSources =
     document.getElementById("includeAllSources")?.checked ?? false;
+  const showSources =
+    document.getElementById("showSources")?.checked ?? false;
 
   if (includeAllSources && (!cachedAllQuestions || cachedAllQuestions.length === 0)) {
     if (container) {
@@ -1146,7 +1154,7 @@ async function searchQuestions() {
       <tr>
         <td class="col-question">
           <div>${htmlesc(q.text)}</div>
-          <div class="text-muted small"><i>📘 ${fieldsText} (${sourcesText})</i></div>
+          <div class="text-muted small mt-1 source-info" style="display: ${showSources ? 'block' : 'none'};"><i>📘 ${fieldsText} (${sourcesText})</i></div>
         </td>
         <td class="col-answer">${answers}</td>
       </tr>
