@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quản trị Dữ liệu & Thư viện Câu hỏi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="../js/normalizeVietnameseText.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #e2e8f0;
+      }
+      .card-dark {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+      }
+    </style>
+  </head>
+
+  <body class="p-4 md:p-8 min-h-screen">
+    <!-- Navbar điều hướng -->
+    <div class="max-w-5xl mx-auto mb-6 flex flex-wrap justify-between items-center bg-gray-800 p-4 rounded-xl shadow border border-gray-700">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl">⚙️</span>
+        <span class="font-bold text-lg text-blue-400">Hệ Thống Quản Trị Câu Hỏi & Thư Viện</span>
+      </div>
+      <div class="flex space-x-2 mt-2 sm:mt-0">
+        <a href="../../index.html" class="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-lg text-sm transition">
+          🏠 Trang chủ
+        </a>
+        <a href="quiz.html" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm transition">
+          🧠 Vào Ôn thi (Quiz)
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto space-y-8">
+      <!-- PHẦN 1: GỘP THƯ VIỆN TOÀN BỘ BỘ ĐỀ (QUESTIONS.JSON) -->
+      <div class="card-dark p-6 rounded-2xl shadow-xl">
+        <div class="flex items-center justify-between border-b border-gray-700 pb-4 mb-4">
+          <div>
+            <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+              📚 Gộp Thư Viện Câu Hỏi Toàn Bộ Bộ Đề
+            </h2>
+            <p class="text-sm text-gray-400 mt-1">
+              Đọc danh sách từ <code class="bg-gray-900 px-1.5 py-0.5 rounded text-yellow-300">quizlist.json</code>, tự động loại trừ trùng lặp chính xác và tạo file <code class="bg-gray-900 px-1.5 py-0.5 rounded text-emerald-300">questions.json</code> hoàn chỉnh.
+            </p>
+          </div>
+          <button
+            id="downloadAllBtn"
+            class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg transition flex items-center gap-2 flex-shrink-0"
+          >
+            <span>⬇️</span> Gộp & Tải xuống questions.json
+          </button>
+        </div>
+
+        <!-- Trạng thái tiến trình gộp thư viện -->
+        <div id="libraryProgress" class="hidden mb-4">
+          <div class="w-full bg-gray-700 rounded-full h-2.5 mb-2 overflow-hidden">
+            <div id="libraryProgressBar" class="bg-emerald-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <div id="libraryProgressText" class="text-xs text-gray-400 text-right">0%</div>
+        </div>
+
+        <!-- Bảng danh sách các bộ đề được nạp -->
+        <div id="libraryStatus" class="text-sm text-gray-300">
+          <div class="text-gray-400 italic">
+            Nhấn nút "Gộp & Tải xuống questions.json" để hệ thống tự động kiểm tra và quét toàn bộ các bộ đề.
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 2: CHUYỂN ĐỔI FILE EXCEL SANG BỘ ĐỀ MỚI -->
+      <div class="card-dark p-6 rounded-2xl shadow-xl">
+        <div class="border-b border-gray-700 pb-4 mb-4">
+          <h2 class="text-xl font-bold text-blue-400 flex items-center gap-2">
+            📄 Chuyển Đổi File Excel Thành Bộ Đề Mới (.json)
+          </h2>
+          <p class="text-sm text-gray-400 mt-1">
+            Kéo thả một hoặc nhiều file Excel để xuất ra định dạng JSON phục vụ thêm vào <code class="bg-gray-900 px-1.5 py-0.5 rounded text-yellow-300">quizlist.json</code>.
+          </p>
+        </div>
+
+        <!-- Nhập tiêu đề kỳ thi -->
+        <div class="mb-4">
+          <label for="examTitle" class="block text-sm font-semibold mb-1 text-gray-300">
+            Tiêu đề kỳ thi:
+          </label>
+          <input
+            type="text"
+            id="examTitle"
+            placeholder="Ví dụ: KỲ THI LÀM CHỦ CÔNG NGHỆ TRONG KỶ NGUYÊN SỐ - 2026"
+            class="w-full bg-gray-900 border border-gray-700 text-white p-2.5 rounded-xl focus:outline-none focus:border-blue-500"
+          />
+        </div>
+
+        <!-- Dropzone -->
+        <div
+          id="dropzone"
+          class="border-2 border-dashed border-blue-500 hover:border-blue-400 rounded-2xl p-8 bg-gray-900 bg-opacity-50 text-center cursor-pointer hover:bg-opacity-80 transition"
+        >
+          <div class="text-4xl mb-2">📂</div>
+          <p class="text-gray-300 font-medium">
+            Kéo & thả file Excel (.xlsx, .xls) vào đây hoặc click để chọn
+          </p>
+          <p class="text-xs text-gray-500 mt-1">
+            Hỗ trợ tự động đọc tất cả các sheet (bỏ qua sheet ẩn), nhận diện định dạng cột
+          </p>
+          <input
+            type="file"
+            id="fileInput"
+            accept=".xlsx,.xls"
+            multiple
+            class="hidden"
+          />
+        </div>
+
+        <!-- Trạng thái xử lý file Excel -->
+        <div id="status" class="mt-4 text-sm text-gray-300"></div>
+
+        <!-- Nút tải xuống bộ đề mới -->
+        <div class="mt-4 text-center">
+          <button
+            id="downloadBtn"
+            class="hidden bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-2.5 rounded-xl shadow-lg transition"
+          >
+            ⬇️ Tải xuống file bộ đề (.json)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ==========================================
+      // PHẦN 1: LOGIC GỘP THƯ VIỆN CHUẨN XÁC
+      // ==========================================
+      const downloadAllBtn = document.getElementById("downloadAllBtn");
+      const libraryStatus = document.getElementById("libraryStatus");
+      const libraryProgress = document.getElementById("libraryProgress");
+      const libraryProgressBar = document.getElementById("libraryProgressBar");
+      const libraryProgressText = document.getElementById("libraryProgressText");
+
+      let quizList = [];
+
+      async function loadQuizList() {
+        const res = await fetch("../data/quizlist.json");
+        if (!res.ok) throw new Error("Không thể tải file ../data/quizlist.json. Hãy đảm bảo bạn đang chạy qua Live Server!");
+        return await res.json();
+      }
+
+      async function mergeAllLibraryQuestions() {
+        downloadAllBtn.disabled = true;
+        downloadAllBtn.classList.add("opacity-50", "cursor-not-allowed");
+        libraryProgress.classList.remove("hidden");
+        libraryProgressBar.style.width = "0%";
+        libraryProgressText.innerText = "0%";
+
+        libraryStatus.innerHTML = `
+          <div class="text-blue-400 mb-2">⏳ Đang đọc danh sách bộ đề từ quizlist.json...</div>
+        `;
+
+        try {
+          quizList = await loadQuizList();
+        } catch (err) {
+          libraryStatus.innerHTML = `
+            <div class="p-3 bg-red-900 bg-opacity-40 border border-red-700 text-red-300 rounded-xl">
+              ❌ ${err.message}
+            </div>
+          `;
+          downloadAllBtn.disabled = false;
+          downloadAllBtn.classList.remove("opacity-50", "cursor-not-allowed");
+          return null;
+        }
+
+        const seenMap = new Map();
+        let totalRawCount = 0;
+        const details = [];
+
+        for (let i = 0; i < quizList.length; i++) {
+          const quiz = quizList[i];
+          const pct = Math.round(((i + 1) / quizList.length) * 100);
+          libraryProgressBar.style.width = pct + "%";
+          libraryProgressText.innerText = `${i + 1}/${quizList.length} (${pct}%)`;
+
+          try {
+            const res = await fetch(quiz.source);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const json = await res.json();
+            const questions = Array.isArray(json) ? json : json.questions || [];
+
+            let fileNew = 0;
+            let fileMerged = 0;
+
+            questions.forEach((q) => {
+              totalRawCount++;
+              const rawText = (q.Text || q.text || "").toString().trim();
+              if (!rawText) return;
+
+              const normText = typeof normalizeVietnameseText === "function"
+                ? normalizeVietnameseText(rawText)
+                : rawText;
+              const normTextKey = normText.toLowerCase().replace(/\s+/g, " ");
+
+              // Lấy và chuẩn hoá danh sách phương án
+              const opts = q.Options || q.options || [];
+              const cleanOpts = opts.map((o) => {
+                const s = (o ?? "").toString().trim();
+                return typeof normalizeVietnameseText === "function"
+                  ? normalizeVietnameseText(s)
+                  : s;
+              });
+
+              // Sắp xếp các phương án để nhận diện đúng kể cả khi đề thi đảo thứ tự A-B-C-D
+              const sortedOptsKey = cleanOpts
+                .map((o) => o.toLowerCase().replace(/\s+/g, " "))
+                .sort()
+                .join("##");
+
+              // Khóa duy nhất chuẩn xác: nội dung câu hỏi + toàn bộ tập hợp đáp án
+              const uniqueKey = normTextKey + "||" + sortedOptsKey;
+
+              const field = (q.Field || q.field || "").toString().trim();
+              const correct = (q.Correct || q.correct || "").toString().trim();
+              const citation = (q.Citation || q.citation || "").toString().trim();
+
+              if (!seenMap.has(uniqueKey)) {
+                fileNew++;
+                seenMap.set(uniqueKey, {
+                  field: field,
+                  text: normText,
+                  options: cleanOpts,
+                  correct: correct,
+                  citation: citation,
+                  sources: [quiz.title],
+                });
+              } else {
+                fileMerged++;
+                const existing = seenMap.get(uniqueKey);
+                if (!existing.sources.includes(quiz.title)) {
+                  existing.sources.push(quiz.title);
+                }
+                // Làm giàu thông tin nếu trước đó bị thiếu
+                if (!existing.citation && citation) existing.citation = citation;
+                if (!existing.field && field) existing.field = field;
+                if (!existing.correct && correct) existing.correct = correct;
+              }
+            });
+
+            details.push({
+              title: quiz.title,
+              source: quiz.source,
+              total: questions.length,
+              newCount: fileNew,
+              mergedCount: fileMerged,
+              status: "success",
+            });
+          } catch (err) {
+            details.push({
+              title: quiz.title,
+              source: quiz.source,
+              total: 0,
+              newCount: 0,
+              mergedCount: 0,
+              status: "error",
+              error: err.message,
+            });
+          }
+        }
+
+        // Chuyển kết quả Map thành danh sách câu hỏi cuối cùng
+        const allQuestions = Array.from(seenMap.values());
+
+        // Render bảng thống kê chi tiết
+        let html = `
+          <div class="overflow-x-auto mb-4 border border-gray-700 rounded-xl">
+            <table class="w-full text-left text-xs text-gray-300">
+              <thead class="bg-gray-800 text-gray-400 uppercase">
+                <tr>
+                  <th class="p-2.5">STT</th>
+                  <th class="p-2.5">Bộ đề</th>
+                  <th class="p-2.5">File nguồn</th>
+                  <th class="p-2.5 text-center">Tổng câu</th>
+                  <th class="p-2.5 text-center text-emerald-400">Mới thêm</th>
+                  <th class="p-2.5 text-center text-yellow-400">Trùng lặp (gộp)</th>
+                  <th class="p-2.5 text-center">Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-700 bg-gray-900 bg-opacity-40">
+        `;
+
+        details.forEach((d, idx) => {
+          const isErr = d.status === "error";
+          html += `
+            <tr class="${isErr ? 'bg-red-900 bg-opacity-20' : ''}">
+              <td class="p-2.5">${idx + 1}</td>
+              <td class="p-2.5 font-medium text-white">${d.title}</td>
+              <td class="p-2.5 text-gray-400">${d.source}</td>
+              <td class="p-2.5 text-center font-bold">${d.total}</td>
+              <td class="p-2.5 text-center text-emerald-400">${d.newCount}</td>
+              <td class="p-2.5 text-center text-yellow-400">${d.mergedCount}</td>
+              <td class="p-2.5 text-center">
+                ${isErr ? `<span class="px-2 py-0.5 bg-red-800 text-red-200 rounded text-xs">Lỗi: ${d.error}</span>` : `<span class="px-2 py-0.5 bg-emerald-800 text-emerald-200 rounded text-xs">OK</span>`}
+              </td>
+            </tr>
+          `;
+        });
+
+        html += `
+              </tbody>
+            </table>
+          </div>
+          <div class="p-4 bg-gray-900 rounded-xl border border-gray-700 flex flex-wrap justify-between items-center text-sm gap-2">
+            <div>
+              <span class="text-gray-400">Tổng số câu quét được:</span> <b class="text-white">${totalRawCount.toLocaleString()}</b> câu
+            </div>
+            <div>
+              <span class="text-gray-400">Câu trùng lặp được gộp nguồn:</span> <b class="text-yellow-400">${(totalRawCount - allQuestions.length).toLocaleString()}</b> câu
+            </div>
+            <div>
+              <span class="text-gray-400">Tổng câu hỏi duy nhất trong thư viện:</span> <b class="text-emerald-400 text-base">${allQuestions.length.toLocaleString()}</b> câu
+            </div>
+          </div>
+        `;
+
+        libraryStatus.innerHTML = html;
+        downloadAllBtn.disabled = false;
+        downloadAllBtn.classList.remove("opacity-50", "cursor-not-allowed");
+
+        return allQuestions;
+      }
+
+      downloadAllBtn.addEventListener("click", async () => {
+        const allQuestions = await mergeAllLibraryQuestions();
+        if (!allQuestions || allQuestions.length === 0) return;
+
+        const blob = new Blob([JSON.stringify(allQuestions, null, 2)], {
+          type: "application/json;charset=utf-8",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "questions.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // ==========================================
+      // PHẦN 2: LOGIC XỬ LÝ FILE EXCEL
+      // ==========================================
+      const dropzone = document.getElementById("dropzone");
+      const fileInput = document.getElementById("fileInput");
+      const statusEl = document.getElementById("status");
+      const downloadBtn = document.getElementById("downloadBtn");
+      const examTitleInput = document.getElementById("examTitle");
+
+      let allExcelQuestions = [];
+
+      dropzone.addEventListener("click", () => fileInput.click());
+      dropzone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropzone.classList.add("bg-gray-800");
+      });
+      dropzone.addEventListener("dragleave", () =>
+        dropzone.classList.remove("bg-gray-800")
+      );
+      dropzone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("bg-gray-800");
+        handleFiles(e.dataTransfer.files);
+      });
+      fileInput.addEventListener("change", (e) => handleFiles(e.target.files));
+
+      async function handleFiles(files) {
+        if (!files || files.length === 0) return;
+        allExcelQuestions = [];
+        statusEl.innerHTML = "<div class='text-blue-400 font-semibold mb-2'>🕒 Đang xử lý các file Excel...</div>";
+
+        for (const file of files) {
+          statusEl.innerHTML += `<div class='p-2 bg-gray-900 rounded mb-2 border border-gray-700'>📄 File: <b class='text-white'>${file.name}</b><div id='file-${file.name.replace(/\W/g, "")}' class='mt-1 text-xs text-gray-400'></div></div>`;
+          const subLog = document.getElementById(`file-${file.name.replace(/\W/g, "")}`);
+
+          const data = await file.arrayBuffer();
+          const workbook = XLSX.read(data, { type: "array" });
+
+          workbook.SheetNames.forEach((sheetName) => {
+            const sheet = workbook.Sheets[sheetName];
+            const sheetProps = workbook.Workbook ? workbook.Workbook.Sheets : [];
+            const isHidden = sheetProps.find((s) => s.name === sheetName && s.Hidden !== 0);
+
+            if (isHidden) {
+              subLog.innerHTML += `<div>📁 Sheet [${sheetName}]: <i class='text-gray-500'>(Bị ẩn - Bỏ qua)</i></div>`;
+              return;
+            }
+
+            const result = processQuestions(sheet, file.name);
+            if (result.questions.length > 0) {
+              allExcelQuestions.push(...result.questions);
+              subLog.innerHTML += `<div>📁 Sheet [${sheetName}]: <span class='text-emerald-400 font-medium'>${result.questions.length} câu</span></div>`;
+            } else {
+              subLog.innerHTML += `<div>📁 Sheet [${sheetName}]: <span class='text-gray-500'>Không có dữ liệu hợp lệ</span></div>`;
+            }
+          });
+        }
+
+        statusEl.innerHTML += `<div class='p-3 bg-blue-900 bg-opacity-30 border border-blue-700 rounded-xl text-blue-300 font-bold mt-3'>🎯 Tổng cộng đọc được: ${allExcelQuestions.length} câu hỏi hợp lệ.</div>`;
+        if (allExcelQuestions.length > 0) {
+          downloadBtn.classList.remove("hidden");
+        }
+      }
+
+      function parseCorrectAnswer(val) {
+        if (val === null || val === undefined) return "";
+        const s = val.toString().trim();
+        if (!s || s.length > 25) return "";
+
+        // 0. Bỏ qua ngay nếu giá trị ô thực chất là chữ tiêu đề cột
+        const cleanNoMark = s
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]/g, "");
+        if (
+          cleanNoMark === "dapan" ||
+          cleanNoMark === "dapandung" ||
+          cleanNoMark === "da" ||
+          cleanNoMark === "dadung" ||
+          cleanNoMark === "ketqua" ||
+          cleanNoMark === "key" ||
+          cleanNoMark === "correct" ||
+          cleanNoMark === "answer" ||
+          cleanNoMark === "dapanchon"
+        ) {
+          return "";
+        }
+
+        // 1. Số 1, 2, 3, 4
+        if (/^[1-4]$/.test(s)) return s;
+
+        // 2. Ký tự chữ A, B, C, D
+        const upper = s.toUpperCase();
+        if (/^[A-D]$/.test(upper)) {
+          return { A: "1", B: "2", C: "3", D: "4" }[upper];
+        }
+
+        // 3. Dạng "1.", "2.", "A.", "B.", "1-", "A:"
+        const dotMatch = upper.match(/^([1-4]|[A-D])\s*[\.:\)-]/);
+        if (dotMatch) {
+          const k = dotMatch[1];
+          return ["1", "2", "3", "4"].includes(k)
+            ? k
+            : { A: "1", B: "2", C: "3", D: "4" }[k];
+        }
+
+        // 4. Dạng "Đáp án 1", "Phương án B", "ĐA: 2", "Kết quả: C"
+        const prefixMatch = upper.match(
+          /^(?:ĐÁP ÁN|PHƯƠNG ÁN|ĐA|CHỌN|KẾT QUẢ|CÂU)\s*[:.-]?\s*([1-4]|[A-D])\b/i
+        );
+        if (prefixMatch) {
+          const k = prefixMatch[1];
+          return ["1", "2", "3", "4"].includes(k)
+            ? k
+            : { A: "1", B: "2", C: "3", D: "4" }[k];
+        }
+
+        // 5. Chuỗi bọc ngắn như "(A)", "[B]", "- C -", " A "
+        const wrapMatch = upper.match(/^[\(\[\-\s]*([A-D1-4])[\)\]\-\s\.:]*$/);
+        if (wrapMatch) {
+          const k = wrapMatch[1];
+          return ["1", "2", "3", "4"].includes(k)
+            ? k
+            : { A: "1", B: "2", C: "3", D: "4" }[k];
+        }
+
+        return "";
+      }
+
+      function isHeaderRow(text, options) {
+        if (!text) return true;
+        const cleanT = text.toLowerCase().trim().replace(/[:\s]+/g, " ");
+
+        // 1. Nếu câu hỏi có dấu hỏi chấm hoặc độ dài trên 50 ký tự -> Chắc chắn là câu hỏi thật, KHÔNG phải dòng tiêu đề
+        if (cleanT.includes("?") || cleanT.length > 50) {
+          return false;
+        }
+
+        // 2. Kiểm tra trực tiếp các từ khóa chính xác của ô tiêu đề cột câu hỏi
+        const exactHeaderKeywords = [
+          "nội dung câu hỏi",
+          "nội dung",
+          "câu hỏi",
+          "tên câu hỏi",
+          "câu hỏi trắc nghiệm",
+          "question",
+          "đề bài",
+          "diễn giải",
+          "stt",
+        ];
+        if (exactHeaderKeywords.includes(cleanT)) {
+          return true;
+        }
+
+        // 3. Kiểm tra nếu các phương án thực chất là tên cột tiêu đề (Phương án A/B/C/D)
+        // LƯU Ý: Tuyệt đối KHÔNG loại trừ nếu phương án chỉ là số "1", "2", "3", "4" hoặc chữ "A", "B", "C", "D"
+        // vì đó có thể là nội dung đáp án chuẩn của câu hỏi thật
+        if (Array.isArray(options)) {
+          const optHeaderPattern = /^(phương án|lựa chọn|câu trả lời|option)\s+[a-d1-4]$/i;
+          const nonEmpty = options.filter((o) => (o ?? "").toString().trim());
+          if (nonEmpty.length >= 2) {
+            const allMatchHeader = nonEmpty.every((o) =>
+              optHeaderPattern.test(o.toString().trim())
+            );
+            if (allMatchHeader) {
+              return true;
+            }
+          }
+        }
+
+        return false;
+      }
+
+      function detectHeaderMapping(rows) {
+        const maxSearch = Math.min(25, rows.length);
+        for (let r = 0; r < maxSearch; r++) {
+          const row = rows[r];
+          if (!row || !Array.isArray(row)) continue;
+
+          let textCol = -1;
+          let correctCol = -1;
+          let citationCol = -1;
+          const optCols = [];
+
+          for (let c = 0; c < row.length; c++) {
+            const rawCell = (row[c] ?? "").toString().trim();
+            if (!rawCell) continue;
+            const cell = rawCell.toLowerCase().replace(/[:\s]+/g, " ");
+
+            // Cột nội dung câu hỏi (chính xác nhãn, không phải câu hỏi dài hay banner)
+            if (
+              textCol === -1 &&
+              (cell === "câu hỏi" ||
+                cell === "nội dung câu hỏi" ||
+                cell === "nội dung" ||
+                cell === "tên câu hỏi" ||
+                cell === "câu hỏi trắc nghiệm" ||
+                cell === "question" ||
+                cell === "đề bài" ||
+                cell === "diễn giải" ||
+                cell.startsWith("nội dung câu hỏi")) &&
+              cell.length < 35 &&
+              !cell.includes("?")
+            ) {
+              textCol = c;
+            } else if (
+              correctCol === -1 &&
+              (cell === "đáp án đúng" ||
+                cell === "đ/a đúng" ||
+                cell === "đa đúng" ||
+                cell === "đáp án" ||
+                cell === "đ.a" ||
+                cell === "đ/a" ||
+                cell === "đa" ||
+                cell === "kết quả" ||
+                cell === "correct" ||
+                cell === "key" ||
+                cell.startsWith("đáp án đúng") ||
+                cell.startsWith("đ/a đúng"))
+            ) {
+              correctCol = c;
+            } else if (
+              citationCol === -1 &&
+              (cell.includes("căn cứ") ||
+                cell.includes("trích dẫn") ||
+                cell.includes("giải thích") ||
+                cell.includes("citation") ||
+                cell.includes("ghi chú") ||
+                cell.includes("tài liệu"))
+            ) {
+              citationCol = c;
+            } else if (
+              cell.includes("phương án") ||
+              cell.includes("lựa chọn") ||
+              /^đáp án\s*[a-d1-4]$/i.test(cell) ||
+              /^[a-d]$/i.test(cell)
+            ) {
+              optCols.push(c);
+            }
+          }
+
+          if (textCol !== -1 && correctCol !== -1) {
+            if (optCols.length < 2 && correctCol > textCol + 1) {
+              optCols.length = 0;
+              for (let k = textCol + 1; k < correctCol; k++) {
+                optCols.push(k);
+              }
+            }
+            return { headerRowIndex: r, textCol, optCols, correctCol, citationCol };
+          }
+        }
+        return null;
+      }
+
+      function extractQuestionFromRow(rowData, headerMap) {
+        if (!rowData || rowData.length < 3) return null;
+
+        // Cách 1: Áp dụng Header Mapping nếu khớp
+        if (headerMap && headerMap.textCol !== -1 && headerMap.correctCol !== -1) {
+          const rawText = (rowData[headerMap.textCol] ?? "").toString().trim();
+          const correctVal = parseCorrectAnswer(rowData[headerMap.correctCol]);
+          if (rawText && correctVal) {
+            const opts = headerMap.optCols.map((c) =>
+              (rowData[c] ?? "").toString().trim()
+            );
+            while (opts.length < 4) opts.push("");
+            const citation =
+              headerMap.citationCol !== -1
+                ? (rowData[headerMap.citationCol] ?? "").toString().trim()
+                : "";
+            return {
+              text: rawText,
+              options: opts.slice(0, 4),
+              correct: correctVal,
+              citation,
+            };
+          }
+        }
+
+        // Cách 2: Tự động dò tìm vị trí cột linh hoạt (Auto-detect)
+        // Ưu tiên các vị trí cột Đáp án đúng thường gặp:
+        // Cột 6: Chuẩn (A:STT, B:Text, C..F:Options, G:Correct)
+        // Cột 7: Lệch phải 1 cột (A:Mã, B:STT, C:Text, D..G:Options, H:Correct)
+        // Cột 5: Lệch trái 1 cột (A:Text, B..E:Options, F:Correct)
+        // Cột 8, 4, v.v.
+        const candidateIndices = [6, 7, 5, 8, 4, 9, 3, 10];
+        const searchOrder = [];
+        const seenIdx = new Set();
+        for (const idx of candidateIndices) {
+          if (idx < rowData.length) {
+            searchOrder.push(idx);
+            seenIdx.add(idx);
+          }
+        }
+        for (let i = 2; i < rowData.length; i++) {
+          if (!seenIdx.has(i)) searchOrder.push(i);
+        }
+
+        for (const c of searchOrder) {
+          const rawCorrect = rowData[c];
+          const correctVal = parseCorrectAnswer(rawCorrect);
+          if (!correctVal) continue;
+
+          // TH 1: 4 phương án (Câu hỏi tại c - 5)
+          if (c >= 5) {
+            const candidateText = (rowData[c - 5] ?? "").toString().trim();
+            const isPureNumber = /^\d{1,5}$/.test(candidateText);
+            if (candidateText && !isPureNumber && candidateText.length > 3) {
+              const opts = [
+                (rowData[c - 4] ?? "").toString().trim(),
+                (rowData[c - 3] ?? "").toString().trim(),
+                (rowData[c - 2] ?? "").toString().trim(),
+                (rowData[c - 1] ?? "").toString().trim(),
+              ];
+              if (opts.filter(Boolean).length >= 2) {
+                const citation = (rowData[c + 1] ?? "").toString().trim();
+                return {
+                  text: candidateText,
+                  options: opts,
+                  correct: correctVal,
+                  citation,
+                };
+              }
+            }
+          }
+
+          // TH 2: 3 phương án (Câu hỏi tại c - 4)
+          if (c >= 4) {
+            const candidateText = (rowData[c - 4] ?? "").toString().trim();
+            const isPureNumber = /^\d{1,5}$/.test(candidateText);
+            if (candidateText && !isPureNumber && candidateText.length > 3) {
+              const opts = [
+                (rowData[c - 3] ?? "").toString().trim(),
+                (rowData[c - 2] ?? "").toString().trim(),
+                (rowData[c - 1] ?? "").toString().trim(),
+                "",
+              ];
+              if (opts.filter(Boolean).length >= 2) {
+                const citation = (rowData[c + 1] ?? "").toString().trim();
+                return {
+                  text: candidateText,
+                  options: opts,
+                  correct: correctVal,
+                  citation,
+                };
+              }
+            }
+          }
+
+          // TH 3: 2 phương án (Câu hỏi tại c - 3)
+          if (c >= 3) {
+            const candidateText = (rowData[c - 3] ?? "").toString().trim();
+            const isPureNumber = /^\d{1,5}$/.test(candidateText);
+            if (candidateText && !isPureNumber && candidateText.length > 3) {
+              const opts = [
+                (rowData[c - 2] ?? "").toString().trim(),
+                (rowData[c - 1] ?? "").toString().trim(),
+                "",
+                "",
+              ];
+              if (opts.filter(Boolean).length >= 2) {
+                const citation = (rowData[c + 1] ?? "").toString().trim();
+                return {
+                  text: candidateText,
+                  options: opts,
+                  correct: correctVal,
+                  citation,
+                };
+              }
+            }
+          }
+        }
+
+        return null;
+      }
+
+      function processQuestions(sheet, fileName) {
+        const rows = XLSX.utils.sheet_to_json(sheet, { defval: "", header: 1 });
+        const questions = [];
+        const cleanField = fileName
+          .replace(/\.[^.]+$/, "")
+          .replace(/^[\d\W_]+\s*/, "")
+          .trim();
+
+        const headerMap = detectHeaderMapping(rows);
+        const startRow = headerMap ? headerMap.headerRowIndex + 1 : 0;
+
+        for (let i = startRow; i < rows.length; i++) {
+          const rowData = rows[i];
+          if (!rowData || rowData.length < 3) continue;
+
+          const parsed = extractQuestionFromRow(rowData, headerMap);
+          if (!parsed || !parsed.text) continue;
+
+          // 🛑 LOẠI BỎ DÒNG TIÊU ĐỀ (HEADER / TITLE ROW)
+          if (isHeaderRow(parsed.text, parsed.options)) {
+            continue;
+          }
+
+          const normText = typeof normalizeVietnameseText === "function"
+            ? normalizeVietnameseText(parsed.text)
+            : parsed.text;
+
+          const normOptions = parsed.options.map((o) => {
+            const s = (o ?? "").toString().trim();
+            return typeof normalizeVietnameseText === "function"
+              ? normalizeVietnameseText(s)
+              : s;
+          });
+
+          const normCitation = parsed.citation && typeof normalizeVietnameseText === "function"
+            ? normalizeVietnameseText(parsed.citation)
+            : (parsed.citation || "");
+
+          questions.push({
+            Field: cleanField,
+            Text: normText,
+            Options: normOptions,
+            Correct: parsed.correct,
+            Citation: normCitation,
+          });
+        }
+        return { questions };
+      }
+
+      downloadBtn.addEventListener("click", () => {
+        const defaultTitle = examTitleInput.value.trim() || "KỲ THI ÔN TẬP TRẮC NGHIỆM";
+        const finalData = {
+          ExamTitle: defaultTitle,
+          questions: allExcelQuestions,
+        };
+
+        const blob = new Blob([JSON.stringify(finalData, null, 2)], {
+          type: "application/json;charset=utf-8",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "questions_new.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    </script>
+  </body>
+</html>
