@@ -96,54 +96,61 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="container navbar navbar-dark px-4 py-3">
+    <nav class="container navbar navbar-dark px-4 py-3" id="appNavbar" data-testid="app-navbar">
       <div
         class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <span class="logo"
-          ><i class="fa-solid fa-cloud-sun"></i> F.A – The Fun Area</span
+        <span class="logo" id="appLogo" data-testid="app-logo"
+          ><i class="fa-solid fa-cloud-sun me-2"></i>F.A – The Fun Area</span
         >
 
-        <div class="position-relative text-info">
-          <i class="fa-solid fa-universal-access fa-2x"></i>
+        <div class="position-relative text-info" id="counterContainer" data-testid="counter-container">
+          <i class="fa-solid fa-universal-access fa-2x" aria-hidden="true"></i>
           <span
             id="visitscounter"
+            data-testid="visits-counter"
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-info"
           >
             👁️
-            <span class="visually-hidden">unread messages</span>
+            <span class="visually-hidden">Tổng lượt truy cập</span>
           </span>
         </div>
-        <button class="btn btn-outline-info btn-sm d-none" id="darkToggle">
+        <button
+          type="button"
+          class="btn btn-outline-info btn-sm d-none"
+          id="darkToggle"
+          data-testid="theme-toggle-btn"
+          aria-label="Chuyển đổi giao diện sáng tối"
+        >
           🌙 Dark Mode
         </button>
       </div>
     </nav>
 
     <!-- Cards -->
-    <div class="container">
-      <h3 class="section-title">Mời chọn một chức năng</h3>
-      <div class="row g-4 justify-content-center">
+    <main class="container" id="mainContainer" data-testid="main-container">
+      <h1 class="section-title h3" id="mainTitle" data-testid="main-title">Mời chọn một chức năng</h1>
+      <div class="row g-4 justify-content-center" id="cardGrid" data-testid="card-grid">
         <!-- Quiz -->
-        <div class="col-md-4">
-          <a href="docs/pages/quiz.html">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <a href="docs/pages/quiz.html" id="linkQuizCard" data-testid="nav-card-quiz" class="text-decoration-none">
             <div class="card text-center p-4 h-100">
               <div class="card-icon mb-3">🧠</div>
               <h5 class="fw-bold">Ôn thi - Quiz</h5>
-              <p class="text-secondary small">
-                Ôn thi trắc nghiệm, nâng cáo kiến thức nghiệp vụ.
+              <p class="text-secondary small mb-0">
+                Ôn thi trắc nghiệm, nâng cao kiến thức nghiệp vụ.
               </p>
             </div>
           </a>
         </div>
 
         <!-- Bảng giá đất -->
-        <div class="col-md-4">
-          <a href="docs/pages/banggiadat.html">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <a href="docs/pages/banggiadat.html" id="linkLandPriceCard" data-testid="nav-card-land-price" class="text-decoration-none">
             <div class="card text-center p-4 h-100">
               <div class="card-icon mb-3">📊</div>
               <h5 class="fw-bold">Tra cứu bảng giá đất</h5>
-              <p class="text-secondary small">
+              <p class="text-secondary small mb-0">
                 Tìm kiếm thông minh, lọc và hiển thị bảng giá đất theo khu vực,
                 đường, địa bàn.
               </p>
@@ -151,85 +158,130 @@
           </a>
         </div>
 
+        <!-- Quản trị & Thư viện -->
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <a href="docs/pages/tracnghiem_admin.html" id="linkAdminCard" data-testid="nav-card-admin" class="text-decoration-none">
+            <div class="card text-center p-4 h-100">
+              <div class="card-icon mb-3">⚙️</div>
+              <h5 class="fw-bold">Quản trị & Thư viện</h5>
+              <p class="text-secondary small mb-0">
+                Chuyển đổi file Excel sang JSON, quét và gộp thư viện câu hỏi questions.json.
+              </p>
+            </div>
+          </a>
+        </div>
+
         <!-- Hỗ trợ & Tài liệu -->
-        <div class="col-md-4">
-          <a href="docs/pages/about.html">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <a href="docs/pages/about.html" id="linkAboutCard" data-testid="nav-card-about" class="text-decoration-none">
             <div class="card text-center p-4 h-100">
               <div class="card-icon mb-3">📚</div>
               <h5 class="fw-bold">About</h5>
-              <p class="text-secondary small">Thông tin thêm...</p>
+              <p class="text-secondary small mb-0">Thông tin thêm...</p>
             </div>
           </a>
         </div>
       </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <div class="footer py-4">
-      <p>
+    <footer class="footer py-4" id="appFooter" data-testid="app-footer">
+      <p class="mb-0">
         © 2025 <b>XXX</b> | by
         <span class="text-info">Tinh-Giac</span>
       </p>
-    </div>
+    </footer>
 
-    <!-- Script -->
+    <!-- Scripts: Bootstrap Bundle & Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="docs/js/custom.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script>
-      // 2. Cấu hình thông tin từ Bước 4
+      // ==========================================
+      // 1. Data Layer: Firebase Visits Tracking
+      // ==========================================
       const firebaseConfig = {
         databaseURL:
           "https://visits-7f5c2-default-rtdb.asia-southeast1.firebasedatabase.app",
       };
 
-      firebase.initializeApp(firebaseConfig);
-      const db = firebase.database();
+      /**
+       * Ghi nhận và đồng bộ lượt truy cập
+       */
+      const recordVisit = () => {
+        try {
+          if (typeof firebase === "undefined" || !firebase.apps) {
+            console.warn("Firebase SDK chưa sẵn sàng.");
+            return;
+          }
 
-      // 3. Hàm tăng lượt truy cập (Thay cho recordVisit cũ)
-      function recordVisit() {
-        const visitRef = db.ref("visits"); // Trỏ thẳng vào node 'visits' đã tạo ở B3
+          if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+          }
 
-        visitRef.transaction(
-          (currentValue) => {
-            // Nếu chưa có dữ liệu thì bắt đầu từ 0, ngược lại tăng thêm 1
-            return (currentValue || 0) + 1;
-          },
-          (error, committed, snapshot) => {
-            if (committed) {
-              const total = snapshot.val();
-              console.log("🚀 Tổng lượt truy cập:", total);
+          const db = firebase.database();
+          const visitRef = db.ref("visits");
 
-              // Cập nhật số lên giao diện
-              const counter = document.getElementById("visitscounter");
-              if (counter) counter.innerText = formatNumberVN(total);
+          visitRef.transaction(
+            (currentValue) => (currentValue || 0) + 1,
+            (error, committed, snapshot) => {
+              if (error) {
+                console.error("Lỗi khi cập nhật lượt truy cập:", error);
+                return;
+              }
+              if (committed && snapshot) {
+                const total = snapshot.val();
+                updateVisitCounterUI(total);
+              }
             }
-          },
-        );
-      }
-
-      // Chạy khi trang tải xong
-      document.addEventListener("DOMContentLoaded", recordVisit);
-    </script>
-
-    <script>
-      const toggleBtn = document.getElementById("darkToggle");
-      toggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-        if (document.body.classList.contains("light-mode")) {
-          document.body.style.background = "#f5f5f5";
-          document.body.style.color = "#222";
-          toggleBtn.textContent = "🌑 Dark Mode";
-        } else {
-          document.body.style.background =
-            "radial-gradient(circle at top left, #0d1117, #000)";
-          document.body.style.color = "#f1f1f1";
-          toggleBtn.textContent = "🌙 Light Mode";
+          );
+        } catch (err) {
+          console.error("Exception trong quá trình recordVisit:", err);
         }
-      });
-      document.addEventListener("DOMContentLoaded", async () => {
-        //getVisits("visitscounter");
+      };
+
+      /**
+       * Cập nhật số lượt truy cập lên UI
+       */
+      const updateVisitCounterUI = (total) => {
+        const counter = document.getElementById("visitscounter");
+        if (counter && typeof formatNumberVN === "function") {
+          counter.innerText = formatNumberVN(total);
+        } else if (counter) {
+          counter.innerText = total;
+        }
+      };
+
+      // ==========================================
+      // 2. UI Layer: Theme Toggle & Init
+      // ==========================================
+      const initThemeToggle = () => {
+        const toggleBtn = document.getElementById("darkToggle");
+        if (!toggleBtn) return;
+
+        toggleBtn.addEventListener("click", () => {
+          const isLight = document.body.classList.toggle("light-mode");
+          if (isLight) {
+            document.body.style.background = "#f5f5f5";
+            document.body.style.color = "#222";
+            toggleBtn.textContent = "🌑 Dark Mode";
+          } else {
+            document.body.style.background =
+              "radial-gradient(circle at top left, #0d1117, #000)";
+            document.body.style.color = "#f1f1f1";
+            toggleBtn.textContent = "🌙 Light Mode";
+          }
+        });
+      };
+
+      // ==========================================
+      // 3. Application Lifecycle Bootstrapper
+      // ==========================================
+      document.addEventListener("DOMContentLoaded", () => {
+        initThemeToggle();
+        recordVisit();
       });
     </script>
   </body>
