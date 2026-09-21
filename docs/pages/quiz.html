@@ -573,6 +573,61 @@
       background-color: #00bfff !important;
       border-color: #00bfff !important;
     }
+
+    /* Tối ưu diện tích hiển thị Thư viện câu hỏi trên mobile */
+    .search-results-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .search-results-table .col-question {
+      width: 70%;
+      word-break: break-word;
+    }
+
+    .search-results-table .col-answer {
+      width: 30%;
+      word-break: break-word;
+    }
+
+    @media (max-width: 576px) {
+      #searchTab {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      #searchTab .library-card {
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 4px;
+      }
+
+      #searchTab .library-card-body {
+        padding: 8px 4px !important;
+      }
+
+      .search-results-table {
+        font-size: 0.85rem;
+      }
+
+      .search-results-table th,
+      .search-results-table td {
+        padding: 5px 3px !important;
+      }
+
+      .search-results-table .col-question {
+        width: 66% !important;
+      }
+
+      .search-results-table .col-answer {
+        width: 34% !important;
+      }
+
+      #searchTab #searchInput {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+      }
+    }
   </style>
 </head>
 
@@ -717,8 +772,8 @@
 
     <!-- TAB 2: THƯ VIỆN CÂU HỎI -->
     <div id="searchTab" data-testid="tab-pane-search" style="display:none;">
-      <div class="card mb-1">
-        <div class="card-body">
+      <div class="card mb-1 library-card">
+        <div class="card-body library-card-body">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="includeAnswers"
