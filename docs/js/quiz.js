@@ -361,41 +361,79 @@ function populateFields() {
 
 // ================== CHUYỂN TAB ==================
 function switchTab(tab) {
-  document.getElementById("homeTab").style.display =
-    tab === "home" ? "block" : "none";
-  document.getElementById("searchTab").style.display =
-    tab === "search" ? "block" : "none";
-  document.getElementById("aboutTab").style.display =
-    tab === "about" ? "block" : "none";
+  const activeTabName = tab === "library" ? "search" : tab;
+
+  const homeTab = document.getElementById("homeTab");
+  const searchTab = document.getElementById("searchTab");
+  const aboutTab = document.getElementById("aboutTab");
+
+  if (homeTab) homeTab.style.display = activeTabName === "home" ? "block" : "none";
+  if (searchTab) searchTab.style.display = activeTabName === "search" ? "block" : "none";
+  if (aboutTab) aboutTab.style.display = activeTabName === "about" ? "block" : "none";
+
+  // Quản lý thanh công cụ thi cố định ở đáy (navBar / reviewNavBar)
+  const navBar = document.getElementById("navBar");
+  const reviewNavBar = document.getElementById("reviewNavBar");
+  const resultView = document.getElementById("resultView");
+
+  if (activeTabName !== "home") {
+    // Khi sang tab Thư viện hoặc Help: ẩn triệt để thanh công cụ thi
+    if (navBar) navBar.style.setProperty("display", "none", "important");
+    if (reviewNavBar) reviewNavBar.style.display = "none";
+  } else {
+    // Khi quay lại tab Trắc nghiệm:
+    // Nếu đang trong phiên thi và chưa nộp bài -> hiện lại navBar
+    const isShowingResult = resultView && resultView.style.display === "block";
+    if (isQuizStarted && !isShowingResult && navBar) {
+      navBar.style.setProperty("display", "flex", "important");
+    }
+    // Nếu đang trong chế độ review ôn tập -> hiện lại reviewNavBar
+    const quizContainer = document.getElementById("quizContainer");
+    if (quizContainer && quizContainer.innerHTML.includes("Ôn tập câu hỏi") && reviewNavBar) {
+      reviewNavBar.style.display = "block";
+    }
+  }
+
+  // Cập nhật trạng thái active cho tab button
   document
     .querySelectorAll("#mainTabs .nav-link")
     .forEach((l) => l.classList.remove("active"));
-  document
-    .querySelector(`#mainTabs .nav-link[onclick*="${tab}"]`)
-    .classList.add("active");
+
+  const targetLink =
+    document.querySelector(`#mainTabs [data-tab="${activeTabName}"]`) ||
+    document.querySelector(`#mainTabs .nav-link[onclick*="${activeTabName}"]`);
+
+  if (targetLink) {
+    targetLink.classList.add("active");
+  }
 
   /* [BỔ SUNG] Hiện/ẩn nút GoTop tùy theo tab */
   const goTopBtn = document.getElementById("goTopBtn");
   if (goTopBtn)
-    goTopBtn.style.display = tab === "search" ? "inline-flex" : "none";
+    goTopBtn.style.display = activeTabName === "search" ? "inline-flex" : "none";
 }
 
 let cachedAllQuestions = null;
 let libraryLoaded = false;
 
+async function ensureLibraryLoaded() {
+  if (cachedAllQuestions && cachedAllQuestions.length > 0) return cachedAllQuestions;
+  const searchResults = document.getElementById("searchResults");
+  if (searchResults && !document.getElementById("searchInput").value.trim()) {
+    searchResults.innerHTML =
+      "<div class='text-center text-info py-3'><span class='spinner-border spinner-border-sm me-2' role='status'></span> Đang tải toàn bộ thư viện câu hỏi...</div>";
+  }
+  cachedAllQuestions = await loadAllQuestions();
+  libraryLoaded = true;
+  return cachedAllQuestions;
+}
+
 async function openLibraryTab() {
   switchTab("search");
-
-  if (!libraryLoaded) {
-    document.getElementById("searchResults").innerHTML =
-      "<div class='text-center text-info'>Đang tải dữ liệu thư viện...</div>";
-
-    cachedAllQuestions = await loadAllQuestions();
-    libraryLoaded = true;
-
-    document.getElementById(
-      "searchResults"
-    ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
+  await ensureLibraryLoaded();
+  const searchResults = document.getElementById("searchResults");
+  if (searchResults && !document.getElementById("searchInput").value.trim()) {
+    searchResults.innerHTML = `<div class='text-center text-success py-2'>✅ Đã tải ${cachedAllQuestions.length.toLocaleString()} câu hỏi hợp nhất từ thư viện. Nhập từ khóa để tìm kiếm!</div>`;
   }
 }
 // ================== BẮT ĐẦU THI ==================
@@ -881,7 +919,7 @@ function resetToHome() {
 }
 
 // ================== TÌM KIẾM ==================
-// === Tìm kiếm với tối ưu hiệu suất & tự động hỗ trợ ký tự '%' ===
+// === Tìm kiếm với tối ưu hiệu suất & tự động hỗ trợ ký tự '%' hoặc '*' ===
 let searchTimer;
 function debounceSearch() {
   clearTimeout(searchTimer);
@@ -889,11 +927,14 @@ function debounceSearch() {
 }
 
 function matchWithWildcard(text, pattern) {
-  // Nếu không có %, dùng includes() cho nhanh
-  if (!pattern.includes("%")) return text.includes(pattern);
+  // Nếu không có % hoặc *, dùng includes() cho nhanh
+  if (!pattern.includes("%") && !pattern.includes("*")) return text.includes(pattern);
 
-  // Có %, chia nhỏ và kiểm tra theo thứ tự
-  const parts = pattern.split("%").filter((p) => p);
+  // Có % hoặc *, chia nhỏ và kiểm tra theo thứ tự
+  const parts = pattern
+    .split(/[%*]+/)
+    .map((p) => p.trim())
+    .filter((p) => p);
   let pos = 0;
   for (const part of parts) {
     const idx = text.indexOf(part, pos);
@@ -952,7 +993,19 @@ async function loadAllQuestions() {
   }
 }
 
-function searchQuestions() {
+async function onToggleAllSources() {
+  const isChecked = document.getElementById("includeAllSources")?.checked ?? false;
+  if (isChecked && (!cachedAllQuestions || cachedAllQuestions.length === 0)) {
+    const container = document.getElementById("searchResults");
+    if (container) {
+      container.innerHTML = `<div class="alert alert-info text-center py-2"><span class="spinner-border spinner-border-sm me-2" role="status"></span> Đang nạp thư viện câu hỏi...</div>`;
+    }
+    await ensureLibraryLoaded();
+  }
+  searchQuestions();
+}
+
+async function searchQuestions() {
   const inputRaw = normalizeVietnameseText(
     document.getElementById("searchInput").value.trim()
   );
@@ -967,17 +1020,33 @@ function searchQuestions() {
   const MAX_RESULTS = 100;
   const startTime = performance.now();
 
-  // 1️⃣ Lọc dữ liệu: tự động dùng matchWithWildcard nếu có ký tự %
   const includeAnswers =
     document.getElementById("includeAnswers")?.checked ?? false;
   const includeAllSources =
     document.getElementById("includeAllSources")?.checked ?? false;
-  const results = (includeAllSources ? cachedAllQuestions : questionData)
+
+  if (includeAllSources && (!cachedAllQuestions || cachedAllQuestions.length === 0)) {
+    if (container) {
+      container.innerHTML = `<div class="alert alert-info text-center py-2"><span class="spinner-border spinner-border-sm me-2" role="status"></span> Đang nạp toàn bộ thư viện câu hỏi...</div>`;
+    }
+    await ensureLibraryLoaded();
+    const currentInput = normalizeVietnameseText(
+      document.getElementById("searchInput").value.trim()
+    ).toLowerCase();
+    if (!currentInput) {
+      container.innerHTML = "";
+      return;
+    }
+  }
+
+  const sourceData = (includeAllSources && cachedAllQuestions ? cachedAllQuestions : questionData) || [];
+  const hasWildcard = input.includes("%") || input.includes("*");
+  const results = sourceData
     .map((q, i) => ({ ...q, stt: i + 1 }))
 
     .filter((q) => {
       const text = q.text.toLowerCase();
-      if (input.includes("%")) {
+      if (hasWildcard) {
         if (includeAnswers) {
           return (
             matchWithWildcard(text, input) ||
@@ -999,7 +1068,7 @@ function searchQuestions() {
     });
 
   if (results.length === 0) {
-    container.innerHTML = `<div class="alert alert-soft">Không tìm thấy câu hỏi phù hợp.</div>`;
+    container.innerHTML = `<div class="alert alert-soft text-muted" style="opacity: 0.7;">Không tìm thấy câu hỏi phù hợp (0 kết quả khớp).</div>`;
     return;
   }
 
@@ -1018,16 +1087,31 @@ function searchQuestions() {
   }
   const uniqueResults = Array.from(mergedMap.values());
   const shownResults = uniqueResults.slice(0, MAX_RESULTS);
+  const totalCount = uniqueResults.length;
+  const isOver5 = totalCount > 5;
+  const countColorStyle = isOver5
+    ? "color: #ff4d4f; font-weight: 600;"
+    : "color: #8a8a8a; opacity: 0.75;";
 
   // 3️⃣ Render kết quả
   let html = `
     <div class="card">
       <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+          <div style="${countColorStyle}">
+            🔍 Tìm thấy <b>${totalCount}</b> kết quả khớp${totalCount > MAX_RESULTS ? ` (hiển thị ${MAX_RESULTS})` : ""}
+          </div>
+          <div class="text-muted small" style="opacity: 0.6;">
+            <i>${(performance.now() - startTime).toFixed(1)}ms</i>
+          </div>
+        </div>
         <div class="table-responsive">
           <table class="table table-dark table-bordered">
             <thead>
               <tr>
-                <th style="width:70%">Câu hỏi</th>
+                <th style="width:70%">
+                  Câu hỏi <span class="ms-1" style="${countColorStyle}; font-weight: normal; font-size: 0.85em;">(${totalCount} dòng khớp)</span>
+                </th>
                 <th>Đáp án</th>
               </tr>
             </thead>
@@ -1060,9 +1144,9 @@ function searchQuestions() {
             </tbody>
           </table>
         </div>
-        <div class="text-muted small mt-2">
-          Hiển thị ${shownResults.length}/${uniqueResults.length} kết quả —
-          <i>${(performance.now() - startTime).toFixed(1)}ms</i>
+        <div class="small mt-2" style="${countColorStyle}">
+          Hiển thị ${shownResults.length}/${totalCount} kết quả khớp —
+          <i class="text-muted" style="opacity: 0.6;">${(performance.now() - startTime).toFixed(1)}ms</i>
         </div>
       </div>
     </div>
@@ -1255,8 +1339,8 @@ document
     // Lưu trạng thái
     if (event.target.checked && cachedAllQuestions === null) {
       cachedAllQuestions = await loadAllQuestions();
-      document.getElementById(
-        "searchResults"
-      ).innerHTML = `<div class='text-center text-success'>✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất. Nhập từ khóa để tìm kiếm!</div>`;
+      alert(
+        `✅ Đã tải ${cachedAllQuestions.length} câu hỏi hợp nhất trong tất cả bộ đề thi. Nhập từ khóa để tìm kiếm!`
+      );
     }
   });
