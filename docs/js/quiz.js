@@ -956,11 +956,6 @@ function matchWithWildcard(text, pattern) {
 // ======================================================
 async function loadAllQuestions() {
   try {
-    const includeAllSources =
-      document.getElementById("includeAllSources")?.checked ?? false;
-    if (!includeAllSources) {
-      return questionData;
-    }
     const res = await fetch("../data/questions.json");
     if (!res.ok) throw new Error("Không tải được file questions.json");
 
@@ -978,14 +973,21 @@ async function loadAllQuestions() {
     );
 
     // 🔹 Chuẩn hoá định dạng
-    return allQuestions.map((q) => ({
-      field: q.Field || q.field || "",
-      text: q.Text || q.text || "",
-      options: q.Options || q.options || [],
-      correct: q.Correct || q.correct || "",
-      citation: q.Citation || q.citation || "",
-      sources: q.Sources || q.sources || q.Library || "Thư viện tổng hợp",
-    }));
+    return allQuestions.map((q) => {
+      const rawText = q.Text || q.text || "";
+      const text =
+        typeof normalizeVietnameseText === "function"
+          ? normalizeVietnameseText(rawText)
+          : rawText;
+      return {
+        field: q.Field || q.field || "",
+        text: text,
+        options: q.Options || q.options || [],
+        correct: q.Correct || q.correct || "",
+        citation: q.Citation || q.citation || "",
+        sources: q.Sources || q.sources || q.Library || "Thư viện tổng hợp",
+      };
+    });
   } catch (err) {
     console.error("⚠️ Lỗi khi tải thư viện câu hỏi:", err);
     alert("Không thể tải thư viện câu hỏi tổng hợp (questions.json)!");
@@ -1006,19 +1008,13 @@ async function onToggleAllSources() {
 }
 
 async function searchQuestions() {
-  const inputRaw = normalizeVietnameseText(
-    document.getElementById("searchInput").value.trim()
-  );
-  const input = inputRaw.toLowerCase();
+  const startTime = performance.now();
+  const rawValue = document.getElementById("searchInput")?.value?.trim() || "";
   const container = document.getElementById("searchResults");
-
-  if (!input) {
-    container.innerHTML = "";
+  if (!rawValue) {
+    if (container) container.innerHTML = "";
     return;
   }
-
-  const MAX_RESULTS = 100;
-  const startTime = performance.now();
 
   const includeAnswers =
     document.getElementById("includeAnswers")?.checked ?? false;
@@ -1030,27 +1026,34 @@ async function searchQuestions() {
       container.innerHTML = `<div class="alert alert-info text-center py-2"><span class="spinner-border spinner-border-sm me-2" role="status"></span> Đang nạp toàn bộ thư viện câu hỏi...</div>`;
     }
     await ensureLibraryLoaded();
-    const currentInput = normalizeVietnameseText(
-      document.getElementById("searchInput").value.trim()
-    ).toLowerCase();
-    if (!currentInput) {
-      container.innerHTML = "";
-      return;
-    }
   }
 
-  const sourceData = (includeAllSources && cachedAllQuestions ? cachedAllQuestions : questionData) || [];
+  const activeRaw = document.getElementById("searchInput")?.value?.trim() || "";
+  if (!activeRaw) {
+    if (container) container.innerHTML = "";
+    return;
+  }
+
+  const inputRaw = typeof normalizeVietnameseText === "function"
+    ? normalizeVietnameseText(activeRaw)
+    : activeRaw;
+  const input = inputRaw.toLowerCase();
+
+  const MAX_RESULTS = 100;
+  const sourceData = includeAllSources
+    ? (cachedAllQuestions || [])
+    : (questionData || []);
+
   const hasWildcard = input.includes("%") || input.includes("*");
   const results = sourceData
     .map((q, i) => ({ ...q, stt: i + 1 }))
-
     .filter((q) => {
-      const text = q.text.toLowerCase();
+      const text = (q.text || "").toLowerCase();
       if (hasWildcard) {
         if (includeAnswers) {
           return (
             matchWithWildcard(text, input) ||
-            q.options.some((opt) => matchWithWildcard(opt.toLowerCase(), input))
+            (q.options || []).some((opt) => matchWithWildcard((opt || "").toLowerCase(), input))
           );
         } else {
           return matchWithWildcard(text, input);
@@ -1059,7 +1062,7 @@ async function searchQuestions() {
         if (includeAnswers) {
           return (
             text.includes(input) ||
-            q.options.some((opt) => opt.toLowerCase().includes(input))
+            (q.options || []).some((opt) => (opt || "").toLowerCase().includes(input))
           );
         } else {
           return text.includes(input);
@@ -1072,17 +1075,25 @@ async function searchQuestions() {
     return;
   }
 
-  // 2️⃣ Loại bỏ trùng lặp (theo q.text)
+  // 2️⃣ Loại bỏ trùng lặp (theo q.text) và gộp fields, sources
   const mergedMap = new Map();
   for (const q of results) {
-    const key = q.text.trim().toLowerCase();
+    const key = (q.text || "").trim().toLowerCase();
+    const sourceList = Array.isArray(q.sources)
+      ? q.sources
+      : typeof q.sources === "string" && q.sources
+      ? [q.sources]
+      : ["Bộ đề hiện tại"];
+
     if (!mergedMap.has(key)) {
       mergedMap.set(key, {
         ...q,
         fields: new Set([q.field || q.Field || "—"]),
+        allSources: new Set(sourceList),
       });
     } else {
       mergedMap.get(key).fields.add(q.field || q.Field || "—");
+      sourceList.forEach((s) => mergedMap.get(key).allSources.add(s));
     }
   }
   const uniqueResults = Array.from(mergedMap.values());
@@ -1119,16 +1130,26 @@ async function searchQuestions() {
   `;
 
   shownResults.forEach((q) => {
-    const correctIdx = (q.correct ?? 0) - 1;
+    let correctIdx = -1;
+    const rawCor = q.correct ?? q.Correct ?? "";
+    if (typeof rawCor === "number") {
+      correctIdx = rawCor - 1;
+    } else if (typeof rawCor === "string") {
+      const trimmed = rawCor.trim().toUpperCase();
+      if (["A", "B", "C", "D"].includes(trimmed)) {
+        correctIdx = trimmed.charCodeAt(0) - 65;
+      } else if (/^[1-4]$/.test(trimmed)) {
+        correctIdx = parseInt(trimmed, 10) - 1;
+      }
+    }
+
     const answers =
-      correctIdx >= 0 && correctIdx < q.options.length
+      correctIdx >= 0 && q.options && correctIdx < q.options.length
         ? `<div class="text-info">${htmlesc(q.options[correctIdx])}</div>`
         : "";
-    const fieldsText = Array.from(q.fields).join("; ");
+    const fieldsText = Array.from(q.fields).filter(Boolean).join("; ") || "—";
     const sourcesText =
-      q.sources && Array.from(q.sources).length
-        ? Array.from(q.sources).join("; ")
-        : "Bộ đề hiện tại";
+      Array.from(q.allSources || []).filter(Boolean).join("; ") || "Bộ đề hiện tại";
     html += `
       <tr>
         <td>
